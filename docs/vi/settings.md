@@ -20,15 +20,15 @@ Sử dụng module này khi bạn muốn:
 
 ## 3. Các màn hình liên quan
 
-- **SettingsMain** - Màn hình cài đặt chính
-- **BasicSettingsMain** - Cài đặt cơ bản
-- **LanguageSelection** - Chọn ngôn ngữ
-- **CurrencySelection** - Chọn tiền tệ
-- **CategoryManagement** - Quản lý danh mục
-- **Backup** - Sao lưu dữ liệu
-- **Restore** - Phục hồi dữ liệu
-- **ChangePassword** - Đổi mật khẩu
-- **EnableBiometric** - Bật Face ID / Fingerprint
+- Màn hình cài đặt chính
+- Cài đặt cơ bản
+- Chọn ngôn ngữ
+- Chọn tiền tệ
+- Quản lý danh mục
+- Sao lưu dữ liệu
+- Phục hồi dữ liệu
+- Đổi mật khẩu
+- Bật Face ID / Fingerprint
 
 ## 4. Cách sử dụng chính
 
@@ -81,7 +81,7 @@ Sử dụng module này khi bạn muốn:
 
 ## 5. Minh hoạ giao diện (Wireframe)
 
-### 5.1 Màn hình Cài đặt chính (SettingsMain)
+### 5.1 Màn hình Cài đặt chính
 
 ```text
 ┌─────────────────────────────────────────┐
@@ -153,57 +153,3 @@ Sử dụng module này khi bạn muốn:
 - **Sao lưu thường xuyên**: Nên sao lưu dữ liệu định kỳ để tránh mất dữ liệu
 - **Phục hồi sẽ ghi đè**: Phục hồi sẽ thay thế toàn bộ dữ liệu hiện tại
 - **Mật khẩu**: Nếu quên mật khẩu, bạn có thể reset (sẽ xóa dữ liệu)
-
-## 8. Mapping kỹ thuật (for dev)
-
-### 8.1 Routes / Route Names
-
-- `SettingsMain` - Màn hình chính
-- `BasicSettingsMain` - Cài đặt cơ bản
-- `LanguageSelection` - Chọn ngôn ngữ
-- `CurrencySelection` - Chọn tiền tệ
-- `CategoryManagement` - Quản lý danh mục
-- `Backup` - Sao lưu
-- `Restore` - Phục hồi
-- `ChangePassword` - Đổi mật khẩu
-- `EnableBiometric` - Bật Face ID
-
-### 8.2 Screen File Paths
-
-- `src/screens/settings/SettingsScreen.tsx`
-- `src/screens/settings/BasicSettingsScreen.tsx`
-- `src/screens/settings/LanguageSelectionScreen.tsx`
-- `src/screens/settings/CurrencySelectionScreen.tsx`
-- `src/screens/settings/CategoryManagementScreen.tsx`
-- `src/screens/settings/BackupScreen.tsx`
-- `src/screens/settings/RestoreScreen.tsx`
-- `src/screens/auth/ChangePasswordScreen.tsx`
-- `src/screens/auth/EnableBiometricScreen.tsx`
-
-### 8.3 Services / Repos File Paths
-
-- `src/services/backup.service.ts` - `backupData`
-- `src/services/restore.service.ts` - `restoreData`
-- `src/services/password.service.ts` - `changePassword`, `hasPassword`
-- `src/services/biometricAuth.service.ts` - `enableBiometric`, `disableBiometric`
-- `src/services/notificationSettings.service.ts` - `enableNotifications`, `disableNotifications`
-- `src/i18n/config.ts` - `i18n.changeLanguage`
-- `src/utils/currency.ts` - Currency utilities
-
-### 8.4 DB Tables / Models
-
-- `users` - Thông tin người dùng (chứa currency preference)
-- `category_translation` - Bảng dịch danh mục
-- Các bảng category: `recurring_income_category`, `daily_expense_category`, v.v.
-
-### 8.5 i18n Keys
-
-- `settings.title` - "Cài đặt"
-- `settings.display_language.title` - "Hiển thị & Ngôn ngữ"
-- `settings.display_language.language` - "Ngôn ngữ"
-- `settings.display_language.currency` - "Tiền tệ"
-- `settings.notifications.title` - "Thông báo"
-- `settings.backup_data.title` - "Sao lưu & Dữ liệu"
-- `settings.category_management.title` - "Danh mục"
-- Và nhiều keys khác trong `src/i18n/locales/vi.json` dưới key `settings`
-

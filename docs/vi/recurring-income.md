@@ -20,10 +20,10 @@ Sử dụng module này khi bạn có:
 
 ## 3. Các màn hình liên quan
 
-- **RecurringIncomeList** - Danh sách thu nhập định kỳ
-- **AddRecurringIncome** - Thêm thu nhập định kỳ mới
-- **EditRecurringIncome** - Sửa thu nhập định kỳ
-- **RecurringIncomeHistory** - Lịch sử các kỳ phát sinh
+- Danh sách thu nhập định kỳ
+- Thêm thu nhập định kỳ mới
+- Sửa thu nhập định kỳ
+- Lịch sử các kỳ phát sinh
 
 ## 4. Cách sử dụng chính
 
@@ -72,7 +72,7 @@ Sử dụng module này khi bạn có:
 
 ## 5. Minh hoạ giao diện (Wireframe)
 
-### 5.1 Màn hình Danh sách (RecurringIncomeList)
+### 5.1 Màn hình Danh sách
 
 ```text
 ┌─────────────────────────────────────────┐
@@ -107,7 +107,7 @@ Sử dụng module này khi bạn có:
 └─────────────────────────────────────────┘
 ```
 
-### 5.2 Màn hình Thêm/Sửa (AddRecurringIncome / EditRecurringIncome)
+### 5.2 Màn hình Thêm/Sửa
 
 ```text
 ┌─────────────────────────────────────────┐
@@ -140,7 +140,7 @@ Sử dụng module này khi bạn có:
 └─────────────────────────────────────────┘
 ```
 
-### 5.3 Dialog Xác nhận (ConfirmOccurrenceDialog)
+### 5.3 Dialog Xác nhận
 
 ```text
 ┌─────────────────────────────────────────┐
@@ -161,7 +161,7 @@ Sử dụng module này khi bạn có:
 └─────────────────────────────────────────┘
 ```
 
-### 5.4 Màn hình Lịch sử (RecurringIncomeHistory)
+### 5.4 Màn hình Lịch sử
 
 ```text
 ┌─────────────────────────────────────────┐
@@ -226,61 +226,3 @@ Sử dụng module này khi bạn có:
 - **Không thể xóa khi đã có occurrence**: Nếu đã có kỳ phát sinh, bạn chỉ có thể tắt (isActive = false), không thể xóa
 - **Xác nhận muộn**: Bạn có thể xác nhận các kỳ đã qua, app sẽ tự động tính lại ngân sách
 - **Thay đổi chu kỳ**: Khi sửa chu kỳ, các occurrence tương lai sẽ được tính lại
-
-## 8. Mapping kỹ thuật (for dev)
-
-### 8.1 Routes / Route Names
-
-- `RecurringIncomeList` - Danh sách
-- `AddRecurringIncome` - Thêm mới
-- `EditRecurringIncome` - Sửa (param: `recurringIncomeId`)
-- `RecurringIncomeHistory` - Lịch sử (param: `recurringIncomeId`)
-
-### 8.2 Screen File Paths
-
-- `src/screens/finance/RecurringIncomeListScreen.tsx`
-- `src/screens/finance/AddRecurringIncomeScreen.tsx`
-- `src/screens/finance/EditRecurringIncomeScreen.tsx`
-- `src/screens/finance/RecurringIncomeHistoryScreen.tsx`
-- `src/screens/finance/RecurringItemListScreen.tsx` (shared component)
-- `src/screens/finance/AddRecurringItemScreen.tsx` (shared component)
-
-### 8.3 Services / Repos File Paths
-
-- `src/data/repo/recurring-income.repository.ts` - `recurringIncomeRepo`
-- `src/data/repo/recurring-income-occurrence.repository.ts` - `recurringIncomeOccurrenceRepo`
-- `src/data/repo/recurring-income-category.repository.ts` - `recurringIncomeCategoryRepo`
-- `src/modules/finance/services/occurrence.service.ts` - `confirmIncomeOccurrence`, `cancelIncomeOccurrence`
-- `src/modules/finance/services/budget.service.ts` - `recalculateBudgetIfExists`, `hasRecurringIncomeInCurrentMonth`
-- `src/modules/finance/hooks/useRecurringIncomeList.ts` - Custom hook cho list
-
-### 8.4 DB Tables / Models
-
-- `recurring_income` - Bảng định nghĩa thu nhập định kỳ
-  - `id`, `user_id`, `category_id`, `amount`, `cycle`, `cycle_day`, `start_date`, `note`, `is_active`
-- `recurring_income_occurrence` - Bảng các kỳ phát sinh
-  - `id`, `user_id`, `recurring_id`, `due_date`, `amount_snapshot`, `status`, `confirmed_at`, `note`
-- `recurring_income_category` - Bảng danh mục
-  - `id`, `user_id`, `name`, `type` (SYSTEM/USER), `is_active`
-- `category_translation` - Bảng dịch danh mục (i18n)
-  - `id`, `category_id`, `category_type`, `locale`, `name`
-
-### 8.5 i18n Keys
-
-- `recurring_income.add_title` - "Thêm thu nhập định kỳ"
-- `recurring_income.edit_title` - "Sửa thu nhập định kỳ"
-- `recurring_income.list_title` - "Thu nhập định kỳ"
-- `recurring_income.category` - "Danh mục"
-- `recurring_income.amount` - "Số tiền"
-- `recurring_income.cycle` - "Chu kỳ"
-- `recurring_income.cycle_day` - "Ngày"
-- `recurring_income.start_date` - "Ngày bắt đầu"
-- `recurring_income.note` - "Ghi chú"
-- `recurring_income.next_due_date` - "Kỳ tiếp theo"
-- `recurring_income.status.pending` - "Chờ xác nhận"
-- `recurring_income.status.completed` - "Đã xác nhận"
-- `recurring_income.status.cancelled` - "Đã hủy"
-- `recurring_income.confirm_dialog.title` - "Xác nhận đã nhận"
-- `recurring_income.confirm_dialog.actual_amount` - "Số tiền thực tế"
-- Và nhiều keys khác trong `src/i18n/locales/vi.json` dưới key `recurring_income`
-

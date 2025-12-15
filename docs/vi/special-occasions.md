@@ -19,12 +19,12 @@ Sử dụng module này khi bạn muốn:
 
 ## 3. Các màn hình liên quan
 
-- **SpecialOccasionList** - Danh sách dịp đặc biệt
-- **AddSpecialOccasion** - Thêm dịp đặc biệt mới
-- **SpecialOccasionDetail** - Chi tiết dịp và các bước chuẩn bị
-- **AddPreparationStep** - Thêm bước chuẩn bị
-- **SelectChecklist** - Chọn checklist
-- **CreateChecklist** - Tạo checklist mới
+- Danh sách dịp đặc biệt
+- Thêm dịp đặc biệt mới
+- Chi tiết dịp và các bước chuẩn bị
+- Thêm bước chuẩn bị
+- Chọn checklist
+- Tạo checklist mới
 
 ## 4. Cách sử dụng chính
 
@@ -79,7 +79,7 @@ Sử dụng module này khi bạn muốn:
 
 ## 5. Minh hoạ giao diện (Wireframe)
 
-### 5.1 Màn hình Danh sách (SpecialOccasionList)
+### 5.1 Màn hình Danh sách
 
 ```text
 ┌─────────────────────────────────────────┐
@@ -109,7 +109,7 @@ Sử dụng module này khi bạn muốn:
 └─────────────────────────────────────────┘
 ```
 
-### 5.2 Màn hình Chi tiết (SpecialOccasionDetail)
+### 5.2 Màn hình Chi tiết
 
 ```text
 ┌─────────────────────────────────────────┐
@@ -148,7 +148,7 @@ Sử dụng module này khi bạn muốn:
 └─────────────────────────────────────────┘
 ```
 
-### 5.3 Màn hình Thêm bước (AddPreparationStep)
+### 5.3 Màn hình Thêm bước chuẩn bị
 
 ```text
 ┌─────────────────────────────────────────┐
@@ -215,55 +215,3 @@ Sử dụng module này khi bạn muốn:
 - **Lặp lại hàng năm**: Dịp sẽ tự động tạo lại vào năm sau
 - **Checklist**: Checklist bị xóa vẫn hiển thị trong bước (nhưng không thể sửa)
 - **Thông báo**: Cần bật thông báo trong Cài đặt để nhận nhắc nhở
-
-## 8. Mapping kỹ thuật (for dev)
-
-### 8.1 Routes / Route Names
-
-- `SpecialOccasionList` - Danh sách
-- `AddSpecialOccasion` - Thêm mới (param: `mode?: 'edit'`, `occasionId?`)
-- `SpecialOccasionDetail` - Chi tiết (param: `occasionId`)
-- `AddPreparationStep` - Thêm bước (param: `occasionId`, `stepId?` để edit)
-- `SelectChecklist` - Chọn checklist (param: `occasionId`, `stepId`)
-- `CreateChecklist` - Tạo checklist (param: `occasionId`, `stepId`)
-
-### 8.2 Screen File Paths
-
-- `src/screens/lifestyle/SpecialOccasionListScreen.tsx`
-- `src/screens/lifestyle/AddSpecialOccasionScreen.tsx`
-- `src/screens/lifestyle/SpecialOccasionDetailScreen.tsx`
-- `src/screens/lifestyle/AddPreparationStepScreen.tsx`
-- `src/screens/lifestyle/SelectChecklistScreen.tsx`
-- `src/screens/lifestyle/CreateChecklistScreen.tsx`
-
-### 8.3 Services / Repos File Paths
-
-- `src/data/repo/special-occasion.repository.ts` - `specialOccasionRepo`
-- `src/data/repo/preparation-step.repository.ts` - `preparationStepRepo`
-- `src/data/repo/checklist-item.repository.ts` - `checklistItemRepo`
-- `src/data/repo/shopping-checklist.repository.ts` - `shoppingChecklistRepo`
-- `src/modules/lifestyle/services/special-occasion.service.ts` - `recalculateNextOccurDateForYearlyOccasions`
-- `src/modules/finance/services/notification.service.ts` - `schedulePreparationStepNotification`, `cancelPreparationStepNotification`
-
-### 8.4 DB Tables / Models
-
-- `special_occasion` - Bảng dịp đặc biệt
-  - `id`, `user_id`, `name`, `solar_date`, `lunar_date`, `repeat_type`, `next_occur_date`, `note`, `status`
-- `preparation_step` - Bảng bước chuẩn bị
-  - `id`, `occasion_id`, `content`, `days_before`, `reminder_time`, `repeat_daily_until_complete`, `checklist_id`, `is_completed`
-- `shopping_checklist` - Bảng checklist
-  - `id`, `user_id`, `name`, `created_at`, `updated_at`
-- `checklist_item` - Bảng mục trong checklist
-  - `id`, `checklist_id`, `name`, `is_completed`, `order`
-
-### 8.5 i18n Keys
-
-- `special_occasion.list_title` - "Dịp đặc biệt"
-- `special_occasion.add_title` - "Thêm dịp đặc biệt"
-- `special_occasion.detail.title` - "Chi tiết dịp đặc biệt"
-- `special_occasion.add_preparation_step.title` - "Thêm bước chuẩn bị"
-- `special_occasion.status.not_started` - "Chưa bắt đầu"
-- `special_occasion.status.in_progress` - "Đang chuẩn bị"
-- `special_occasion.status.completed` - "Đã hoàn thành"
-- Và nhiều keys khác trong `src/i18n/locales/vi.json` dưới key `special_occasion`
-

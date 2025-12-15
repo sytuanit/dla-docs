@@ -20,11 +20,11 @@ Sử dụng module này khi bạn muốn:
 
 ## 3. Các màn hình liên quan
 
-- **Report** - Báo cáo tổng quan
-- **IncomeReport** - Báo cáo thu nhập
-- **ExpenseReport** - Báo cáo chi tiêu
-- **SavingsReport** - Báo cáo tiết kiệm
-- **DebtReport** - Báo cáo khoản vay
+- Báo cáo tổng quan
+- Báo cáo thu nhập
+- Báo cáo chi tiêu
+- Báo cáo tiết kiệm
+- Báo cáo khoản vay
 
 ## 4. Cách sử dụng chính
 
@@ -71,7 +71,7 @@ Sử dụng module này khi bạn muốn:
 
 ## 5. Minh hoạ giao diện (Wireframe)
 
-### 5.1 Màn hình Báo cáo tổng quan (Report)
+### 5.1 Màn hình Báo cáo tổng quan
 
 ```text
 ┌─────────────────────────────────────────┐
@@ -149,52 +149,3 @@ Sử dụng module này khi bạn muốn:
 - **Dữ liệu tháng hiện tại**: Báo cáo chỉ hiển thị dữ liệu tháng hiện tại
 - **Cần có ngân sách**: Một số báo cáo yêu cầu đã lập ngân sách
 - **Dự báo chỉ mang tính tham khảo**: Dựa trên xu hướng hiện tại
-
-## 8. Mapping kỹ thuật (for dev)
-
-### 8.1 Routes / Route Names
-
-- `Report` - Báo cáo tổng quan
-- `IncomeReport` - Báo cáo thu nhập
-- `ExpenseReport` - Báo cáo chi tiêu
-- `SavingsReport` - Báo cáo tiết kiệm
-- `DebtReport` - Báo cáo khoản vay
-
-### 8.2 Screen File Paths
-
-- `src/screens/report/ReportScreen.tsx`
-- `src/screens/report/IncomeReportScreen.tsx`
-- `src/screens/report/ExpenseReportScreen.tsx`
-- `src/screens/report/SavingsReportScreen.tsx`
-- `src/screens/report/DebtReportScreen.tsx`
-
-### 8.3 Services / Repos File Paths
-
-- `src/modules/finance/services/report.service.ts` - Các hàm tính toán báo cáo:
-  - `calculateNetCashflow`
-  - `calculateActualSavings`
-  - `calculateSavingsProgress`
-  - `calculateForecastExpenses`
-  - `calculateBudgetOverrunRisk`
-  - Và nhiều hàm khác
-
-### 8.4 DB Tables / Models
-
-- Sử dụng dữ liệu từ nhiều bảng:
-  - `recurring_income`, `recurring_income_occurrence`
-  - `extra_income`
-  - `recurring_expense`, `recurring_expense_occurrence`
-  - `daily_expense`
-  - `budget`
-  - `savings_account`
-  - `bank_debt`, `bank_debt_payment`
-
-### 8.5 i18n Keys
-
-- `report.title` - "Báo cáo"
-- `report.financial_health` - "Tổng quan tài chính"
-- `report.savings_progress` - "Tiến độ tiết kiệm"
-- `report.forecast` - "Dự báo cuối tháng"
-- `report.overrun_risk` - "Rủi ro vượt ngân sách"
-- Và nhiều keys khác trong `src/i18n/locales/vi.json` dưới key `report`
-

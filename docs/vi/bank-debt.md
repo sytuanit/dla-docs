@@ -19,11 +19,11 @@ Sử dụng module này khi bạn có:
 
 ## 3. Các màn hình liên quan
 
-- **BankDebtList** - Danh sách khoản vay
-- **AddBankDebt** - Thêm khoản vay mới (4 bước)
-- **EditBankDebt** - Sửa khoản vay
-- **BankDebtDetail** - Chi tiết khoản vay và lịch trả nợ
-- **EarlySettlement** - Tất toán sớm
+- Danh sách khoản vay
+- Thêm khoản vay mới (4 bước)
+- Sửa khoản vay
+- Chi tiết khoản vay và lịch trả nợ
+- Tất toán sớm
 
 ## 4. Cách sử dụng chính
 
@@ -106,7 +106,7 @@ Nhấn **Tiếp theo**
 
 ## 5. Minh hoạ giao diện (Wireframe)
 
-### 5.1 Màn hình Danh sách (BankDebtList)
+### 5.1 Màn hình Danh sách
 
 ```text
 ┌─────────────────────────────────────────┐
@@ -134,7 +134,7 @@ Nhấn **Tiếp theo**
 └─────────────────────────────────────────┘
 ```
 
-### 5.2 Màn hình Thêm (Bước 1 - Thông tin cơ bản)
+### 5.2 Màn hình Thêm khoản vay (Bước 1 - Thông tin cơ bản)
 
 ```text
 ┌─────────────────────────────────────────┐
@@ -163,7 +163,7 @@ Nhấn **Tiếp theo**
 └─────────────────────────────────────────┘
 ```
 
-### 5.3 Màn hình Chi tiết (BankDebtDetail)
+### 5.3 Màn hình Chi tiết
 
 ```text
 ┌─────────────────────────────────────────┐
@@ -240,53 +240,3 @@ Nhấn **Tiếp theo**
 - **Không thể xóa khi đã có lịch trả nợ**: Nếu đã có lịch trả nợ, bạn chỉ có thể tất toán, không thể xóa
 - **Tất toán sớm**: Có thể phải trả thêm phí phạt, tùy chính sách ngân hàng
 - **Lịch trả nợ**: Lịch trả nợ được tính tự động, bạn không thể sửa trực tiếp
-
-## 8. Mapping kỹ thuật (for dev)
-
-### 8.1 Routes / Route Names
-
-- `BankDebtList` - Danh sách
-- `AddBankDebt` - Thêm mới (param: `screen?: 1|2|3|4` để chọn bước ban đầu)
-- `EditBankDebt` - Sửa (param: `debtId`, `screen?: 1|2|3|4`)
-- `BankDebtDetail` - Chi tiết (param: `debtId`)
-- `EarlySettlement` - Tất toán sớm (param: `debtId`)
-
-### 8.2 Screen File Paths
-
-- `src/screens/finance/BankDebtListScreen.tsx`
-- `src/screens/finance/AddBankDebtScreen.tsx`
-- `src/screens/finance/EditBankDebtScreen.tsx`
-- `src/screens/finance/BankDebtDetailScreen.tsx`
-- `src/screens/finance/EarlySettlementScreen.tsx`
-
-### 8.3 Services / Repos File Paths
-
-- `src/data/repo/bank-debt.repository.ts` - `bankDebtRepo`
-- `src/data/repo/bank-debt-payment.repository.ts` - `bankDebtPaymentRepo`
-- `src/data/repo/bank-debt-interest-config.repository.ts` - `bankDebtInterestConfigRepo`
-- `src/data/repo/bank-debt-penalty-config.repository.ts` - `bankDebtPenaltyConfigRepo`
-- `src/modules/finance/services/bank-debt.service.ts` - `generatePaymentSchedules`, `calculateEarlySettlement`
-- `src/modules/finance/hooks/useBankDebtList.ts` - Custom hook cho list
-
-### 8.4 DB Tables / Models
-
-- `bank_debt` - Bảng khoản vay
-  - `id`, `user_id`, `bank_id`, `name`, `principal_amount`, `disbursement_date`, `term_years`, `interest_type`, `status`
-- `bank_debt_payment` - Bảng lịch trả nợ
-  - `id`, `user_id`, `debt_id`, `due_date`, `principal_amount`, `interest_amount`, `penalty_amount`, `status`, `paid_at`
-- `bank_debt_interest_config` - Bảng cấu hình lãi suất
-  - `id`, `debt_id`, `year`, `start_month`, `end_month`, `interest_rate`, `is_floating`
-- `bank_debt_penalty_config` - Bảng cấu hình phí phạt
-  - `id`, `debt_id`, `year`, `start_month`, `end_month`, `penalty_rate`
-
-### 8.5 i18n Keys
-
-- `bank_debt.list_title` - "Khoản vay ngân hàng"
-- `bank_debt.add_title` - "Thêm khoản vay"
-- `bank_debt.detail.title` - "Chi tiết khoản vay"
-- `bank_debt.step1.title` - "Thông tin cơ bản"
-- `bank_debt.step2.title` - "Cấu hình lãi suất"
-- `bank_debt.step3.title` - "Cấu hình phí phạt"
-- `bank_debt.step4.title` - "Xác nhận"
-- Và nhiều keys khác trong `src/i18n/locales/vi.json` dưới key `bank_debt`
-

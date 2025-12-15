@@ -19,11 +19,11 @@ Sử dụng module này khi bạn có:
 
 ## 3. Các màn hình liên quan
 
-- **SavingsList** - Danh sách tài khoản tiết kiệm
-- **AddSavingsAccount** - Thêm tài khoản mới
-- **EditSavingsAccount** - Sửa tài khoản
-- **SavingsAccountDetail** - Chi tiết tài khoản
-- **WithdrawSavingsAccount** - Rút tiền trước hạn
+- Danh sách tài khoản tiết kiệm
+- Thêm tài khoản mới
+- Sửa tài khoản
+- Chi tiết tài khoản
+- Rút tiền trước hạn
 
 ## 4. Cách sử dụng chính
 
@@ -70,7 +70,7 @@ Sử dụng module này khi bạn có:
 
 ## 5. Minh hoạ giao diện (Wireframe)
 
-### 5.1 Màn hình Danh sách (SavingsList)
+### 5.1 Màn hình Danh sách
 
 ```text
 ┌─────────────────────────────────────────┐
@@ -95,7 +95,7 @@ Sử dụng module này khi bạn có:
 └─────────────────────────────────────────┘
 ```
 
-### 5.2 Màn hình Chi tiết (SavingsAccountDetail)
+### 5.2 Màn hình Chi tiết
 
 ```text
 ┌─────────────────────────────────────────┐
@@ -154,46 +154,3 @@ Sử dụng module này khi bạn có:
 - **Kỳ hạn**: Tính theo tháng
 - **Ngày đáo hạn**: Tự động tính từ ngày gửi + kỳ hạn
 - **Không thể xóa**: Tài khoản đã có giao dịch không thể xóa (chỉ có thể tắt)
-
-## 8. Mapping kỹ thuật (for dev)
-
-### 8.1 Routes / Route Names
-
-- `SavingsList` - Danh sách
-- `AddSavingsAccount` - Thêm mới
-- `EditSavingsAccount` - Sửa (param: `savingsAccountId`)
-- `SavingsAccountDetail` - Chi tiết (param: `savingsAccountId`)
-- `WithdrawSavingsAccount` - Rút tiền (param: `savingsAccountId`)
-
-### 8.2 Screen File Paths
-
-- `src/screens/finance/SavingsListScreen.tsx`
-- `src/screens/finance/AddSavingsAccountScreen.tsx`
-- `src/screens/finance/EditSavingsAccountScreen.tsx`
-- `src/screens/finance/SavingsAccountDetailScreen.tsx`
-- `src/screens/finance/WithdrawSavingsAccountScreen.tsx`
-
-### 8.3 Services / Repos File Paths
-
-- `src/data/repo/savings.repository.ts` - `savingsAccountRepo`, `savingsBankRepo`
-- `src/modules/finance/services/savings.service.ts` - `rolloverSavingsAccount`, `withdrawSavingsAccount`
-- `src/modules/finance/hooks/useSavingsList.ts` - Custom hook cho list
-
-### 8.4 DB Tables / Models
-
-- `savings_account` - Bảng tài khoản tiết kiệm
-  - `id`, `user_id`, `bank_id`, `amount`, `interest_rate`, `term_months`, `start_date`, `maturity_date`, `status`, `note`
-- `savings_bank` - Bảng ngân hàng
-  - `id`, `user_id`, `name`, `code`, `is_active`
-
-### 8.5 i18n Keys
-
-- `savings.list_title` - "Tiết kiệm"
-- `savings.add_title` - "Thêm tài khoản tiết kiệm"
-- `savings.detail.title` - "Chi tiết tiết kiệm"
-- `savings.bank` - "Ngân hàng"
-- `savings.amount` - "Số tiền gửi"
-- `savings.interest_rate` - "Lãi suất"
-- `savings.term_months` - "Kỳ hạn"
-- Và nhiều keys khác trong `src/i18n/locales/vi.json` dưới key `savings`
-

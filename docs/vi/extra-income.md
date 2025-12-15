@@ -21,9 +21,9 @@ Sử dụng module này khi bạn muốn:
 
 ## 3. Các màn hình liên quan
 
-- **ExtraIncomeList** - Danh sách thu nhập thêm
-- **AddExtraIncome** - Thêm thu nhập mới
-- **EditExtraIncome** - Sửa thu nhập
+- Danh sách thu nhập thêm
+- Thêm thu nhập mới
+- Sửa thu nhập
 
 ## 4. Cách sử dụng chính
 
@@ -62,7 +62,7 @@ Sử dụng module này khi bạn muốn:
 
 ## 5. Minh hoạ giao diện (Wireframe)
 
-### 5.1 Màn hình Danh sách (ExtraIncomeList)
+### 5.1 Màn hình Danh sách
 
 ```text
 ┌─────────────────────────────────────────┐
@@ -93,7 +93,7 @@ Sử dụng module này khi bạn muốn:
 └─────────────────────────────────────────┘
 ```
 
-### 5.2 Màn hình Thêm/Sửa (AddExtraIncome / EditExtraIncome)
+### 5.2 Màn hình Thêm/Sửa
 
 ```text
 ┌─────────────────────────────────────────┐
@@ -146,45 +146,3 @@ Sử dụng module này khi bạn muốn:
 - **Không có chu kỳ**: Thu nhập thêm không có chu kỳ tự động, bạn phải nhập thủ công mỗi lần
 - **Có thể xóa**: Bạn có thể xóa bất kỳ thu nhập nào
 - **Tích hợp ngân sách**: Thu nhập thêm tự động tính vào ngân sách tháng hiện tại
-
-## 8. Mapping kỹ thuật (for dev)
-
-### 8.1 Routes / Route Names
-
-- `ExtraIncomeList` - Danh sách
-- `AddExtraIncome` - Thêm mới
-- `EditExtraIncome` - Sửa (param: `extraIncomeId`)
-
-### 8.2 Screen File Paths
-
-- `src/screens/finance/ExtraIncomeListScreen.tsx`
-- `src/screens/finance/AddExtraIncomeScreen.tsx`
-- `src/screens/finance/EditExtraIncomeScreen.tsx`
-
-### 8.3 Services / Repos File Paths
-
-- `src/data/repo/extra-income.repository.ts` - `extraIncomeRepo`, `extraIncomeCategoryRepo`
-- `src/modules/finance/hooks/useExtraIncomeList.ts` - Custom hook cho list
-- `src/services/layoutSettings.service.ts` - `getExtraIncomeLayout`, `setExtraIncomeLayout`
-- `src/domain/finance/extra-income.utils.ts` - `formatOccurredDate`
-
-### 8.4 DB Tables / Models
-
-- `extra_income` - Bảng thu nhập thêm
-  - `id`, `user_id`, `category_id`, `amount`, `occurred_at`, `note`, `created_at`, `updated_at`
-- `extra_income_category` - Bảng danh mục
-  - `id`, `user_id`, `name`, `type` (SYSTEM/USER), `is_active`
-- `category_translation` - Bảng dịch danh mục (i18n)
-  - `id`, `category_id`, `category_type` = 'extra_income', `locale`, `name`
-
-### 8.5 i18n Keys
-
-- `extra_income.list_title` - "Thu nhập thêm"
-- `extra_income.add_title` - "Thêm thu nhập thêm"
-- `extra_income.edit_title` - "Sửa thu nhập thêm"
-- `extra_income.category` - "Danh mục"
-- `extra_income.amount` - "Số tiền"
-- `extra_income.date` - "Ngày"
-- `extra_income.note` - "Ghi chú"
-- Và nhiều keys khác trong `src/i18n/locales/vi.json` dưới key `extra_income`
-

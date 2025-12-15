@@ -21,10 +21,10 @@ Sử dụng module này khi bạn có:
 
 ## 3. Các màn hình liên quan
 
-- **RecurringExpenseList** - Danh sách chi tiêu cố định
-- **AddRecurringExpense** - Thêm chi tiêu cố định mới
-- **EditRecurringExpense** - Sửa chi tiêu cố định
-- **RecurringExpenseHistory** - Lịch sử các kỳ phát sinh
+- Danh sách chi tiêu cố định
+- Thêm chi tiêu cố định mới
+- Sửa chi tiêu cố định
+- Lịch sử các kỳ phát sinh
 
 ## 4. Cách sử dụng chính
 
@@ -73,7 +73,7 @@ Sử dụng module này khi bạn có:
 
 ## 5. Minh hoạ giao diện (Wireframe)
 
-### 5.1 Màn hình Danh sách (RecurringExpenseList)
+### 5.1 Màn hình Danh sách
 
 ```text
 ┌─────────────────────────────────────────┐
@@ -108,7 +108,7 @@ Sử dụng module này khi bạn có:
 └─────────────────────────────────────────┘
 ```
 
-### 5.2 Màn hình Thêm/Sửa (AddRecurringExpense / EditRecurringExpense)
+### 5.2 Màn hình Thêm/Sửa
 
 ```text
 ┌─────────────────────────────────────────┐
@@ -178,53 +178,3 @@ Sử dụng module này khi bạn có:
 - **Không thể xóa khi đã có occurrence**: Nếu đã có kỳ phát sinh, bạn chỉ có thể tắt (isActive = false), không thể xóa
 - **Xác nhận muộn**: Bạn có thể xác nhận các kỳ đã qua, app sẽ tự động tính lại ngân sách
 - **Thay đổi chu kỳ**: Khi sửa chu kỳ, các occurrence tương lai sẽ được tính lại
-
-## 8. Mapping kỹ thuật (for dev)
-
-### 8.1 Routes / Route Names
-
-- `RecurringExpenseList` - Danh sách
-- `AddRecurringExpense` - Thêm mới
-- `EditRecurringExpense` - Sửa (param: `recurringExpenseId`)
-- `RecurringExpenseHistory` - Lịch sử (param: `recurringExpenseId`)
-
-### 8.2 Screen File Paths
-
-- `src/screens/finance/RecurringExpenseListScreen.tsx`
-- `src/screens/finance/AddRecurringExpenseScreen.tsx`
-- `src/screens/finance/EditRecurringExpenseScreen.tsx`
-- `src/screens/finance/RecurringExpenseHistoryScreen.tsx`
-- `src/screens/finance/RecurringItemListScreen.tsx` (shared component)
-- `src/screens/finance/AddRecurringItemScreen.tsx` (shared component)
-
-### 8.3 Services / Repos File Paths
-
-- `src/data/repo/recurring-expense.repository.ts` - `recurringExpenseRepo`
-- `src/data/repo/recurring-expense-occurrence.repository.ts` - `recurringExpenseOccurrenceRepo`
-- `src/data/repo/recurring-expense-category.repository.ts` - `recurringExpenseCategoryRepo`
-- `src/modules/finance/services/occurrence.service.ts` - `confirmExpenseOccurrence`, `cancelExpenseOccurrence`
-- `src/modules/finance/services/budget.service.ts` - `recalculateBudgetIfExists`, `hasRecurringExpenseInCurrentMonth`
-- `src/modules/finance/hooks/useRecurringExpenseList.ts` - Custom hook cho list
-
-### 8.4 DB Tables / Models
-
-- `recurring_expense` - Bảng định nghĩa chi tiêu cố định
-  - `id`, `user_id`, `category_id`, `amount`, `cycle`, `cycle_day`, `start_date`, `note`, `is_active`
-- `recurring_expense_occurrence` - Bảng các kỳ phát sinh
-  - `id`, `user_id`, `recurring_id`, `due_date`, `amount_snapshot`, `status`, `confirmed_at`, `note`
-- `recurring_expense_category` - Bảng danh mục
-  - `id`, `user_id`, `name`, `type` (SYSTEM/USER), `is_active`
-- `category_translation` - Bảng dịch danh mục (i18n)
-  - `id`, `category_id`, `category_type` = 'recurring_expense', `locale`, `name`
-
-### 8.5 i18n Keys
-
-- `recurring_expense.add_title` - "Thêm chi tiêu cố định"
-- `recurring_expense.edit_title` - "Sửa chi tiêu cố định"
-- `recurring_expense.list_title` - "Chi tiêu cố định"
-- `recurring_expense.category` - "Danh mục"
-- `recurring_expense.amount` - "Số tiền"
-- `recurring_expense.cycle` - "Chu kỳ"
-- `recurring_expense.status.pending` - "Chờ xác nhận"
-- Và nhiều keys khác trong `src/i18n/locales/vi.json` dưới key `recurring_expense`
-

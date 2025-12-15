@@ -18,10 +18,10 @@ Sử dụng module này khi bạn muốn:
 
 ## 3. Các màn hình liên quan
 
-- **BudgetSetup** - Lập ngân sách (Case A & C)
-- **BudgetOverview** - Xem tổng quan ngân sách (Case B)
-- **BudgetHistory** - Lịch sử ngân sách các tháng
-- **BudgetCopySuggestion** - Gợi ý copy từ tháng trước (Case C)
+- Lập ngân sách (lần đầu hoặc copy từ tháng trước)
+- Xem tổng quan ngân sách
+- Lịch sử ngân sách các tháng
+- Gợi ý copy từ tháng trước
 
 ## 4. Cách sử dụng chính
 
@@ -74,7 +74,7 @@ Sử dụng module này khi bạn muốn:
 
 ## 5. Minh hoạ giao diện (Wireframe)
 
-### 5.1 Màn hình Lập ngân sách (BudgetSetup)
+### 5.1 Màn hình Lập ngân sách
 
 ```text
 ┌─────────────────────────────────────────┐
@@ -105,7 +105,7 @@ Sử dụng module này khi bạn muốn:
 └─────────────────────────────────────────┘
 ```
 
-### 5.2 Màn hình Tổng quan (BudgetOverview)
+### 5.2 Màn hình Tổng quan
 
 ```text
 ┌─────────────────────────────────────────┐
@@ -154,7 +154,7 @@ Sử dụng module này khi bạn muốn:
 └─────────────────────────────────────────┘
 ```
 
-### 5.3 Màn hình Lịch sử (BudgetHistory)
+### 5.3 Màn hình Lịch sử
 
 ```text
 ┌─────────────────────────────────────────┐
@@ -216,49 +216,3 @@ Sử dụng module này khi bạn muốn:
 - **Không thể sửa ngân sách đã lập**: Bạn chỉ có thể xem, không thể sửa ngân sách đã lập (để đảm bảo tính chính xác)
 - **Tự động cập nhật**: Ngân sách tự động cập nhật khi bạn xác nhận thu nhập/chi tiêu
 - **Copy từ tháng trước**: Tính năng copy giúp bạn tiết kiệm thời gian lập ngân sách
-
-## 8. Mapping kỹ thuật (for dev)
-
-### 8.1 Routes / Route Names
-
-- `BudgetSetup` - Lập ngân sách (param: `mode?: 'copy' | 'new'`, `previousMonthBudget?: Budget`)
-- `BudgetOverview` - Tổng quan (có thể truy cập từ Home hoặc Functions)
-- `BudgetHistory` - Lịch sử
-- `BudgetCopySuggestion` - Gợi ý copy (internal, không có route riêng)
-
-### 8.2 Screen File Paths
-
-- `src/screens/finance/BudgetSetupScreen.tsx`
-- `src/screens/finance/BudgetOverviewScreen.tsx`
-- `src/screens/finance/BudgetHistoryScreen.tsx`
-- `src/screens/finance/BudgetCopySuggestionScreen.tsx`
-
-### 8.3 Services / Repos File Paths
-
-- `src/modules/finance/services/budget.service.ts` - `checkBudgetStatus`, `saveBudget`, `getBudgetOverview`, `calculatePlanIncome`, `calculatePlanExpense`
-- `src/data/repo/budget.repository.ts` - `budgetRepo`
-- `src/data/repo/budget-item-snapshot.repository.ts` - `budgetItemSnapshotRepo`
-- Tích hợp với:
-  - `recurringIncomeRepo`, `recurringExpenseRepo`
-  - `dailyExpenseRepo`
-  - `bankDebtRepo`, `bankDebtPaymentRepo`
-
-### 8.4 DB Tables / Models
-
-- `budget` - Bảng ngân sách
-  - `id`, `user_id`, `month` (YYYY-MM), `additional_income`, `savings_percentage`, `created_at`, `updated_at`
-- `budget_item_snapshot` - Bảng snapshot các khoản thu/chi
-  - `id`, `budget_id`, `item_type` (INCOME/EXPENSE), `item_name`, `amount`, `cycle`, `times`, `order`
-
-### 8.5 i18n Keys
-
-- `finance.budget_management` - "Ngân sách"
-- `finance.budget_setup.setup.title` - "Lập ngân sách tháng {{month}}"
-- `finance.budget_setup.overview.title` - "Tổng quan ngân sách {{month}}"
-- `finance.budget_setup.history.title` - "Lịch sử ngân sách"
-- `finance.budget_setup.setup.fixed_income` - "Thu nhập định kỳ"
-- `finance.budget_setup.setup.fixed_expense` - "Chi tiêu cố định"
-- `finance.budget_setup.setup.additional_income_label` - "Bạn dự kiến thu nhập thêm mỗi tháng là?"
-- `finance.budget_setup.setup.savings_label` - "Bạn muốn tiết kiệm bao nhiêu?"
-- Và nhiều keys khác trong `src/i18n/locales/vi.json` dưới key `finance.budget_setup`
-

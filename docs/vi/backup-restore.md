@@ -17,8 +17,8 @@ Sử dụng module này khi bạn muốn:
 
 ## 3. Các màn hình liên quan
 
-- **Backup** - Màn hình sao lưu
-- **Restore** - Màn hình phục hồi
+- Màn hình sao lưu
+- Màn hình phục hồi
 
 ## 4. Cách sử dụng chính
 
@@ -49,7 +49,7 @@ Sử dụng module này khi bạn muốn:
 
 ## 5. Minh hoạ giao diện (Wireframe)
 
-### 5.1 Màn hình Sao lưu (Backup)
+### 5.1 Màn hình Sao lưu
 
 ```text
 ┌─────────────────────────────────────────┐
@@ -79,7 +79,7 @@ Sử dụng module này khi bạn muốn:
 └─────────────────────────────────────────┘
 ```
 
-### 5.2 Màn hình Phục hồi (Restore)
+### 5.2 Màn hình Phục hồi
 
 ```text
 ┌─────────────────────────────────────────┐
@@ -140,50 +140,3 @@ Sử dụng module này khi bạn muốn:
 - **Lưu ở nhiều nơi**: Lưu file backup ở nhiều nơi (cloud, máy tính, USB)
 - **Phục hồi sẽ mất dữ liệu hiện tại**: Đảm bảo bạn đã sao lưu dữ liệu hiện tại trước khi phục hồi
 - **Không thể hoàn tác**: Sau khi phục hồi, không thể hoàn tác
-
-## 8. Mapping kỹ thuật (for dev)
-
-### 8.1 Routes / Route Names
-
-- `Backup` - Màn hình sao lưu
-- `Restore` - Màn hình phục hồi
-
-### 8.2 Screen File Paths
-
-- `src/screens/settings/BackupScreen.tsx`
-- `src/screens/settings/RestoreScreen.tsx`
-
-### 8.3 Services / Repos File Paths
-
-- `src/services/backup.service.ts` - `backupData`, `exportAllData`
-- `src/services/restore.service.ts` - `restoreData`, `importAllData`
-- Sử dụng `expo-file-system` để đọc/ghi file
-
-### 8.4 DB Tables / Models
-
-- Sao lưu tất cả bảng trong database:
-  - `users`
-  - `recurring_income`, `recurring_income_category`, `recurring_income_occurrence`
-  - `extra_income`, `extra_income_category`
-  - `recurring_expense`, `recurring_expense_category`, `recurring_expense_occurrence`
-  - `daily_expense`, `daily_expense_category`
-  - `budget`, `budget_item_snapshot`
-  - `savings_account`, `savings_bank`
-  - `bank_debt`, `bank_debt_payment`, `bank_debt_payment_occurrence`
-  - `special_occasion`, `special_occasion_step`
-  - `category_translation`
-  - Và các bảng khác
-
-### 8.5 i18n Keys
-
-- `settings.backup_data.title` - "Sao lưu & Dữ liệu"
-- `settings.backup_data.backup` - "Sao lưu"
-- `settings.backup_data.restore` - "Phục hồi"
-- `backup.title` - "Sao lưu dữ liệu"
-- `backup.success` - "Sao lưu thành công"
-- `backup.error` - "Lỗi sao lưu"
-- `restore.title` - "Phục hồi dữ liệu"
-- `restore.confirm_message` - "Phục hồi sẽ ghi đè toàn bộ dữ liệu hiện tại"
-- `restore.success` - "Phục hồi thành công"
-- Và nhiều keys khác trong `src/i18n/locales/vi.json`
-

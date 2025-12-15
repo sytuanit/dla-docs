@@ -19,11 +19,11 @@ Sử dụng module này khi bạn muốn:
 
 ## 3. Các màn hình liên quan
 
-- **CreateFinancialGoal** - Tạo mục tiêu tài chính (3 bước)
-- **FinancialGoalDetail** - Chi tiết mục tiêu và các kế hoạch
-- **ViewLoanPlan** - Xem kế hoạch vay
-- **AssumptionEvaluation** - Đánh giá giả định
-- **AssumptionAndLoanEvaluation** - Đánh giá giả định và vay
+- Tạo mục tiêu tài chính (3 bước)
+- Chi tiết mục tiêu và các kế hoạch
+- Xem kế hoạch vay
+- Đánh giá giả định
+- Đánh giá giả định và vay
 
 ## 4. Cách sử dụng chính
 
@@ -124,7 +124,7 @@ Sử dụng module này khi bạn muốn:
 └─────────────────────────────────────────┘
 ```
 
-### 5.2 Màn hình Chi tiết (FinancialGoalDetail)
+### 5.2 Màn hình Chi tiết
 
 ```text
 ┌─────────────────────────────────────────┐
@@ -192,46 +192,3 @@ Sử dụng module này khi bạn muốn:
 - **Dự báo chỉ mang tính tham khảo**: Dựa trên giả định thu nhập và chi tiêu ổn định
 - **Có thể tạo nhiều kế hoạch**: Bạn có thể tạo nhiều kế hoạch để so sánh
 - **Kế hoạch vay**: Tự động tính toán lịch trả nợ dựa trên thông tin vay
-
-## 8. Mapping kỹ thuật (for dev)
-
-### 8.1 Routes / Route Names
-
-- `CreateFinancialGoal` - Tạo mục tiêu (3 bước)
-- `FinancialGoalDetail` - Chi tiết (param: `goalId`)
-- `ViewLoanPlan` - Xem kế hoạch vay (param: `scenarioId`)
-- `AssumptionEvaluation` - Đánh giá giả định (param: `assumptionId`)
-- `AssumptionAndLoanEvaluation` - Đánh giá kết hợp (param: `goalId`)
-
-### 8.2 Screen File Paths
-
-- `src/screens/finance/CreateFinancialGoalScreen.tsx`
-- `src/screens/finance/FinancialGoalDetailScreen.tsx`
-- `src/screens/finance/ViewLoanPlanScreen.tsx`
-- `src/screens/finance/AssumptionEvaluationScreen.tsx`
-- `src/screens/finance/AssumptionAndLoanEvaluationScreen.tsx`
-
-### 8.3 Services / Repos File Paths
-
-- `src/data/repo/financial-goal.repository.ts` - `financialGoalRepo`
-- `src/data/repo/loan-scenario.repository.ts` - `loanScenarioRepo`
-- `src/data/repo/financial-assumption.repository.ts` - `financialAssumptionRepo`
-- `src/modules/finance/services/planning-assumptions.service.ts` - `calculateAverageFinancialData`
-
-### 8.4 DB Tables / Models
-
-- `financial_goal` - Bảng mục tiêu tài chính
-  - `id`, `user_id`, `name`, `target_amount`, `down_payment`, `initial_balance`, `income`, `fixed_expense`, `living_expense`
-- `loan_scenario` - Bảng kế hoạch vay
-  - `id`, `goal_id`, `principal_amount`, `interest_rate`, `term_years`, `monthly_payment`
-- `financial_assumption` - Bảng giả định tài chính
-  - `id`, `goal_id`, `assumption_type`, `value`, `description`
-
-### 8.5 i18n Keys
-
-- `finance.planning_assumptions_module.goal_detail.title` - "Mục tiêu tài chính"
-- `finance.planning_assumptions_module.create_goal.step1.title` - "Kế hoạch tài chính"
-- `finance.planning_assumptions_module.create_goal.step2.title` - "Mục tiêu"
-- `finance.planning_assumptions_module.create_goal.step3.title` - "Tạo kế hoạch"
-- Và nhiều keys khác trong `src/i18n/locales/vi.json` dưới key `finance.planning_assumptions_module`
-

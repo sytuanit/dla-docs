@@ -21,9 +21,9 @@ Sử dụng module này khi bạn muốn:
 
 ## 3. Các màn hình liên quan
 
-- **DailyExpenseList** - Danh sách chi tiêu hàng ngày
-- **AddDailyExpense** - Thêm chi tiêu mới
-- **EditDailyExpense** - Sửa chi tiêu
+- Danh sách chi tiêu hàng ngày
+- Thêm chi tiêu mới
+- Sửa chi tiêu
 
 ## 4. Cách sử dụng chính
 
@@ -69,7 +69,7 @@ Sử dụng module này khi bạn muốn:
 
 ## 5. Minh hoạ giao diện (Wireframe)
 
-### 5.1 Màn hình Danh sách (DailyExpenseList)
+### 5.1 Màn hình Danh sách
 
 ```text
 ┌─────────────────────────────────────────┐
@@ -102,7 +102,7 @@ Sử dụng module này khi bạn muốn:
 └─────────────────────────────────────────┘
 ```
 
-### 5.2 Màn hình Thêm/Sửa (AddDailyExpense / EditDailyExpense)
+### 5.2 Màn hình Thêm/Sửa
 
 ```text
 ┌─────────────────────────────────────────┐
@@ -124,7 +124,7 @@ Sử dụng module này khi bạn muốn:
 └─────────────────────────────────────────┘
 ```
 
-### 5.3 Menu Long Press
+### 5.3 Menu (Long Press)
 
 ```text
 ┌─────────────────────────────────────────┐
@@ -175,48 +175,3 @@ Sử dụng module này khi bạn muốn:
 - **Có thể xóa**: Bạn có thể xóa bất kỳ chi tiêu nào (không như chi tiêu cố định)
 - **Không tích hợp ngân sách**: Chi tiêu hàng ngày không tự động tính vào ngân sách (bạn phải tự theo dõi)
 - **Danh mục tùy chỉnh**: Bạn có thể tạo danh mục mới trong Cài đặt
-
-## 8. Mapping kỹ thuật (for dev)
-
-### 8.1 Routes / Route Names
-
-- `DailyExpenseList` - Danh sách
-- `AddDailyExpense` - Thêm mới
-- `EditDailyExpense` - Sửa (param: `dailyExpenseId`)
-
-### 8.2 Screen File Paths
-
-- `src/screens/finance/DailyExpenseListScreen.tsx`
-- `src/screens/finance/AddDailyExpenseScreen.tsx`
-- `src/screens/finance/EditDailyExpenseScreen.tsx`
-
-### 8.3 Services / Repos File Paths
-
-- `src/data/repo/daily-expense.repository.ts` - `dailyExpenseRepo`
-- `src/data/repo/daily-expense-category.repository.ts` - `dailyExpenseCategoryRepo`
-- `src/modules/finance/hooks/useDailyExpenseList.ts` - Custom hook cho list
-- `src/services/layoutSettings.service.ts` - `getDailyExpenseLayout`, `setDailyExpenseLayout`
-- `src/domain/finance/daily-expense.utils.ts` - `formatOccurredDate`
-
-### 8.4 DB Tables / Models
-
-- `daily_expense` - Bảng chi tiêu hàng ngày
-  - `id`, `user_id`, `category_id`, `amount`, `occurred_date`, `note`, `created_at`, `updated_at`
-- `daily_expense_category` - Bảng danh mục
-  - `id`, `user_id`, `name`, `type` (SYSTEM/USER), `is_active`
-- `category_translation` - Bảng dịch danh mục (i18n)
-  - `id`, `category_id`, `category_type` = 'daily_expense', `locale`, `name`
-
-### 8.5 i18n Keys
-
-- `daily_expense.list_title` - "Chi tiêu hàng ngày"
-- `daily_expense.add_title` - "Thêm chi tiêu hàng ngày"
-- `daily_expense.edit_title` - "Sửa chi tiêu hàng ngày"
-- `daily_expense.category` - "Danh mục"
-- `daily_expense.amount` - "Số tiền"
-- `daily_expense.date` - "Ngày"
-- `daily_expense.note` - "Ghi chú"
-- `daily_expense.add_success` - "Đã thêm chi tiêu thành công"
-- `daily_expense.search_placeholder` - "Tìm kiếm..."
-- Và nhiều keys khác trong `src/i18n/locales/vi.json` dưới key `daily_expense`
-

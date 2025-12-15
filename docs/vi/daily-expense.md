@@ -1,0 +1,222 @@
+# Chi tiêu hàng ngày
+
+## 1. Mục đích
+
+Module **Chi tiêu hàng ngày** giúp bạn ghi nhận các khoản chi tiêu thường xuyên, không cố định như:
+- Ăn uống
+- Mua sắm
+- Giao thông
+- Giải trí
+- Các khoản chi tiêu linh hoạt khác
+
+Khác với **Chi tiêu cố định**, chi tiêu hàng ngày thường thay đổi về số tiền và tần suất, không có chu kỳ cố định.
+
+## 2. Khi nào nên dùng
+
+Sử dụng module này khi bạn muốn:
+- Ghi nhận các khoản chi tiêu ngẫu nhiên, không định kỳ
+- Theo dõi chi tiêu hàng ngày để kiểm soát ngân sách
+- Phân tích xu hướng chi tiêu theo danh mục
+- Xem tổng chi tiêu trong khoảng thời gian
+
+## 3. Các màn hình liên quan
+
+- **DailyExpenseList** - Danh sách chi tiêu hàng ngày
+- **AddDailyExpense** - Thêm chi tiêu mới
+- **EditDailyExpense** - Sửa chi tiêu
+
+## 4. Cách sử dụng chính
+
+### 4.1 Thêm chi tiêu hàng ngày
+
+1. Vào **Chức năng** → Chọn **Chi tiêu hàng ngày**
+2. Nhấn nút **+** (FAB) ở góc dưới bên phải
+3. Điền thông tin:
+   - **Danh mục**: Chọn danh mục (hoặc dùng danh mục mặc định nếu đã cấu hình)
+   - **Số tiền**: Nhập số tiền đã chi
+   - **Ngày**: Chọn ngày chi tiêu (mặc định là hôm nay)
+   - **Ghi chú**: Mô tả chi tiết (tùy chọn)
+4. Nhấn **Lưu**
+
+### 4.2 Xem danh sách chi tiêu
+
+1. Vào **Chức năng** → Chọn **Chi tiêu hàng ngày**
+2. Danh sách hiển thị theo layout bạn đã cấu hình (2, 3, hoặc 4 cột)
+3. Sử dụng **Tìm kiếm** để lọc theo danh mục hoặc ghi chú
+4. Chọn **Bộ lọc thời gian**: Hôm nay / Tuần này / Tháng này / Tháng trước / Tùy chọn
+
+### 4.3 Sửa chi tiêu
+
+1. Vào danh sách chi tiêu hàng ngày
+2. Nhấn và giữ (long press) vào item cần sửa
+3. Chọn **Sửa** từ menu
+4. Cập nhật thông tin
+5. Nhấn **Lưu**
+
+### 4.4 Xóa chi tiêu
+
+1. Vào danh sách chi tiêu hàng ngày
+2. Nhấn và giữ (long press) vào item cần xóa
+3. Chọn **Xóa** từ menu
+4. Xác nhận xóa
+
+### 4.5 Thiết lập danh mục mặc định
+
+1. Vào **Cài đặt** → **Danh mục** → **Danh mục chi tiêu hàng ngày**
+2. Nhấn vào danh mục muốn đặt làm mặc định
+3. Chọn **Đặt mặc định**
+4. Khi thêm chi tiêu mới, danh mục này sẽ được chọn tự động
+
+## 5. Minh hoạ giao diện (Wireframe)
+
+### 5.1 Màn hình Danh sách (DailyExpenseList)
+
+```text
+┌─────────────────────────────────────────┐
+│  ← Quay lại    Chi tiêu hàng ngày       │
+├─────────────────────────────────────────┤
+│  [🔍 Tìm kiếm...]                        │
+│  [Hôm nay ▼] [Tuần này] [Tháng này]    │
+├─────────────────────────────────────────┤
+│  ┌──────┐ ┌──────┐ ┌──────┐            │
+│  │ Ăn   │ │ Mua  │ │ Xe   │            │
+│  │ ngoài│ │ sắm  │ │ ôm   │            │
+│  │      │ │      │ │      │            │
+│  │ 50k  │ │ 200k │ │ 30k  │            │
+│  │      │ │      │ │      │            │
+│  │ 15/11│ │ 15/11│ │ 14/11│            │
+│  └──────┘ └──────┘ └──────┘            │
+│                                         │
+│  ┌──────┐ ┌──────┐ ┌──────┐            │
+│  │ Cà   │ │ Khác │ │      │            │
+│  │ phê  │ │      │ │      │            │
+│  │      │ │      │ │      │            │
+│  │ 25k  │ │ 100k │ │      │            │
+│  │      │ │      │ │      │            │
+│  │ 13/11│ │ 12/11│ │      │            │
+│  └──────┘ └──────┘ └──────┘            │
+│                                         │
+│  Tổng: 405,000 đ                        │
+├─────────────────────────────────────────┤
+│                                    [+]   │
+└─────────────────────────────────────────┘
+```
+
+### 5.2 Màn hình Thêm/Sửa (AddDailyExpense / EditDailyExpense)
+
+```text
+┌─────────────────────────────────────────┐
+│  ← Quay lại    Thêm chi tiêu hàng ngày  │
+├─────────────────────────────────────────┤
+│  Danh mục *                              │
+│  [Ăn ngoài ▼]                            │
+│                                         │
+│  Số tiền *                               │
+│  [50,000] đ                              │
+│                                         │
+│  Ngày *                                  │
+│  [15/11/2024]                            │
+│                                         │
+│  Ghi chú                                 │
+│  [Ăn trưa với bạn]                       │
+│                                         │
+│  [Lưu] [Hủy]                            │
+└─────────────────────────────────────────┘
+```
+
+### 5.3 Menu Long Press
+
+```text
+┌─────────────────────────────────────────┐
+│  ┌───────────────────────────────────┐ │
+│  │ Ăn ngoài                            │ │
+│  │ 50,000 đ                            │ │
+│  │ 15/11/2024                          │ │
+│  │                                     │ │
+│  │ [Sửa] [Xóa]                        │ │
+│  └───────────────────────────────────┘ │
+└─────────────────────────────────────────┘
+```
+
+## 6. Logic & quy tắc
+
+### 6.1 Layout hiển thị
+
+- Bạn có thể cấu hình số cột hiển thị: 2, 3, hoặc 4 cột
+- Layout được lưu trong cài đặt và áp dụng cho tất cả danh sách chi tiêu
+
+### 6.2 Bộ lọc thời gian
+
+- **Hôm nay**: Chỉ hiển thị chi tiêu trong ngày
+- **Tuần này**: Từ đầu tuần đến hôm nay
+- **Tháng này**: Từ đầu tháng đến hôm nay
+- **Tháng trước**: Toàn bộ tháng trước
+- **Tùy chọn**: Chọn khoảng thời gian tùy ý
+
+### 6.3 Tìm kiếm
+
+- Tìm kiếm trong **tên danh mục** và **ghi chú**
+- Không phân biệt hoa thường
+- Tìm kiếm real-time khi gõ
+
+### 6.4 Danh mục mặc định
+
+- Nếu bạn đã đặt danh mục mặc định, khi mở màn hình thêm mới, danh mục đó sẽ được chọn tự động
+- Ghi chú cũng có thể được tự động điền dựa trên danh mục (nếu có cấu hình)
+
+### 6.5 Tổng chi tiêu
+
+- Tổng chi tiêu được tính dựa trên bộ lọc thời gian đang chọn
+- Hiển thị ở cuối danh sách
+
+## 7. Lưu ý quan trọng
+
+- **Không có chu kỳ**: Chi tiêu hàng ngày không có chu kỳ tự động, bạn phải nhập thủ công mỗi lần
+- **Có thể xóa**: Bạn có thể xóa bất kỳ chi tiêu nào (không như chi tiêu cố định)
+- **Không tích hợp ngân sách**: Chi tiêu hàng ngày không tự động tính vào ngân sách (bạn phải tự theo dõi)
+- **Danh mục tùy chỉnh**: Bạn có thể tạo danh mục mới trong Cài đặt
+
+## 8. Mapping kỹ thuật (for dev)
+
+### 8.1 Routes / Route Names
+
+- `DailyExpenseList` - Danh sách
+- `AddDailyExpense` - Thêm mới
+- `EditDailyExpense` - Sửa (param: `dailyExpenseId`)
+
+### 8.2 Screen File Paths
+
+- `src/screens/finance/DailyExpenseListScreen.tsx`
+- `src/screens/finance/AddDailyExpenseScreen.tsx`
+- `src/screens/finance/EditDailyExpenseScreen.tsx`
+
+### 8.3 Services / Repos File Paths
+
+- `src/data/repo/daily-expense.repository.ts` - `dailyExpenseRepo`
+- `src/data/repo/daily-expense-category.repository.ts` - `dailyExpenseCategoryRepo`
+- `src/modules/finance/hooks/useDailyExpenseList.ts` - Custom hook cho list
+- `src/services/layoutSettings.service.ts` - `getDailyExpenseLayout`, `setDailyExpenseLayout`
+- `src/domain/finance/daily-expense.utils.ts` - `formatOccurredDate`
+
+### 8.4 DB Tables / Models
+
+- `daily_expense` - Bảng chi tiêu hàng ngày
+  - `id`, `user_id`, `category_id`, `amount`, `occurred_date`, `note`, `created_at`, `updated_at`
+- `daily_expense_category` - Bảng danh mục
+  - `id`, `user_id`, `name`, `type` (SYSTEM/USER), `is_active`
+- `category_translation` - Bảng dịch danh mục (i18n)
+  - `id`, `category_id`, `category_type` = 'daily_expense', `locale`, `name`
+
+### 8.5 i18n Keys
+
+- `daily_expense.list_title` - "Chi tiêu hàng ngày"
+- `daily_expense.add_title` - "Thêm chi tiêu hàng ngày"
+- `daily_expense.edit_title` - "Sửa chi tiêu hàng ngày"
+- `daily_expense.category` - "Danh mục"
+- `daily_expense.amount` - "Số tiền"
+- `daily_expense.date` - "Ngày"
+- `daily_expense.note` - "Ghi chú"
+- `daily_expense.add_success` - "Đã thêm chi tiêu thành công"
+- `daily_expense.search_placeholder` - "Tìm kiếm..."
+- Và nhiều keys khác trong `src/i18n/locales/vi.json` dưới key `daily_expense`
+

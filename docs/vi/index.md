@@ -1,36 +1,30 @@
-# Bắt đầu
+# Hướng dẫn sử dụng - Tiếng Việt
 
-Chào mừng bạn đến với Trợ lý đời sống! Hướng dẫn này sẽ giúp bạn bắt đầu sử dụng ứng dụng.
+Chào mừng bạn đến với tài liệu hướng dẫn sử dụng ứng dụng **Daily Life Assistant** bằng tiếng Việt!
 
-## Tổng quan
+## Danh sách các module
 
-Trợ lý đời sống giúp bạn quản lý tài chính, lịch trình và các hoạt động hàng ngày ở một nơi.
+### Quản lý tài chính
 
-## Các bước đầu tiên
+- [Thu nhập định kỳ](./recurring-income.md) - Quản lý các nguồn thu nhập thường xuyên (lương, cho thuê, v.v.)
+- [Thu nhập thêm](./extra-income.md) - Ghi nhận các khoản thu nhập không định kỳ
+- [Chi tiêu cố định](./recurring-expense.md) - Quản lý các khoản chi tiêu định kỳ (tiền điện, nước, v.v.)
+- [Chi tiêu hàng ngày](./daily-expense.md) - Ghi nhận các khoản chi tiêu hàng ngày
+- [Ngân sách](./budget.md) - Lập kế hoạch và theo dõi ngân sách hàng tháng
+- [Tiết kiệm](./savings.md) - Quản lý các tài khoản tiết kiệm
+- [Khoản vay ngân hàng](./bank-debt.md) - Quản lý các khoản vay và trả nợ
+- [Mục tiêu tài chính](./financial-goals.md) - Đặt và theo dõi mục tiêu tài chính
 
-1. **Thiết lập hồ sơ của bạn**
-   - Vào Cài đặt
-   - Cấu hình ngôn ngữ và loại tiền tệ
+### Sinh hoạt
 
-2. **Thêm thu nhập đầu tiên**
-   - Điều hướng đến Tài chính > Thu nhập định kỳ
-   - Thêm các nguồn thu nhập thường xuyên của bạn
+- [Dịp đặc biệt](./special-occasions.md) - Quản lý các dịp đặc biệt và danh sách việc cần làm
 
-3. **Theo dõi chi tiêu**
-   - Sử dụng Chi tiêu hàng ngày để ghi lại chi tiêu
-   - Thiết lập Chi tiêu cố định cho các chi phí cố định
+### Báo cáo
 
-## Tính năng chính
+- [Báo cáo](./reports.md) - Xem các báo cáo tài chính chi tiết
 
-- **Quản lý tài chính**: Theo dõi thu nhập, chi tiêu, ngân sách và tiết kiệm
-- **Quản lý lịch trình**: Lập kế hoạch các hoạt động hàng ngày và dịp đặc biệt
-- **Báo cáo**: Xem báo cáo tài chính chi tiết và thông tin phân tích
+### Cài đặt
 
-## Cần trợ giúp?
-
-Nếu bạn cần hỗ trợ, bạn có thể:
-- Liên hệ với chúng tôi qua Messenger hoặc Email từ Cài đặt
-- Duyệt thêm hướng dẫn trong phần Hướng dẫn sử dụng
-
-Chúc bạn quản lý tốt!
+- [Cài đặt](./settings.md) - Cấu hình ứng dụng, danh mục, ngôn ngữ, tiền tệ
+- [Sao lưu & Phục hồi](./backup-restore.md) - Sao lưu và phục hồi dữ liệu
 

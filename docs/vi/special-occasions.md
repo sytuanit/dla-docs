@@ -1,0 +1,269 @@
+# Dịp đặc biệt
+
+## 1. Mục đích
+
+Module **Dịp đặc biệt** giúp bạn quản lý các dịp đặc biệt trong năm và chuẩn bị cho chúng, bao gồm:
+- Quản lý các dịp đặc biệt (sinh nhật, lễ tết, v.v.)
+- Tạo danh sách việc cần làm (preparation steps)
+- Gắn checklist cho từng bước chuẩn bị
+- Nhắc nhở trước dịp
+- Theo dõi tiến độ chuẩn bị
+
+## 2. Khi nào nên dùng
+
+Sử dụng module này khi bạn muốn:
+- Quản lý các dịp đặc biệt trong năm
+- Chuẩn bị cho các dịp quan trọng
+- Tạo danh sách việc cần làm
+- Nhận nhắc nhở trước dịp
+
+## 3. Các màn hình liên quan
+
+- **SpecialOccasionList** - Danh sách dịp đặc biệt
+- **AddSpecialOccasion** - Thêm dịp đặc biệt mới
+- **SpecialOccasionDetail** - Chi tiết dịp và các bước chuẩn bị
+- **AddPreparationStep** - Thêm bước chuẩn bị
+- **SelectChecklist** - Chọn checklist
+- **CreateChecklist** - Tạo checklist mới
+
+## 4. Cách sử dụng chính
+
+### 4.1 Thêm dịp đặc biệt
+
+1. Vào **Chức năng** → Chọn **Dịp đặc biệt**
+2. Nhấn nút **+** (FAB)
+3. Điền thông tin:
+   - **Tên dịp**: (ví dụ: "Sinh nhật mẹ")
+   - **Ngày dương lịch**: Chọn ngày
+   - **Ngày âm lịch**: (Tùy chọn) Chọn ngày âm lịch
+   - **Lặp lại**: Không lặp / Hàng năm / Hàng tháng
+   - **Ghi chú**: Thông tin bổ sung (tùy chọn)
+4. Nhấn **Lưu**
+
+### 4.2 Thêm bước chuẩn bị
+
+1. Vào chi tiết dịp đặc biệt
+2. Nhấn **Thêm bước chuẩn bị**
+3. Điền thông tin:
+   - **Tên bước**: (ví dụ: "Mua quà")
+   - **Nhắc nhở**: 
+     - **Trước X ngày**: Nhập số ngày trước dịp
+     - **Vào ngày**: Nhắc vào chính ngày dịp
+   - **Thời gian nhắc**: Chọn giờ (ví dụ: 9:00 AM)
+   - **Lặp lại hàng ngày**: Bật nếu muốn nhắc mỗi ngày cho đến khi hoàn thành
+   - **Checklist**: (Tùy chọn) Chọn hoặc tạo checklist
+4. Nhấn **Lưu**
+
+### 4.3 Tạo checklist
+
+1. Khi thêm bước chuẩn bị, chọn **Tạo checklist mới**
+2. Nhập tên checklist
+3. Thêm các mục:
+   - Nhập tên mục
+   - Nhấn **+** để thêm mục mới
+4. Nhấn **Lưu**
+
+### 4.4 Đánh dấu hoàn thành
+
+1. Vào chi tiết dịp đặc biệt
+2. Tìm bước cần đánh dấu
+3. Bật/tắt checkbox **Hoàn thành**
+4. Nếu có checklist, đánh dấu từng mục trong checklist
+
+### 4.5 Xem tiến độ
+
+1. Vào chi tiết dịp đặc biệt
+2. Xem thanh tiến độ:
+   - Số bước đã hoàn thành / Tổng số bước
+   - % hoàn thành
+
+## 5. Minh hoạ giao diện (Wireframe)
+
+### 5.1 Màn hình Danh sách (SpecialOccasionList)
+
+```text
+┌─────────────────────────────────────────┐
+│  ← Quay lại    Dịp đặc biệt             │
+├─────────────────────────────────────────┤
+│  [Tất cả ▼] [Sắp đến] [Đã qua]          │
+├─────────────────────────────────────────┤
+│  ┌───────────────────────────────────┐ │
+│  │ Sinh nhật mẹ                       │ │
+│  │ 15/12/2024                        │ │
+│  │ Còn 30 ngày                       │ │
+│  │ [Chưa bắt đầu]                    │ │
+│  │                                    │ │
+│  │ [Chi tiết] [Sửa] [Xóa]            │ │
+│  └───────────────────────────────────┘ │
+│                                         │
+│  ┌───────────────────────────────────┐ │
+│  │ Tết Nguyên Đán                     │ │
+│  │ 29/01/2025                        │ │
+│  │ Còn 75 ngày                       │ │
+│  │ [Đang chuẩn bị]                   │ │
+│  │                                    │ │
+│  │ [Chi tiết] [Sửa] [Xóa]            │ │
+│  └───────────────────────────────────┘ │
+├─────────────────────────────────────────┤
+│                                    [+]   │
+└─────────────────────────────────────────┘
+```
+
+### 5.2 Màn hình Chi tiết (SpecialOccasionDetail)
+
+```text
+┌─────────────────────────────────────────┐
+│  ← Quay lại    Sinh nhật mẹ             │
+├─────────────────────────────────────────┤
+│  Thông tin                               │
+│  ┌───────────────────────────────────┐ │
+│  │ Ngày: 15/12/2024                  │ │
+│  │ Lặp lại: Hàng năm                 │ │
+│  │ Còn: 30 ngày                      │ │
+│  └───────────────────────────────────┘ │
+│                                         │
+│  Tiến độ                                 │
+│  [████░░░░] 40%                          │
+│  2/5 bước đã hoàn thành                 │
+│                                         │
+│  Các bước chuẩn bị                       │
+│  ┌───────────────────────────────────┐ │
+│  │ 1. Mua quà                         │ │
+│  │    Trước 7 ngày - 9:00 AM         │ │
+│  │    ✅ Đã hoàn thành                │ │
+│  └───────────────────────────────────┘ │
+│  ┌───────────────────────────────────┐ │
+│  │ 2. Đặt bàn nhà hàng                │ │
+│  │    Trước 3 ngày - 10:00 AM        │ │
+│  │    ✅ Đã hoàn thành                │ │
+│  └───────────────────────────────────┘ │
+│  ┌───────────────────────────────────┐ │
+│  │ 3. Mua bánh kem                    │ │
+│  │    Vào ngày - 8:00 AM             │ │
+│  │    ☐ Chưa hoàn thành               │ │
+│  │    📋 Checklist: Mua bánh (2/3)    │ │
+│  └───────────────────────────────────┘ │
+│                                         │
+│  [Thêm bước] [Sửa] [Xóa]                │
+└─────────────────────────────────────────┘
+```
+
+### 5.3 Màn hình Thêm bước (AddPreparationStep)
+
+```text
+┌─────────────────────────────────────────┐
+│  ← Quay lại    Thêm bước chuẩn bị       │
+├─────────────────────────────────────────┤
+│  Tên bước *                              │
+│  [Mua quà]                               │
+│                                         │
+│  Nhắc nhở *                              │
+│  ● Trước X ngày                          │
+│  ○ Vào ngày                              │
+│                                         │
+│  Số ngày trước dịp                       │
+│  [7] ngày                                │
+│                                         │
+│  Thời gian nhắc *                        │
+│  [9:00 AM]                               │
+│                                         │
+│  Lặp lại hàng ngày                       │
+│  [☐] Nhắc mỗi ngày cho đến khi hoàn thành│
+│                                         │
+│  Checklist                               │
+│  [Chọn checklist ▼] [+ Tạo mới]         │
+│                                         │
+│  [Lưu] [Hủy]                            │
+└─────────────────────────────────────────┘
+```
+
+## 6. Logic & quy tắc
+
+### 6.1 Ngày âm lịch
+
+- Bạn có thể nhập cả ngày dương và ngày âm lịch
+- App tự động tính ngày dương tương ứng với ngày âm
+- Hỗ trợ lặp lại hàng năm theo âm lịch
+
+### 6.2 Lặp lại
+
+- **Không lặp**: Chỉ một lần
+- **Hàng năm**: Lặp lại mỗi năm (theo dương hoặc âm lịch)
+- **Hàng tháng**: Lặp lại mỗi tháng
+
+### 6.3 Bước chuẩn bị
+
+- Có thể nhắc **Trước X ngày** hoặc **Vào ngày**
+- Có thể lặp lại hàng ngày cho đến khi hoàn thành
+- Mỗi bước có thể gắn một checklist
+
+### 6.4 Checklist
+
+- Checklist có thể được tái sử dụng cho nhiều bước
+- Theo dõi số mục đã hoàn thành / Tổng số mục
+- Hiển thị trong chi tiết bước
+
+### 6.5 Thông báo
+
+- App gửi thông báo nhắc nhở theo thời gian đã cấu hình
+- Thông báo hiển thị vào thời gian đã đặt (ví dụ: 9:00 AM)
+- Nếu bật "Lặp lại hàng ngày", sẽ nhắc mỗi ngày cho đến khi hoàn thành
+
+## 7. Lưu ý quan trọng
+
+- **Ngày âm lịch**: App tự động chuyển đổi sang dương lịch để hiển thị
+- **Lặp lại hàng năm**: Dịp sẽ tự động tạo lại vào năm sau
+- **Checklist**: Checklist bị xóa vẫn hiển thị trong bước (nhưng không thể sửa)
+- **Thông báo**: Cần bật thông báo trong Cài đặt để nhận nhắc nhở
+
+## 8. Mapping kỹ thuật (for dev)
+
+### 8.1 Routes / Route Names
+
+- `SpecialOccasionList` - Danh sách
+- `AddSpecialOccasion` - Thêm mới (param: `mode?: 'edit'`, `occasionId?`)
+- `SpecialOccasionDetail` - Chi tiết (param: `occasionId`)
+- `AddPreparationStep` - Thêm bước (param: `occasionId`, `stepId?` để edit)
+- `SelectChecklist` - Chọn checklist (param: `occasionId`, `stepId`)
+- `CreateChecklist` - Tạo checklist (param: `occasionId`, `stepId`)
+
+### 8.2 Screen File Paths
+
+- `src/screens/lifestyle/SpecialOccasionListScreen.tsx`
+- `src/screens/lifestyle/AddSpecialOccasionScreen.tsx`
+- `src/screens/lifestyle/SpecialOccasionDetailScreen.tsx`
+- `src/screens/lifestyle/AddPreparationStepScreen.tsx`
+- `src/screens/lifestyle/SelectChecklistScreen.tsx`
+- `src/screens/lifestyle/CreateChecklistScreen.tsx`
+
+### 8.3 Services / Repos File Paths
+
+- `src/data/repo/special-occasion.repository.ts` - `specialOccasionRepo`
+- `src/data/repo/preparation-step.repository.ts` - `preparationStepRepo`
+- `src/data/repo/checklist-item.repository.ts` - `checklistItemRepo`
+- `src/data/repo/shopping-checklist.repository.ts` - `shoppingChecklistRepo`
+- `src/modules/lifestyle/services/special-occasion.service.ts` - `recalculateNextOccurDateForYearlyOccasions`
+- `src/modules/finance/services/notification.service.ts` - `schedulePreparationStepNotification`, `cancelPreparationStepNotification`
+
+### 8.4 DB Tables / Models
+
+- `special_occasion` - Bảng dịp đặc biệt
+  - `id`, `user_id`, `name`, `solar_date`, `lunar_date`, `repeat_type`, `next_occur_date`, `note`, `status`
+- `preparation_step` - Bảng bước chuẩn bị
+  - `id`, `occasion_id`, `content`, `days_before`, `reminder_time`, `repeat_daily_until_complete`, `checklist_id`, `is_completed`
+- `shopping_checklist` - Bảng checklist
+  - `id`, `user_id`, `name`, `created_at`, `updated_at`
+- `checklist_item` - Bảng mục trong checklist
+  - `id`, `checklist_id`, `name`, `is_completed`, `order`
+
+### 8.5 i18n Keys
+
+- `special_occasion.list_title` - "Dịp đặc biệt"
+- `special_occasion.add_title` - "Thêm dịp đặc biệt"
+- `special_occasion.detail.title` - "Chi tiết dịp đặc biệt"
+- `special_occasion.add_preparation_step.title` - "Thêm bước chuẩn bị"
+- `special_occasion.status.not_started` - "Chưa bắt đầu"
+- `special_occasion.status.in_progress` - "Đang chuẩn bị"
+- `special_occasion.status.completed` - "Đã hoàn thành"
+- Và nhiều keys khác trong `src/i18n/locales/vi.json` dưới key `special_occasion`
+

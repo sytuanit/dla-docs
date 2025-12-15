@@ -139,8 +139,11 @@ Sử dụng module này khi bạn muốn:
 ### 6.3 Thông báo
 
 - Thông báo chỉ hoạt động khi app được cấp quyền
-- Thời gian thông báo: 4PM và 7PM
-- Có thể tắt thông báo cho từng loại riêng (trong tương lai)
+- Thời gian thông báo phụ thuộc từng chức năng và có thể cấu hình:
+  - Thu nhập/Chi tiêu định kỳ: `notificationTime1`, `notificationTime2` (default 16:00 & 19:00)
+  - Sổ tiết kiệm & Khoản vay: `notificationTime1`, `notificationTime2` (default 10:00 & 19:00)
+  - Dịp đặc biệt & Bước chuẩn bị: theo `reminderTime` bạn nhập
+  - Có thể tắt thông báo cho từng loại riêng (trong tương lai)
 
 ### 6.4 Danh mục
 

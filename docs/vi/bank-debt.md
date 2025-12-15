@@ -232,7 +232,7 @@ Nhấn **Tiếp theo**
 ### 6.5 Thông báo
 
 - App gửi thông báo nhắc nhở khi đến kỳ trả nợ
-- Thông báo hiển thị vào 4PM và 7PM (nếu bật thông báo)
+- Thời gian thông báo có thể cấu hình cho từng khoản vay (`notificationTime1`, `notificationTime2`, mặc định 10:00 và 19:00)
 
 ## 7. Lưu ý quan trọng
 

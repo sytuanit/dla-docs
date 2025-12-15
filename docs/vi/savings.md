@@ -146,7 +146,7 @@ Sử dụng module này khi bạn có:
 ### 6.4 Thông báo
 
 - App gửi thông báo nhắc nhở khi đến ngày đáo hạn
-- Thông báo hiển thị vào 4PM và 7PM (nếu bật thông báo)
+- Thời gian thông báo có thể cấu hình cho từng sổ (`notificationTime1`, `notificationTime2`, mặc định 10:00 và 19:00)
 
 ## 7. Lưu ý quan trọng
 

@@ -70,124 +70,128 @@ Sử dụng module này khi bạn có:
 2. Tìm item cần tắt/bật
 3. Bật/tắt switch **Hoạt động** ở bên phải item
 
-## 5. Minh hoạ giao diện (Wireframe)
+## 5. Ví dụ & minh hoạ giao diện
 
-### 5.1 Màn hình Danh sách
+### 5.1 Ví dụ 1: Tạo thu nhập định kỳ hàng tháng (lương)
 
-```text
-┌─────────────────────────────────────────┐
-│  ← Quay lại    Thu nhập định kỳ         │
-├─────────────────────────────────────────┤
-│  [🔍 Tìm kiếm...]                        │
-│  [Tất cả ▼] [Chờ xác nhận] [Đã xác nhận]│
-├─────────────────────────────────────────┤
-│  ┌───────────────────────────────────┐ │
-│  │ Lương của tôi          [Hoạt động] │ │
-│  │ 10,000,000 đ                      │ │
-│  │ Hàng tháng - Ngày 15              │ │
-│  │ Kỳ tiếp theo: 15/12/2024          │ │
-│  │ [Chờ xác nhận]                    │ │
-│  │                                    │ │
-│  │ [Sửa] [Lịch sử] [Xóa]             │ │
-│  └───────────────────────────────────┘ │
-│                                         │
-│  ┌───────────────────────────────────┐ │
-│  │ Tiền cho thuê nhà    [Hoạt động] │ │
-│  │ 5,000,000 đ                      │ │
-│  │ Hàng tháng - Ngày 1              │ │
-│  │ Kỳ tiếp theo: 01/01/2025        │ │
-│  │ [Đã xác nhận]                    │ │
-│  │                                    │ │
-│  │ [Sửa] [Lịch sử] [Xóa]             │ │
-│  └───────────────────────────────────┘ │
-│                                         │
-│  Tổng: 15,000,000 đ/tháng              │
-├─────────────────────────────────────────┤
-│                                    [+]   │
-└─────────────────────────────────────────┘
-```
+**Tình huống**: Bạn muốn theo dõi lương hàng tháng để app tự động nhắc nhở khi đến kỳ nhận tiền.
 
-### 5.2 Màn hình Thêm/Sửa
+**Thực hiện**:
+1. Vào màn hình Chức năng, chọn "Thu nhập định kỳ"
+2. Nhấn nút "➕ Thêm mới" ở góc dưới bên phải
+3. Chọn danh mục "Lương" (hoặc tạo mới nếu chưa có)
+4. Nhập số tiền: 10.000.000
+5. Chọn chu kỳ "Tháng"
+6. Chọn "Chọn ngày trong tháng", nhập số 5
+7. Ghi chú tự động điền "Lương hàng tháng" (có thể chỉnh sửa)
+8. Nhấn "Lưu"
+
+**Kết quả**: App hiển thị thông báo thành công và quay về danh sách. Item mới xuất hiện với thông tin đầy đủ, và app sẽ tự động nhắc nhở khi đến ngày 5 hàng tháng.
+
+**Màn hình Thêm thu nhập định kỳ**:
 
 ```text
 ┌─────────────────────────────────────────┐
 │  ← Quay lại    Thêm thu nhập định kỳ     │
 ├─────────────────────────────────────────┤
 │  Danh mục *                              │
-│  [Lương của tôi ▼]                      │
+│  [Lương ▼] [+ Thêm mới]                 │
 │                                         │
-│  Số tiền                                 │
-│  [10,000,000] đ                         │
-│  (Có thể để trống, nhập khi xác nhận)   │
+│  Số tiền (VND) *                         │
+│  [10.000.000]                           │
 │                                         │
 │  Chu kỳ *                                │
-│  ○ Hàng tuần                             │
-│  ● Hàng tháng                            │
-│  ○ 2 tuần                                │
+│  ┌──────┐ ┌────────┐ ┌────────┐        │
+│  │Tuần  │ │2 tuần  │ │Tháng │        │
+│  └──────┘ └────────┘ └────────┘        │
 │                                         │
-│  Ngày *                                  │
-│  [15]                                    │
-│  (1-31 cho hàng tháng, 1-7 cho hàng tuần)│
-│                                         │
-│  Ngày bắt đầu                            │
-│  [15/11/2024]                            │
-│  (Chỉ cho chu kỳ 2 tuần)                │
+│  Ngày nhận trong chu kỳ                  │
+│  ⚪ Cuối tháng                           │
+│  ⚫ Chọn ngày trong tháng                │
+│  ┌───────────────────────────────────┐ │
+│  │ Ngày trong tháng: [5]             │ │
+│  └───────────────────────────────────┘ │
 │                                         │
 │  Ghi chú                                 │
-│  [Lương tháng 11/2024]                   │
+│  ┌───────────────────────────────────┐ │
+│  │ Lương hàng tháng                   │ │
+│  └───────────────────────────────────┘ │
 │                                         │
-│  [Lưu] [Hủy]                            │
+│  [Hủy]                    [Lưu]        │
 └─────────────────────────────────────────┘
 ```
 
-### 5.3 Dialog Xác nhận
+---
+
+### 5.2 Ví dụ 2: Xác nhận thu nhập đến hạn và cập nhật số tiền thực tế
+
+**Tình huống**: Đã đến ngày nhận lương (ngày 5), nhưng số tiền thực tế nhận được là 10.500.000 (tăng lương) thay vì 10.000.000 như đã đặt.
+
+**Thực hiện**:
+1. Mở app hoặc vào màn hình "Thu nhập định kỳ"
+2. App tự động phát hiện có kỳ đến hạn và hiển thị dialog xác nhận
+3. Dialog hiển thị số tiền mặc định: 10.000.000
+4. Cập nhật số tiền thực tế thành 10.500.000
+5. Nhập ghi chú: "Lương tháng này có thưởng" (tùy chọn)
+6. Nhấn "Xác nhận đã nhận"
+
+**Kết quả**: App cập nhật kỳ vừa xác nhận với số tiền thực tế 10.500.000, tự động tạo kỳ tiếp theo, và cập nhật số dư tài chính hiện tại.
+
+**Dialog Xác nhận thu nhập**:
 
 ```text
 ┌─────────────────────────────────────────┐
 │  Xác nhận đã nhận                        │
 ├─────────────────────────────────────────┤
-│  Lương của tôi                           │
-│  Kỳ: 15/11/2024                         │
-│                                         │
-│  Số tiền dự kiến: 10,000,000 đ         │
+│  Lương                                   │
+│  Hàng tháng (ngày 5)                    │
+│  Ngày đến hạn: Hôm nay                  │
 │                                         │
 │  Số tiền thực tế *                       │
-│  [10,000,000] đ                         │
+│  [10.500.000] đ                         │
 │                                         │
 │  Ghi chú                                 │
-│  [Đã nhận đủ]                            │
+│  [Lương tháng này có thưởng]            │
 │                                         │
-│  [Xác nhận] [Hủy]                       │
+│  [Hủy kỳ này]    [Xác nhận đã nhận]    │
 └─────────────────────────────────────────┘
 ```
 
-### 5.4 Màn hình Lịch sử
+---
+
+### 5.3 Ví dụ 3: Hủy kỳ thu nhập khi không nhận được tiền
+
+**Tình huống**: Đã đến ngày nhận tiền thuê nhà (ngày 1), nhưng khách thuê chưa chuyển khoản nên không nhận được tiền.
+
+**Thực hiện**:
+1. Mở app hoặc vào màn hình "Thu nhập định kỳ"
+2. App hiển thị dialog xác nhận cho kỳ đến hạn
+3. Nhấn nút "Hủy kỳ này"
+4. Nhập lý do: "Khách thuê chưa chuyển khoản" (bắt buộc)
+5. Nhấn "Xác nhận hủy"
+
+**Kết quả**: Kỳ vừa hủy chuyển sang trạng thái "Huỷ", hiển thị lý do hủy, và app tự động tạo kỳ tiếp theo. Số dư tài chính không thay đổi vì không nhận được tiền.
+
+**Dialog Hủy kỳ thu nhập**:
 
 ```text
 ┌─────────────────────────────────────────┐
-│  ← Quay lại    Lịch sử - Lương của tôi   │
+│  Hủy kỳ này                              │
 ├─────────────────────────────────────────┤
+│  Tiền thuê nhà                           │
+│  Hàng tháng (ngày 1)                    │
+│  Ngày đến hạn: Hôm nay                  │
+│                                         │
+│  Lý do hủy *                             │
 │  ┌───────────────────────────────────┐ │
-│  │ 15/11/2024                         │ │
-│  │ 10,000,000 đ                       │ │
-│  │ ✅ Đã xác nhận                     │ │
-│  │ Ghi chú: Đã nhận đủ                 │ │
+│  │ Khách thuê chưa chuyển khoản      │ │
 │  └───────────────────────────────────┘ │
 │                                         │
-│  ┌───────────────────────────────────┐ │
-│  │ 15/10/2024                         │ │
-│  │ 10,000,000 đ                       │ │
-│  │ ✅ Đã xác nhận                     │ │
-│  └───────────────────────────────────┘ │
-│                                         │
-│  ┌───────────────────────────────────┐ │
-│  │ 15/09/2024                         │ │
-│  │ 10,000,000 đ                       │ │
-│  │ ❌ Đã hủy                          │ │
-│  │ Lý do: Không nhận được             │ │
-│  └───────────────────────────────────┘ │
+│  [Quay lại]        [Xác nhận hủy]      │
 └─────────────────────────────────────────┘
 ```
+
+---
 
 ## 6. Logic & quy tắc
 

@@ -18,6 +18,7 @@ Chào mừng bạn đến với tài liệu hướng dẫn sử dụng ứng d�
 ### Sinh hoạt
 
 - [Dịp đặc biệt](./special-occasions.md) - Quản lý các dịp đặc biệt và danh sách việc cần làm
+- [Việc phải làm](./todo-list.md) - Quản lý các công việc định kỳ và theo dõi tiến độ thực hiện
 
 ### Báo cáo
 

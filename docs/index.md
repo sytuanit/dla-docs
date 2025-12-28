@@ -6,7 +6,6 @@ Chào mừng bạn đến với tài liệu hướng dẫn sử dụng ứng d�
 
 - [Tiếng Việt](./vi/)
 - [English](./en/)
-- [日本語](./ja/)
 
 ---
 

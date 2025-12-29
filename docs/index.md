@@ -6,6 +6,19 @@ Chào mừng bạn đến với tài liệu hướng dẫn sử dụng ứng d�
 
 - [Tiếng Việt](./vi/)
 - [English](./en/)
+- [日本語](./ja/)
+- [한국어](./ko/)
+- [ไทย](./th/)
+- [Deutsch](./de/)
+- [Español](./es/)
+- [Français](./fr/)
+- [हिन्दी](./hi/)
+- [Bahasa Indonesia](./id/)
+- [ລາວ](./lo/)
+- [Português](./pt/)
+- [Türkçe](./tr/)
+- [繁體中文](./zh-tw/)
+- [简体中文](./zh-cn/)
 
 ---
 

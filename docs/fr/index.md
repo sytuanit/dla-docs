@@ -28,4 +28,6 @@ Bienvenue dans le guide utilisateur de **Daily Life Assistant** en français !
 
 - [Paramètres](./settings.md) - Configurer l'application, catégories, langue, devise
 - [Sauvegarde et Restauration](./backup-restore.md) - Sauvegarder et restaurer les données
+- [Conditions d'Utilisation](./terms.md) - Conditions et termes d'utilisation de l'application
+- [Politique de Confidentialité](./privacy.md) - Politique de confidentialité et protection des données
 

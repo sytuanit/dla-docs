@@ -28,4 +28,6 @@ Welcome to the **Daily Life Assistant** user guide in English!
 
 - [Settings](./settings.md) - Configure app, categories, language, currency
 - [Backup & Restore](./backup-restore.md) - Backup and restore data
+- [Terms of Service](./terms.md) - Terms and conditions for using the application
+- [Privacy Policy](./privacy.md) - Privacy policy and data protection
 

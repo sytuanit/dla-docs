@@ -28,4 +28,6 @@ Bem-vindo ao guia do usuário do **Assistente de Vida Diária** em português!
 
 - [Configurações](./settings.md) - Configurar aplicativo, categorias, idioma, moeda
 - [Backup e Restauração](./backup-restore.md) - Fazer backup e restaurar dados
+- [Termos de Serviço](./terms.md) - Termos e condições para usar a aplicação
+- [Política de Privacidade](./privacy.md) - Política de privacidade e proteção de dados
 

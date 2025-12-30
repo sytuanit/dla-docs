@@ -28,4 +28,6 @@
 
 - [Ayarlar](./settings.md) - Uygulamayı, kategorileri, dili, para birimini yapılandırın
 - [Yedekleme ve Geri Yükleme](./backup-restore.md) - Verileri yedekleyin ve geri yükleyin
+- [Hizmet Şartları](./terms.md) - Uygulamayı kullanma şartları ve koşulları
+- [Gizlilik Politikası](./privacy.md) - Gizlilik politikası ve veri koruma
 

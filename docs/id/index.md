@@ -28,4 +28,6 @@ Selamat datang di panduan pengguna **Daily Life Assistant** dalam Bahasa Indones
 
 - [Pengaturan](./settings.md) - Konfigurasi aplikasi, kategori, bahasa, mata uang
 - [Cadangan & Pemulihan](./backup-restore.md) - Cadangkan dan pulihkan data
+- [Ketentuan Layanan](./terms.md) - Ketentuan dan kondisi penggunaan aplikasi
+- [Kebijakan Privasi](./privacy.md) - Kebijakan privasi dan perlindungan data
 

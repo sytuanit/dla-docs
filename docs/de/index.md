@@ -28,4 +28,6 @@ Willkommen im **Daily Life Assistant** Benutzerhandbuch auf Deutsch!
 
 - [Einstellungen](./settings.md) - App, Kategorien, Sprache, Währung konfigurieren
 - [Sicherung & Wiederherstellung](./backup-restore.md) - Daten sichern und wiederherstellen
+- [Nutzungsbedingungen](./terms.md) - Bedingungen und Bestimmungen für die Nutzung der Anwendung
+- [Datenschutzrichtlinie](./privacy.md) - Datenschutzrichtlinie und Datenschutz
 

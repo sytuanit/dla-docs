@@ -28,4 +28,6 @@ Chào mừng bạn đến với tài liệu hướng dẫn sử dụng ứng d�
 
 - [Cài đặt](./settings.md) - Cấu hình ứng dụng, danh mục, ngôn ngữ, tiền tệ
 - [Sao lưu & Phục hồi](./backup-restore.md) - Sao lưu và phục hồi dữ liệu
+- [Điều khoản sử dụng](./terms.md) - Điều khoản và quy định sử dụng ứng dụng
+- [Chính sách bảo mật](./privacy.md) - Chính sách bảo mật và quyền riêng tư
 

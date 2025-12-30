@@ -28,4 +28,6 @@
 
 - [Configuración](./settings.md) - Configurar aplicación, categorías, idioma, moneda
 - [Copia de Seguridad y Restauración](./backup-restore.md) - Hacer copia de seguridad y restaurar datos
+- [Términos de Servicio](./terms.md) - Términos y condiciones para usar la aplicación
+- [Política de Privacidad](./privacy.md) - Política de privacidad y protección de datos
 

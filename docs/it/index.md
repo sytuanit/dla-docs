@@ -1,6 +1,6 @@
 # Guida Utente - Italiano
 
-Benvenuto nella guida utente di **Daily Life Assistant** in italiano!
+Benvenuto nella guida utente di **Assistente Vita Quotidiana** in italiano!
 
 ## Elenco Moduli
 

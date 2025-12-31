@@ -1,6 +1,6 @@
 # Benutzerhandbuch - Deutsch
 
-Willkommen im **Daily Life Assistant** Benutzerhandbuch auf Deutsch!
+Willkommen im **Täglicher Lebensassistent** Benutzerhandbuch auf Deutsch!
 
 ## Modulliste
 

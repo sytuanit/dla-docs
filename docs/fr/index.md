@@ -1,6 +1,6 @@
 # Guide Utilisateur - Français
 
-Bienvenue dans le guide utilisateur de **Daily Life Assistant** en français !
+Bienvenue dans le guide utilisateur de **Assistant de Vie Quotidienne** en français !
 
 ## Liste des Modules
 

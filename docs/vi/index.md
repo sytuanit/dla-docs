@@ -1,6 +1,6 @@
 # Hướng dẫn sử dụng - Tiếng Việt
 
-Chào mừng bạn đến với tài liệu hướng dẫn sử dụng ứng dụng **Daily Life Assistant** bằng tiếng Việt!
+Chào mừng bạn đến với tài liệu hướng dẫn sử dụng ứng dụng **Trợ lý đời sống** bằng tiếng Việt!
 
 ## Danh sách các module
 

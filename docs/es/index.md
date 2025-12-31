@@ -1,6 +1,6 @@
 # Guía de Usuario - Español
 
-¡Bienvenido a la guía de usuario de **Daily Life Assistant** en español!
+¡Bienvenido a la guía de usuario de **Asistente de Vida Diaria** en español!
 
 ## Lista de Módulos
 

@@ -1,6 +1,6 @@
 # Panduan Pengguna - Bahasa Indonesia
 
-Selamat datang di panduan pengguna **Daily Life Assistant** dalam Bahasa Indonesia!
+Selamat datang di panduan pengguna **Asisten Kehidupan Sehari-hari** dalam Bahasa Indonesia!
 
 ## Daftar Modul
 

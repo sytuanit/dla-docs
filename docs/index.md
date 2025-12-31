@@ -17,6 +17,7 @@ Chào mừng bạn đến với tài liệu hướng dẫn sử dụng ứng d�
 - [ລາວ](./lo/)
 - [Português](./pt/)
 - [Türkçe](./tr/)
+- [Italiano](./it/)
 - [繁體中文](./zh-tw/)
 - [简体中文](./zh-cn/)
 

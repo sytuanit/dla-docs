@@ -20,6 +20,12 @@ Bem-vindo ao guia do usuário do **Assistente de Vida Diária** em português!
 - [Ocasiões Especiais](./special-occasions.md) - Gerir ocasiões especiais e listas de verificação de preparação
 - [Lista de Tarefas](./todo-list.md) - Gerir tarefas recorrentes e acompanhar o progresso de conclusão
 
+### Cozinha e culinária
+
+- [Receitas](./recipes.md) - Guardar e gerir receitas, pratos e coleções
+- [Planeamento de ementas](./menu-planning.md) - Planear refeições semanais (pequeno-almoço / almoço / jantar), resumo semanal
+- [Compras (lista)](./shopping-checklist.md) - Listas de compras; associáveis a passos de preparação em Ocasiões especiais
+
 ### Relatórios
 
 - [Relatórios](./reports.md) - Ver relatórios financeiros detalhados

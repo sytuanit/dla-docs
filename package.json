@@ -1,0 +1,13 @@
+{
+  "name": "dla-docs",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "screenshots:generate": "node scripts/generate-store-screenshots.js",
+    "heic:to-jpg": "node scripts/heic-to-jpg.js"
+  },
+  "dependencies": {
+    "heic-convert": "^2.1.0",
+    "sharp": "^0.34.5"
+  }
+}

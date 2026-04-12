@@ -20,6 +20,12 @@ Bienvenue dans le guide utilisateur de **Assistant de Vie Quotidienne** en fran�
 - [Occasions Spéciales](./special-occasions.md) - Gérer les occasions spéciales et listes de vérification de préparation
 - [Liste de Tâches](./todo-list.md) - Gérer les tâches récurrentes et suivre le progrès d'achèvement
 
+### Cuisine et arts culinaires
+
+- [Recettes](./recipes.md) - Enregistrer et gérer recettes, plats et collections
+- [Planification des menus](./menu-planning.md) - Planifier les repas de la semaine (petit-déjeuner / déjeuner / dîner), synthèse hebdomadaire
+- [Courses (check-list)](./shopping-checklist.md) - Listes de courses ; liaison possible avec les étapes de préparation des occasions spéciales
+
 ### Rapports
 
 - [Rapports](./reports.md) - Voir les rapports financiers détaillés

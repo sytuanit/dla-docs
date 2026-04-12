@@ -20,6 +20,12 @@
 - [特殊場合](./special-occasions.md) - 管理特殊場合和準備檢查清單
 - [待辦事項](./todo-list.md) - 管理定期任務和追蹤完成進度
 
+### 厨房與餐飲
+
+- [食譜](./recipes.md) - 保存與管理食譜、菜色
+- [菜單規劃](./menu-planning.md) - 安排週間菜單
+- [購物（清單）](./shopping-checklist.md) - 購物清單；可與特殊場合準備步驟連結
+
 ### 報表
 
 - [報表](./reports.md) - 查看詳細財務報表

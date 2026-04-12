@@ -31,6 +31,7 @@ Daily Life Assistant là ứng dụng quản lý tài chính và sinh hoạt cá
 - Lập kế hoạch ngân sách
 - Theo dõi tiết kiệm và khoản vay
 - Quản lý dịp đặc biệt và lịch trình
+- **Bếp & ẩm thực:** món ăn, thực đơn tuần, checklist mua sắm
 - Xem báo cáo tài chính chi tiết
 
 ---

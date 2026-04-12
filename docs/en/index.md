@@ -20,6 +20,12 @@ Welcome to the **Daily Life Assistant** user guide in English!
 - [Special Occasions](./special-occasions.md) - Manage special occasions and preparation checklists
 - [Todo List](./todo-list.md) - Manage recurring tasks and track completion progress
 
+### Kitchen & Culinary
+
+- [Recipes](./recipes.md) - Save and manage recipes, dishes, and collections
+- [Menu Planning](./menu-planning.md) - Plan weekly meals (breakfast / lunch / dinner), weekly summary
+- [Shopping (checklist)](./shopping-checklist.md) - Shopping lists; can link to preparation steps in Special occasions
+
 ### Reports
 
 - [Reports](./reports.md) - View detailed financial reports

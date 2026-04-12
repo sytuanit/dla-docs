@@ -20,6 +20,12 @@
 - [Ocasiones Especiales](./special-occasions.md) - Gestionar ocasiones especiales y listas de verificación de preparación
 - [Lista de Tareas](./todo-list.md) - Gestionar tareas recurrentes y seguir el progreso de finalización
 
+### Cocina y gastronomía
+
+- [Recetas](./recipes.md) - Guardar y gestionar recetas, platos y colecciones
+- [Planificación de menús](./menu-planning.md) - Planificar comidas semanales (desayuno / comida / cena), resumen semanal
+- [Compras (lista)](./shopping-checklist.md) - Listas de compra; enlazables con pasos de preparación en Ocasiones especiales
+
 ### Informes
 
 - [Informes](./reports.md) - Ver informes financieros detallados

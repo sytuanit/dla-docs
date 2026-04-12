@@ -20,6 +20,12 @@ Chào mừng bạn đến với tài liệu hướng dẫn sử dụng ứng d�
 - [Dịp đặc biệt](./special-occasions.md) - Quản lý các dịp đặc biệt và danh sách việc cần làm
 - [Việc phải làm](./todo-list.md) - Quản lý các công việc định kỳ và theo dõi tiến độ thực hiện
 
+### Bếp & Ẩm thực
+
+- [Món ăn](./recipes.md) - Lưu trữ và quản lý công thức, món ăn, bộ sưu tập
+- [Thực đơn](./menu-planning.md) - Lập thực đơn theo tuần (Sáng / Trưa / Tối), tổng hợp tuần
+- [Mua sắm (checklist)](./shopping-checklist.md) - Checklist mua sắm; có thể gắn với bước chuẩn bị trong Dịp đặc biệt
+
 ### Báo cáo
 
 - [Báo cáo](./reports.md) - Xem các báo cáo tài chính chi tiết

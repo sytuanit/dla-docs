@@ -20,6 +20,12 @@ Selamat datang di panduan pengguna **Asisten Kehidupan Sehari-hari** dalam Bahas
 - [Acara Khusus](./special-occasions.md) - Kelola acara khusus dan daftar persiapan
 - [Daftar Tugas](./todo-list.md) - Kelola tugas berulang dan lacak kemajuan penyelesaian
 
+### Dapur & kuliner
+
+- [Resep](./recipes.md) - Simpan dan kelola resep, hidangan, dan koleksi
+- [Perencanaan menu](./menu-planning.md) - Rencanakan makanan mingguan (sarapan / makan siang / makan malam), ringkasan mingguan
+- [Belanja (checklist)](./shopping-checklist.md) - Daftar belanja; dapat ditautkan ke langkah persiapan di Acara khusus
+
 ### Laporan
 
 - [Laporan](./reports.md) - Lihat laporan keuangan detail

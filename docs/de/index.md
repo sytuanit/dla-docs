@@ -20,6 +20,12 @@ Willkommen im **Täglicher Lebensassistent** Benutzerhandbuch auf Deutsch!
 - [Besondere Anlässe](./special-occasions.md) - Besondere Anlässe und Vorbereitungs-Checklisten verwalten
 - [Aufgabenliste](./todo-list.md) - Wiederkehrende Aufgaben verwalten und Fortschritt verfolgen
 
+### Küche & Kulinarik
+
+- [Rezepte](./recipes.md) - Rezepte, Gerichte und Sammlungen speichern und verwalten
+- [Speiseplan](./menu-planning.md) - Wöchentliche Mahlzeiten planen (Frühstück / Mittagessen / Abendessen), Wochenübersicht
+- [Einkaufen (Checkliste)](./shopping-checklist.md) - Einkaufslisten; verknüpfbar mit Vorbereitungsschritten bei besonderen Anlässen
+
 ### Berichte
 
 - [Berichte](./reports.md) - Detaillierte Finanzberichte anzeigen

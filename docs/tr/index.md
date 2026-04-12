@@ -20,6 +20,12 @@
 - [Özel Günler](./special-occasions.md) - Özel günleri ve hazırlık kontrol listelerini yönetin
 - [Yapılacaklar Listesi](./todo-list.md) - Tekrarlanan görevleri yönetin ve tamamlanma ilerlemesini takip edin
 
+### Mutfak ve mutfak sanatları
+
+- [Tarifler](./recipes.md) - Tarifleri, yemekleri ve koleksiyonları kaydedin ve yönetin
+- [Menü planlama](./menu-planning.md) - Haftalık öğünleri planlayın (kahvaltı / öğle / akşam), haftalık özet
+- [Alışveriş (kontrol listesi)](./shopping-checklist.md) - Alışveriş listeleri; Özel günlerdeki hazırlık adımlarına bağlanabilir
+
 ### Raporlar
 
 - [Raporlar](./reports.md) - Detaylı finansal raporları görüntüleyin

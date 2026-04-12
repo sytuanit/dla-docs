@@ -20,6 +20,12 @@ Benvenuto nella guida utente di **Assistente Vita Quotidiana** in italiano!
 - [Occasioni Speciali](./special-occasions.md) - Gestisci occasioni speciali e liste di controllo per la preparazione
 - [Lista delle Cose da Fare](./todo-list.md) - Gestisci attività ricorrenti e monitora i progressi di completamento
 
+### Cucina e gastronomia
+
+- [Ricette](./recipes.md) - Salvare e gestire ricette, piatti e raccolte
+- [Pianificazione menu](./menu-planning.md) - Pianificare i pasti settimanali (colazione / pranzo / cena), riepilogo settimanale
+- [Spesa (checklist)](./shopping-checklist.md) - Liste della spesa; collegabili ai passi di preparazione delle occasioni speciali
+
 ### Report
 
 - [Report](./reports.md) - Visualizza report finanziari dettagliati

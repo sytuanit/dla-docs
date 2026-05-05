@@ -2,6 +2,19 @@
 
 Bem-vindo ao guia do usuário do **Assistente de Vida Diária** em português!
 
+<p><strong>Vídeo de apresentação</strong></p>
+<div style="margin:0.75rem 0 1.25rem;max-width:min(360px,100%);">
+  <div style="position:relative;width:100%;padding-bottom:177.78%;height:0;background:#111;border-radius:10px;overflow:hidden;">
+    <iframe style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
+      src="https://www.youtube.com/embed/AQ7L33hcrjw"
+      title="YouTube"
+      loading="lazy"
+      referrerpolicy="strict-origin-when-cross-origin"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen></iframe>
+  </div>
+</div>
+
 ## Lista de Módulos
 
 ### Gestão Financeira

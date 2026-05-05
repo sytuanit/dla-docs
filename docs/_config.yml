@@ -1,0 +1,2 @@
+# GitHub Pages builds Jekyll from this folder when source is /docs.
+markdown: kramdown

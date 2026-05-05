@@ -1,0 +1,162 @@
+{
+  "vi": {
+    "app_name": "Trợ lý đời sống",
+    "phone_inner_footer": "Giúp cuộc sống của bạn dễ dàng hơn mỗi ngày",
+    "headline": "Quản lý tài chính & sinh hoạt trong một ứng dụng",
+    "sub": [
+      "Theo dõi thu chi, ngân sách, các khoản vay, tiết kiệm và lập kế hoạch tương lai",
+      "Nhắc việc phải làm, dịp đặc biệt, lên lịch sinh hoạt mỗi ngày"
+    ],
+    "youtube_url": "https://youtube.com/shorts/enS4IDGkn_U"
+  },
+  "en": {
+    "app_name": "Daily Life Assistant",
+    "phone_inner_footer": "Make your life a little easier every day",
+    "headline": "Manage your finances & daily life in one app",
+    "sub": [
+      "Track income and expenses, budget, loans, savings, and plan for the future",
+      "Reminders for to-dos, special occasions, and daily routines"
+    ],
+    "youtube_url": "https://youtube.com/shorts/nVb8WWuYaC0"
+  },
+  "de": {
+    "app_name": "Täglicher Lebensassistent",
+    "phone_inner_footer": "Macht Ihren Alltag jeden Tag ein wenig leichter",
+    "headline": "Finanzen und Alltag in einer App verwalten",
+    "sub": [
+      "Einnahmen, Ausgaben, Budget, Kredite, Sparen und Zukunftsplanung im Blick",
+      "Erinnerungen an Aufgaben, besondere Anlässe und den Alltag jeden Tag"
+    ],
+    "youtube_url": "https://youtube.com/shorts/NoIS1yQkGUE"
+  },
+  "es": {
+    "app_name": "Asistente de Vida Diaria",
+    "phone_inner_footer": "Haz tu día a día un poco más fácil cada día",
+    "headline": "Gestiona tus finanzas y tu rutina diaria en una sola app",
+    "sub": [
+      "Controla ingresos, gastos, presupuesto, préstamos, ahorros y planes para el futuro",
+      "Recordatorios de tareas, ocasiones especiales y tu día a día"
+    ],
+    "youtube_url": "https://youtube.com/shorts/uqO7-KRDVMk"
+  },
+  "fr": {
+    "app_name": "Assistant de Vie Quotidienne",
+    "phone_inner_footer": "Simplifiez un peu plus votre quotidien, jour après jour",
+    "headline": "Gérez finances et quotidien dans une seule app",
+    "sub": [
+      "Suivez revenus, dépenses, budget, prêts, épargne et projets d’avenir",
+      "Rappels pour vos tâches, occasions spéciales et quotidien au jour le jour"
+    ],
+    "youtube_url": "https://youtube.com/shorts/Nizr2u7ogBg"
+  },
+  "hi": {
+    "app_name": "दैनिक जीवन सहायक",
+    "phone_inner_footer": "आपके जीवन को हर दिन थोड़ा आसान बनाएं",
+    "headline": "एक ऐप में वित्त और दैनिक जीवन संभालें",
+    "sub": [
+      "आय, व्यय, बजट, ऋण, बचत और भविष्य की योजना ट्रैक करें",
+      "करने योग्य कार्यों, विशेष अवसरों की याद और रोज़ाना दिनचर्या की योजना"
+    ],
+    "youtube_url": "https://youtube.com/shorts/Po5m4b5MaRE"
+  },
+  "id": {
+    "app_name": "Asisten Kehidupan Sehari-hari",
+    "phone_inner_footer": "Membantu hidup Anda lebih mudah setiap hari",
+    "headline": "Kelola keuangan & kehidupan sehari-hari dalam satu aplikasi",
+    "sub": [
+      "Pantau pemasukan, pengeluaran, anggaran, pinjaman, tabungan, dan rencana masa depan",
+      "Pengingat tugas, momen spesial, dan jadwal aktivitas harian setiap hari"
+    ],
+    "youtube_url": "https://youtube.com/shorts/7KEJlcqIfD8"
+  },
+  "it": {
+    "app_name": "Assistente Vita Quotidiana",
+    "phone_inner_footer": "Rendi la tua vita un po’ più semplice ogni giorno",
+    "headline": "Gestisci finanze e vita quotidiana in un'unica app",
+    "sub": [
+      "Monitora entrate, uscite, budget, prestiti, risparmi e piani per il futuro",
+      "Promemoria per le attività, occasioni speciali e agenda quotidiana"
+    ],
+    "youtube_url": "https://youtube.com/shorts/GvaLgFP3ll8"
+  },
+  "ja": {
+    "app_name": "日常生活アシスタント",
+    "phone_inner_footer": "毎日、暮らしをもう少しラクに",
+    "headline": "家計と暮らしをひとつのアプリで管理",
+    "sub": [
+      "収支・予算・ローン・貯蓄・将来の計画を把握",
+      "やること・記念日のリマインドと毎日のスケジュール"
+    ],
+    "youtube_url": "https://youtube.com/shorts/99OyHxoptco"
+  },
+  "ko": {
+    "app_name": "일상 생활 어시스턴트",
+    "phone_inner_footer": "매일매일 삶을 조금 더 편하게",
+    "headline": "재정과 일상을 한 앱에서 관리하세요",
+    "sub": [
+      "수입·지출·예산·대출·저축·미래 계획까지 한눈에",
+      "할 일 알림, 특별한 날, 매일의 일정까지"
+    ],
+    "youtube_url": "https://youtube.com/shorts/dtb8yBttGYE"
+  },
+  "lo": {
+    "app_name": "ຜູ້ຊ່ວຍຊີວິດປະຈຳວັນ",
+    "phone_inner_footer": "ຊ່ວຍໃຫ້ຊີວິດຂອງທ່ານງ່າຍຂຶ້ນທຸກໆວັນ",
+    "headline": "ຈັດການການເງິນແລະຊີວິດປະຈຳວັນໃນແອັບເດຍວ",
+    "sub": [
+      "ຕິດຕາມລາຍຮັບ–ລາຍຈ່າຍ, ງົບ, ເງິນກູ້, ອອມ ແລະແຜນອະນາຄົດ",
+      "ແຈ້ງເຕືອນວຽກຕ້ອງເຮັດ, ວັນສຳຄັນ, ຈັດຕາລາງຊີວິດປະຈຳວັນທຸກວັນ"
+    ],
+    "youtube_url": "https://youtube.com/shorts/sFxv1o1Y3Z4"
+  },
+  "pt": {
+    "app_name": "Assistente de Vida Diária",
+    "phone_inner_footer": "Deixe o seu dia a dia um pouco mais fácil todos os dias",
+    "headline": "Gerencie finanças e rotina diária em um só app",
+    "sub": [
+      "Acompanhe entradas, saídas, orçamento, empréstimos, poupança e planos para o futuro",
+      "Lembretes de tarefas, ocasiões especiais e o seu dia a dia"
+    ],
+    "youtube_url": "https://youtube.com/shorts/AQ7L33hcrjw"
+  },
+  "th": {
+    "app_name": "ผู้ช่วยชีวิตประจำวัน",
+    "phone_inner_footer": "ช่วยให้ชีวิตคุณสะดวกสบายขึ้นทุกวัน",
+    "headline": "จัดการการเงินและชีวิตประจำวันในแอปเดียว",
+    "sub": [
+      "ติดตามรายรับจ่าย งบประมาณ เงินกู้ เงินออม และวางแผนอนาคต",
+      "แจ้งสิ่งที่ต้องทำ โอกาสพิเศษ และจัดตารางในทุกวัน"
+    ],
+    "youtube_url": "https://youtube.com/shorts/fF1qK52TlXU"
+  },
+  "tr": {
+    "app_name": "Günlük Yaşam Asistanı",
+    "phone_inner_footer": "Hayatınızı her gün biraz daha kolaylaştırın",
+    "headline": "Finansınızı ve günlük yaşamı tek uygulamada yönetin",
+    "sub": [
+      "Gelir, gider, bütçe, krediler, tasarruf ve gelecek planlarını izleyin",
+      "Yapılacaklar, özel günler ve günlük düzen için hatırlatıcılar"
+    ],
+    "youtube_url": "https://youtube.com/shorts/eL13TpRGpds"
+  },
+  "zh": {
+    "app_name": "日常生活助手",
+    "phone_inner_footer": "让每一天的生活更轻松一点",
+    "headline": "在一个应用中管理财务与日常生活",
+    "sub": [
+      "跟踪收支、预算、贷款、储蓄与未来规划",
+      "待办与纪念日提醒，安排每日生活行程"
+    ],
+    "youtube_url": "https://youtube.com/shorts/Tbj7Lk1SMqI"
+  },
+  "zh-TW": {
+    "app_name": "日常生活助手",
+    "phone_inner_footer": "讓每一天的生活更輕鬆一點",
+    "headline": "在這個 App 中管理財務與日常生活",
+    "sub": [
+      "追蹤收支、預算、貸款、儲蓄與未來規劃",
+      "待辦與特別日子提醒，安排每日生活行程"
+    ],
+    "youtube_url": "https://youtube.com/shorts/LdkKFBino-8"
+  }
+}

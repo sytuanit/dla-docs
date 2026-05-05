@@ -5,9 +5,10 @@ const sharp = require('sharp');
 
 const ROOT_DIR = path.resolve(__dirname, '..');
 const INPUT_DIR = path.join(ROOT_DIR, 'screenshots');
+const ANDROID_INPUT_DIR = path.join(ROOT_DIR, 'screenshots-android');
 const IPAD_INPUT_DIR = path.join(ROOT_DIR, 'screenshots-ipad');
 const OUTPUT_DIR = path.join(ROOT_DIR, 'screenshots-resized');
-const DEFAULT_SELECTION_FILE = path.join(INPUT_DIR, 'selected-screenshots.json');
+const DEFAULT_SELECTION_FILE = path.join(__dirname, 'selected-screenshots.json');
 const FILE_REGEX = /^screenshot-.*\.(png|jpg|jpeg|webp)$/i;
 
 const TARGETS = [
@@ -71,9 +72,9 @@ async function loadSelectedScreenshots(selectionFilePath) {
     ),
   ];
 
-  if (selected.length !== 8) {
+  if (selected.length < 1) {
     throw new Error(
-      `Selection JSON must contain exactly 8 unique screenshot filenames. Current count: ${selected.length}`
+      `Selection JSON must contain at least one screenshot filename. Current count: ${selected.length}`
     );
   }
 
@@ -88,7 +89,8 @@ async function loadSelectedScreenshots(selectionFilePath) {
 }
 
 async function generateOne(locale, sourceFile, target) {
-  const inputPath = path.join(INPUT_DIR, locale, sourceFile);
+  const inputRoot = target.folder.startsWith('android') ? ANDROID_INPUT_DIR : INPUT_DIR;
+  const inputPath = path.join(inputRoot, locale, sourceFile);
   const outputPath = path.join(OUTPUT_DIR, locale, target.folder, sourceFile);
 
   await ensureDir(path.dirname(outputPath));
@@ -191,11 +193,14 @@ async function main() {
       console.log(`\nProcessing iPad screenshots from ${IPAD_INPUT_DIR} (${ipadLocales.length} locale(s))`);
       for (const locale of ipadLocales) {
         const ipadFiles = await listIpadLocaleFiles(locale);
-        if (ipadFiles.length === 0) {
-          console.warn(`Skipping iPad locale "${locale}" - no screenshot-*.png files found.`);
+        const ipadSelected = ipadFiles.filter((name) => selectedScreenshots.includes(name));
+        if (ipadSelected.length === 0) {
+          console.warn(
+            `Skipping iPad locale "${locale}" — no files matching selection (${selectedScreenshots.join(', ')}).`
+          );
           continue;
         }
-        for (const sourceFile of ipadFiles) {
+        for (const sourceFile of ipadSelected) {
           const outputPath = await generateIpadOne(locale, sourceFile);
           results.push(outputPath);
         }

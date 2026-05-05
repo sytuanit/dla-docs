@@ -1,13 +1,14 @@
-"""App Store first frame: screenshot-13-capture + overlay text → screenshot-14 (all locales).
+"""App Store first frame: screenshot-*-capture + overlay text → screenshot-14 (all locales).
 
 Reads app display name from dsa-app/src/i18n/locales/{locale}.json.
-Marketing copy: screenshot-14-marketing.json (UTF-8). Skips locales without screenshot-13-capture.png.
+Marketing copy: screenshot-14-marketing.json (UTF-8). Skips locales without the chosen capture PNG.
 
 Usage:
   python generate-screenshot-14-appstore.py
+  python generate-screenshot-14-appstore.py --capture-num 15
   python generate-screenshot-14-appstore.py --locale en --locale ja
   python generate-screenshot-14-appstore.py --ipad
-  python generate-screenshot-14-appstore.py --ipad --locale de
+  python generate-screenshot-14-appstore.py --ipad --locale de --capture-num 15
 """
 from __future__ import annotations
 
@@ -314,13 +315,18 @@ def fit_sub_lines_font(
     return find_font(minimum, bold=True, locale=locale)
 
 
-def render_screenshot_14(locale: str, *, screenshots_root: Path = SCREENSHOTS_DIR) -> Path | None:
+def render_screenshot_14(
+    locale: str,
+    *,
+    screenshots_root: Path = SCREENSHOTS_DIR,
+    capture_num: int = 13,
+) -> Path | None:
     copy = MARKETING.get(locale)
     if not copy:
         print(f"Skip {locale}: no MARKETING entry")
         return None
 
-    base_path = screenshots_root / locale / "screenshot-13-capture.png"
+    base_path = screenshots_root / locale / f"screenshot-{capture_num}-capture.png"
     out_path = screenshots_root / locale / "screenshot-14.png"
     if not base_path.is_file():
         print(f"Skip {locale}: missing {base_path}")
@@ -392,20 +398,32 @@ def main() -> None:
     if not MARKETING_PATH.is_file():
         raise SystemExit(f"Missing {MARKETING_PATH}")
 
-    parser = argparse.ArgumentParser(description="Generate screenshot-14.png from screenshot-13-capture per locale.")
+    parser = argparse.ArgumentParser(
+        description="Generate screenshot-14.png from screenshot-N-capture per locale (default N=13).",
+    )
     parser.add_argument(
         "--ipad",
         action="store_true",
         help=f"Use {SCREENSHOTS_IPAD_DIR.name}/{{locale}}/ (phone default: {SCREENSHOTS_DIR.name}/).",
     )
     parser.add_argument(
+        "--capture-num",
+        type=int,
+        default=13,
+        metavar="N",
+        help="Input file per locale: screenshot-N-capture.png (default: 13). Example: 15 for screenshot-15-capture.png.",
+    )
+    parser.add_argument(
         "--locale",
         action="append",
         dest="locales",
         metavar="CODE",
-        help="Locale code (repeat for multiple). Default: all with MARKETING and screenshot-13-capture.",
+        help="Locale code (repeat for multiple). Default: all with MARKETING and the capture file present.",
     )
     args = parser.parse_args()
+
+    if args.capture_num < 1:
+        raise SystemExit("--capture-num must be >= 1")
 
     screenshots_root = SCREENSHOTS_IPAD_DIR if args.ipad else SCREENSHOTS_DIR
 
@@ -416,7 +434,7 @@ def main() -> None:
 
     for loc in to_run:
         try:
-            render_screenshot_14(loc, screenshots_root=screenshots_root)
+            render_screenshot_14(loc, screenshots_root=screenshots_root, capture_num=args.capture_num)
         except FileNotFoundError as e:
             print(f"Skip {loc}: {e}")
         except ValueError as e:

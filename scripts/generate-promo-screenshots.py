@@ -1,8 +1,8 @@
 """Compose App Store–style frames (1242×2688): gradient + slogan + device; writes screenshot-{n}.png.
 
 Style: gradient background, dark green slogan; device: iOS (iPhone bezel + Dynamic Island) vs Android (legacy frame).
-Copy: screenshot-14-marketing.json — 11 = sub[0], 12 = sub[1], 13 = headline;
-      20 = sub[0], 21 = sub[1] (headline is for promo 13 only).
+Copy: screenshot-14-marketing.json — 11 = sub[0], 12 = sub[1], 13 or 15 = headline;
+      20 = sub[0], 21 = sub[1].
 Input: screenshot-{n}-capture.png (raw device shot).
 Output: screenshot-{n}.png — iOS → dla-docs/screenshots/, Android → dla-docs/screenshots-android/ (same layout).
 Android: current frame (no status bar). iOS: graphite frame + Dynamic Island only (no clock/signal/battery row).
@@ -13,6 +13,7 @@ Usage:
   python generate-promo-screenshots.py --platform android
   python generate-promo-screenshots.py --only 11 13 20 21
   python generate-promo-screenshots.py --all-locales --only 13 20 21
+  python generate-promo-screenshots.py --all-locales --only 15 20 21
 """
 from __future__ import annotations
 
@@ -417,7 +418,7 @@ def compose_promo(
             content_inset_lr_px = max(0, int(round(iw_m * SCREENSHOT_21_HORIZONTAL_INSET_FRAC)))
 
     shot = Image.open(screenshot_path).convert("RGBA")
-    is_13_style = screenshot_index in (13, 20)
+    is_13_style = screenshot_index in (13, 15, 20)
     if screenshot_index in (20, 21):
         inner_bg = SCREENSHOT_PROMO_APP_BG
     elif is_13_style:
@@ -468,7 +469,7 @@ def slogan_for_index(block: dict[str, object], index: int) -> str | None:
         if isinstance(sub, list) and len(sub) > 1:
             return str(sub[1])
         return None
-    if index == 13:
+    if index in (13, 15):
         raw = block.get("headline", "")
         return str(raw) if raw else None
     if index == 20:
@@ -499,7 +500,7 @@ def main() -> None:
         nargs="*",
         metavar="N",
         type=int,
-        help="Screenshot numbers (default: 11 12 13). 13=headline; 20=sub[0]; 21=sub[1].",
+        help="Screenshot numbers (default: 11 12 13). 13 or 15=headline; 20=sub[0]; 21=sub[1].",
     )
     parser.add_argument(
         "--platform",
@@ -546,7 +547,7 @@ def main() -> None:
                 continue
             raw_app = block.get("app_name")
             app = str(raw_app).strip() if raw_app else None
-            inner_f = promo13_inner_footer(block) if n in (13, 20) else None
+            inner_f = promo13_inner_footer(block) if n in (13, 15, 20) else None
             for plat in platforms:
                 out_root = SCREENSHOTS_ANDROID_DIR if plat == "android" else SCREENSHOTS_DIR
                 out_root.mkdir(parents=True, exist_ok=True)

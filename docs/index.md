@@ -8,7 +8,7 @@ Chào mừng bạn đến với tài liệu hướng dẫn sử dụng ứng d�
     <p style="margin:0 0 0.35rem;font-size:0.95rem;">English</p>
     <div style="position:relative;width:100%;padding-bottom:177.78%;height:0;background:#111;border-radius:10px;overflow:hidden;">
       <iframe style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
-        src="https://www.youtube.com/embed/nVb8WWuYaC0"
+        src="https://www.youtube.com/embed/-1YMg1ISYCg"
         title="YouTube"
         loading="lazy"
         referrerpolicy="strict-origin-when-cross-origin"
@@ -20,7 +20,7 @@ Chào mừng bạn đến với tài liệu hướng dẫn sử dụng ứng d�
     <p style="margin:0 0 0.35rem;font-size:0.95rem;">Tiếng Việt</p>
     <div style="position:relative;width:100%;padding-bottom:177.78%;height:0;background:#111;border-radius:10px;overflow:hidden;">
       <iframe style="position:absolute;top:0;left:0;width:100%;height:100%;border:0;"
-        src="https://www.youtube.com/embed/enS4IDGkn_U"
+        src="https://www.youtube.com/embed/kE9aG2GWurQ"
         title="YouTube"
         loading="lazy"
         referrerpolicy="strict-origin-when-cross-origin"

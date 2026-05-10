@@ -7,15 +7,18 @@
 Trợ lý đời sống giúp bạn quản lý chi tiêu, lập ngân sách và sắp xếp sinh hoạt hằng ngày trong một ứng dụng trực quan, dễ dùng.
 
 Về tài chính:
-- Theo dõi thu chi và lập ngân sách.
-- Xây kế hoạch, mục tiêu tương lai và quản lý tiết kiệm.
-- Quản lý cho vay — ghi nhận các khoản bạn cho vay, theo dõi lịch thu, dư nợ và trạng thái từng khoản.
-- So sánh và đánh giá phương án vay nợ ngân hàng để chọn giải pháp phù hợp khả năng trả.
+- Thiết lập, theo dõi thu chi định kỳ/hàng ngày và lập ngân sách.
+- Tạo các mục tiêu trong tương lai (mua nhà, mua xe,...). Và tạo các giả định mô phỏng (vay ngân hàng,...) để xem các giả định này có phù hợp với tình hình tài chính hiện tại hay không.
+- Quản lý tiết kiệm, quản lý các khoản nợ đang cho người khác vay.
+- Quản lý các khoản nợ đang vay ngân hàng, phần này sẽ có tác động đến việc lập ngân sách, và cũng sẽ có tác động khi lập kế hoạch, mô phỏng.
+- Tất cả các khoản đến kỳ thu chi, tất toán, đáo hạn sẽ có thông báo từ ứng dụng (notification).
 
 Về sinh hoạt hằng ngày:
-- Lập thực đơn, checklist mua sắm.
-- Danh sách việc cần làm.
-- Nhắc và quản lý các dịp đặc biệt quan trọng.
+- Lập checklist mua sắm
+- Tạo danh sách các món ăn, lên thực đơn theo tuần.
+- Tạo danh sách việc cần làm theo chu kỳ (1 tháng, 3 tháng,...), hoặc theo chỉ số (2000 km,...).
+- Quản lý các dịp đặc biệt quan trọng. Có thể tạo các bước chuẩn bị cho một dịp đặc biệt (mỗi dịp có thể sẽ có thông báo nhắc nhở riêng).
+- Tất cả các việc cần làm, dịp đặc biệt khi đến hạn sẽ có thông báo từ ứng dụng (notification).
 
 Tất cả trong một ứng dụng trực quan, dễ dùng, giúp bạn ra quyết định tốt hơn mỗi ngày, duy trì kỷ luật và tiến gần hơn đến các mục tiêu dài hạn.
 

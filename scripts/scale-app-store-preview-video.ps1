@@ -46,6 +46,8 @@
 .PARAMETER VideoAvgBitrate
   Target average video bitrate for libx264 (e.g. 3M, 4M, 5M). Lower reduces file size if ASC still complains.
 #>
+# Cách chạy: 
+# .\scale-app-store-preview-video.ps1 -InputDirectory ".\video" -MaxDurationSeconds 0 -Recurse  
 param(
   [Parameter(Mandatory = $true, Position = 0)]
   [string] $InputDirectory,

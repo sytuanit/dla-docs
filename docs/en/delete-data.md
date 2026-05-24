@@ -62,13 +62,19 @@ Use this to erase everything in the app and start fresh, **without** deleting yo
 
 ## Option 4 — Request deletion by email
 
-For help deleting cloud data you cannot remove in the app, or to request **deletion of your cloud account (email login)**, contact us:
+For help deleting cloud data you cannot remove in the app, contact us (see [Request to delete your account](./delete-account.md) to delete your cloud login):
 
 - **Email:** [cuong.hungduong87@gmail.com](mailto:cuong.hungduong87@gmail.com?subject=Daily%20Life%20Assistant%20-%20Data%20deletion%20request)
 - **Subject:** `Daily Life Assistant - Data deletion request`
-- **Include:** the email address used for your cloud account (if any), what you want deleted (specific data or full account), and the platform (Android / iOS).
+- **Include:** the email address used for your cloud account (if any), what you want deleted (specific data), and the platform (Android / iOS).
 
-We aim to respond within **30 days**. Account deletion on our backend is completed after we verify the request; we do not retain deleted account credentials beyond what is required for legal or security obligations.
+We aim to respond within **30 days**. Cloud data deletion is completed after we verify the request where applicable.
+
+---
+
+## Delete your cloud account
+
+To delete your **account** (email login) and all associated backend data, follow: [Request to delete your account](./delete-account.md).
 
 ---
 
@@ -83,3 +89,4 @@ We aim to respond within **30 days**. Account deletion on our backend is complet
 
 - [Privacy Policy](./privacy.md)
 - [Terms of Service](./terms.md)
+- [Request to delete your account](./delete-account.md)

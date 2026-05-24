@@ -50,4 +50,5 @@ Welcome to the **Daily Life Assistant** user guide in English!
 - [Terms of Service](./terms.md) - Terms and conditions for using the application
 - [Privacy Policy](./privacy.md) - Privacy policy and data protection
 - [Request to delete your data](./delete-data.md) - How to delete app data without deleting your account
+- [Request to delete your account](./delete-account.md) - How to delete your cloud account and associated data
 

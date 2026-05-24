@@ -20,6 +20,11 @@ Về sinh hoạt hằng ngày:
 - Quản lý các dịp đặc biệt quan trọng. Có thể tạo các bước chuẩn bị cho một dịp đặc biệt (mỗi dịp có thể sẽ có thông báo nhắc nhở riêng).
 - Tất cả các việc cần làm, dịp đặc biệt khi đến hạn sẽ có thông báo từ ứng dụng (notification).
 
+Chia sẻ sổ:
+- Chung một sổ, cả nhà cùng quản lý tài chính và sinh hoạt từ nhiều thiết bị.
+- Chủ sổ (Premium) bật chia sẻ, mời thành viên qua mã QR.
+- Thành viên trong gia đình chỉ cần dùng app miễn phí, quét mã QR để tham gia; dữ liệu đồng bộ cloud để cả nhà cùng xem và cập nhật.
+
 Tất cả trong một ứng dụng trực quan, dễ dùng, giúp bạn ra quyết định tốt hơn mỗi ngày, duy trì kỷ luật và tiến gần hơn đến các mục tiêu dài hạn.
 
 ---
@@ -38,6 +43,11 @@ Daily life:
 - Meal planning and shopping checklists.
 - To-do lists.
 - Reminders and planning for important special occasions.
+
+Shared book:
+- One shared book for the whole family — manage finances and daily life from multiple devices.
+- Premium owners enable sharing and invite members via QR code.
+- Family members only need the free app — scan the QR code to join; data syncs to the cloud so everyone stays up to date.
 
 Everything in one intuitive app — clearer decisions every day, steady habits, and progress toward long-term goals.
 
@@ -58,6 +68,11 @@ Alltag:
 - Aufgabenlisten.
 - Erinnerungen und Organisation für besondere Anlässe.
 
+Geteiltes Buch:
+- Ein gemeinsames Buch für die ganze Familie — Finanzen und Alltag von mehreren Geräten verwalten.
+- Premium-Inhaber aktivieren die Freigabe und laden per QR-Code ein.
+- Familienmitglieder brauchen nur die kostenlose App — QR-Code scannen zum Beitreten; Daten werden in der Cloud synchronisiert.
+
 Alles in einer App — bessere Entscheidungen im Alltag, mehr Struktur und näher an Ihren langfristigen Zielen.
 
 ---
@@ -76,6 +91,11 @@ Vida cotidiana:
 - Menús y listas de compra.
 - Listas de tareas.
 - Recordatorios y organización de ocasiones especiales importantes.
+
+Libro compartido:
+- Un libro compartido para toda la familia: finanzas y rutina diaria desde varios dispositivos.
+- El propietario Premium activa el uso compartido e invita con código QR.
+- Los miembros de la familia solo necesitan la app gratuita: escanean el QR para unirse; los datos se sincronizan en la nube.
 
 Todo en una app intuitiva para decidir mejor cada día, mantener el hábito y acercarte a tus metas a largo plazo.
 
@@ -96,6 +116,11 @@ Vie quotidienne :
 - Listes de tâches.
 - Rappels et organisation des occasions importantes.
 
+Carnet partagé :
+- Un carnet partagé pour toute la famille — finances et quotidien depuis plusieurs appareils.
+- Le propriétaire Premium active le partage et invite via QR code.
+- Les membres de la famille n’ont besoin que de l’app gratuite — scannez le QR pour rejoindre ; les données se synchronisent dans le cloud.
+
 Le tout dans une app intuitive pour mieux décider au quotidien, garder la discipline et progresser vers vos objectifs long terme.
 
 ---
@@ -114,6 +139,11 @@ Le tout dans une app intuitive pour mieux décider au quotidien, garder la disci
 - भोजन योजना और खरीदारी चेकलिस्ट।
 - करने योग्य कार्यों की सूची।
 - विशेष अवसरों की याद और व्यवस्था।
+
+साझा खाता:
+- पूरे परिवार के लिए एक साझा खाता — कई डिवाइस से वित्त और दैनिक जीवन प्रबंधित करें।
+- Premium मालिक साझा करना सक्षम करते हैं और QR कोड से आमंत्रित करते हैं।
+- परिवार के सदस्यों को केवल मुफ़्त ऐप चाहिए — QR स्कैन करके जुड़ें; डेटा क्लाउड में सिंक होता है।
 
 एक ही ऐप में — बेहतर निर्णय, अनुशासन और दीर्घकालीन लक्ष्यों की दिशा में।
 
@@ -134,6 +164,11 @@ Kehidupan sehari-hari:
 - Daftar tugas.
 - Pengingat dan pengelolaan momen spesial penting.
 
+Buku bersama:
+- Satu buku bersama untuk seluruh keluarga — kelola keuangan dan kehidupan sehari-hari dari banyak perangkat.
+- Pemilik Premium mengaktifkan berbagi dan mengundang via kode QR.
+- Anggota keluarga cukup pakai aplikasi gratis — pindai QR untuk bergabung; data disinkronkan ke cloud.
+
 Semua dalam satu aplikasi — keputusan lebih baik, konsistensi, dan lebih dekat pada tujuan jangka panjang.
 
 ---
@@ -152,6 +187,11 @@ Vita quotidiana:
 - Piani pasti e liste della spesa.
 - Liste di attività.
 - Promemoria e gestione delle occasioni speciali importanti.
+
+Registro condiviso:
+- Un registro condiviso per tutta la famiglia — finanze e vita quotidiana da più dispositivi.
+- Il proprietario Premium attiva la condivisione e invita tramite codice QR.
+- I familiari bastano con l’app gratuita — scansionano il QR per unirsi; i dati si sincronizzano nel cloud.
 
 Tutto in un’unica app intuitiva — decisioni migliori ogni giorno, disciplina e traguardi nel lungo periodo.
 
@@ -172,6 +212,11 @@ Tutto in un’unica app intuitiva — decisioni migliori ogni giorno, disciplina
 - ToDoリスト。
 - 大切な記念日やイベントのリマインドと管理。
 
+共有家計簿:
+- 家族全員で1つの家計簿を共有 — 複数の端末から家計と暮らしを管理。
+- Premiumのオーナーが共有を有効化し、QRコードで招待。
+- 家族のメンバーは無料アプリだけでOK — QRをスキャンして参加；データはクラウドで同期。
+
 ひとつのアプリで、毎日の判断を助け、習慣づけし、長期的な目標に近づけます。
 
 ---
@@ -190,6 +235,11 @@ Tutto in un’unica app intuitiva — decisioni migliori ogni giorno, disciplina
 - 식단 계획과 장보기 체크리스트.
 - 할 일 목록.
 - 중요한 기념일·행사 알림 및 관리.
+
+공유 장부:
+- 온 가족이 하나의 장부를 공유 — 여러 기기에서 재정과 일상을 함께 관리.
+- Premium 소유자가 공유를 켜고 QR 코드로 초대.
+- 가족 구성원은 무료 앱만 있으면 됩니다 — QR을 스캔해 참여; 데이터는 클라우드에 동기화.
 
 모두 한 앱에서 — 매일 더 나은 결정, 꾸준한 습관, 장기 목표에 더 가까이.
 
@@ -210,6 +260,11 @@ Tutto in un’unica app intuitiva — decisioni migliori ogni giorno, disciplina
 - ລາຍການວຽກຕ້ອງເຮັດ.
 - ແຈ້ງເຕືອນແລະຈັດການວັນສຳຄັນ.
 
+ປຶ້ມຮ່ວມ:
+- ປຶ້ມດຽວສຳລັບທັງຄອບຄົວ — ຈັດການການເງິນແລະຊີວິດປະຈຳວັນຈາກຫຼາຍອຸປະກອນ.
+- ເຈົ້າຂອງ Premium ເປີດແບ່ງປັນແລະເຊີນຜ່ານ QR.
+- ສະມາຊິກໃນຄອບຄົວໃຊ້ແອັບຟຣີກໍພໍ — ສະແກນ QR ເພື່ອເຂົ້າຮ່ວມ; ຂໍ້ມູນຊິງຄ໌ໃນ cloud.
+
 ທຸກຢ່າງໃນແອັບດຽວ — ຕັດສິນໃຈດີຂຶ້ນ, ມີວິນັຍ ແລະເຂົ້າໃກ້ເປົ້າໝາຍຍາວນານ.
 
 ---
@@ -228,6 +283,11 @@ Dia a dia:
 - Ementas e listas de compras.
 - Listas de tarefas.
 - Lembretes e gestão de ocasiões especiais importantes.
+
+Livro partilhado:
+- Um livro partilhado para toda a família — finanças e rotina diária a partir de vários dispositivos.
+- O proprietário Premium ativa a partilha e convida via código QR.
+- Os familiares só precisam da app gratuita — digitalizam o QR para entrar; os dados sincronizam na cloud.
 
 Tudo numa só aplicação intuitiva — melhores decisões, disciplina e progresso rumo a objetivos de longo prazo.
 
@@ -248,6 +308,11 @@ Tudo numa só aplicação intuitiva — melhores decisões, disciplina e progres
 - รายการสิ่งที่ต้องทำ
 - การแจ้งเตือนและจัดการโอกาสพิเศษที่สำคัญ
 
+สมุดร่วม:
+- สมุดเล่มเดียวสำหรับทั้งครอบครัว — จัดการการเงินและชีวิตประจำวันจากหลายอุปกรณ์
+- เจ้าของ Premium เปิดการแชร์และเชิญด้วย QR code
+- สมาชิกในครอบครัวใช้แอปฟรีก็เข้าร่วมได้ — สแกน QR เพื่อเข้าร่วม ข้อมูลซิงก์บนคลาวด์
+
 ครบในแอปเดียว — ตัดสินใจดีขึ้นทุกวัน มีวินัย และเข้าใกล้เป้าหมายระยะยาว
 
 ---
@@ -266,6 +331,11 @@ Günlük yaşam:
 - Yemek planları ve alışveriş listeleri.
 - Yapılacaklar listeleri.
 - Önemli özel günler için hatırlatıcılar ve takip.
+
+Paylaşılan defter:
+- Tüm aile için tek paylaşılan defter — birden fazla cihazdan finans ve günlük yaşam.
+- Premium sahibi paylaşımı açar; QR kodu ile davet eder.
+- Aile üyeleri yalnızca ücretsiz uygulamayla katılabilir — QR kodunu tarayın; veriler bulutta senkronize olur.
 
 Hepsi tek uygulamada — daha iyi kararlar, disiplin ve uzun vadeli hedeflere yaklaşma.
 
@@ -286,6 +356,11 @@ Hepsi tek uygulamada — daha iyi kararlar, disiplin ve uzun vadeli hedeflere ya
 - 待办事项。
 - 重要纪念日与活动的提醒与管理。
 
+共享账本：
+- 全家共用一本账本，从多台设备管理财务与日常生活。
+- Premium 主账号开启共享，通过二维码邀请成员。
+- 家庭成员只需使用免费版应用，扫码即可加入；数据云端同步，全家保持最新。
+
 尽在同一款直观应用——每日更好决策、保持习惯、迈向长期目标。
 
 ---
@@ -304,5 +379,10 @@ Hepsi tek uygulamada — daha iyi kararlar, disiplin ve uzun vadeli hedeflere ya
 - 安排菜單與採購清單。
 - 待辦清單。
 - 重要紀念日與活動的提醒與管理。
+
+共享帳本：
+- 全家共用一本帳本，從多部裝置管理財務與日常生活。
+- Premium 擁有者開啟共享，透過 QR 碼邀請成員。
+- 家庭成員只需使用免費版 App，掃描 QR 碼即可加入；資料雲端同步，全家保持最新。
 
 盡在同一款 App——每日決策更清晰、維持紀律、更接近長期目標。

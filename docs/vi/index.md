@@ -49,4 +49,5 @@ Chào mừng bạn đến với tài liệu hướng dẫn sử dụng ứng d�
 - [Sao lưu & Phục hồi](./backup-restore.md) - Sao lưu và phục hồi dữ liệu
 - [Điều khoản sử dụng](./terms.md) - Điều khoản và quy định sử dụng ứng dụng
 - [Chính sách bảo mật](./privacy.md) - Chính sách bảo mật và quyền riêng tư
+- [Yêu cầu xóa dữ liệu](./delete-data.md) - Cách xóa dữ liệu app mà không xóa tài khoản
 

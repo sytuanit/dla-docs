@@ -43,13 +43,17 @@ async function listLocaleSourceFiles(locale) {
     .sort();
 }
 
-function getSelectionFilePath() {
-  const argPath = process.argv[2];
-  if (!argPath) return DEFAULT_SELECTION_FILE;
+function parseArgs() {
+  const args = process.argv.slice(2);
+  const ipadOnly = args.includes('--ipad');
+  const selectionArg = args.find((arg) => arg !== '--ipad');
+  const selectionFilePath = selectionArg
+    ? path.isAbsolute(selectionArg)
+      ? selectionArg
+      : path.resolve(process.cwd(), selectionArg)
+    : DEFAULT_SELECTION_FILE;
 
-  return path.isAbsolute(argPath)
-    ? argPath
-    : path.resolve(process.cwd(), argPath);
+  return { ipadOnly, selectionFilePath };
 }
 
 async function loadSelectedScreenshots(selectionFilePath) {
@@ -145,67 +149,111 @@ async function generateIpadOne(locale, sourceFile) {
   return outputPath;
 }
 
-async function main() {
-  try {
-    const selectionFilePath = getSelectionFilePath();
-    const selectedScreenshots = await loadSelectedScreenshots(selectionFilePath);
-    const locales = await listSourceFiles();
+async function processIpad(selectedScreenshots) {
+  const ipadLocales = await listIpadLocales();
+  if (ipadLocales.length === 0) {
+    console.error(`No locale folders found in: ${IPAD_INPUT_DIR}`);
+    console.error('Expected folders like: screenshots-ipad/vi, screenshots-ipad/en, ...');
+    process.exit(1);
+  }
 
-    if (locales.length === 0) {
-      console.error(`No locale folders found in: ${INPUT_DIR}`);
-      console.error('Expected folders like: screenshots/vi, screenshots/en, ...');
-      process.exit(1);
+  console.log(`Processing iPad screenshots from ${IPAD_INPUT_DIR} (${ipadLocales.length} locale(s))`);
+  await ensureDir(OUTPUT_DIR);
+  const results = [];
+
+  for (const locale of ipadLocales) {
+    const ipadOutputDir = path.join(OUTPUT_DIR, locale, IPAD_TARGET.folder);
+    await fs.rm(ipadOutputDir, { recursive: true, force: true });
+
+    const ipadFiles = await listIpadLocaleFiles(locale);
+    const ipadSelected = selectedScreenshots.filter((name) => ipadFiles.includes(name));
+    if (ipadSelected.length === 0) {
+      console.warn(
+        `Skipping iPad locale "${locale}" — no files matching selection (${selectedScreenshots.join(', ')}).`
+      );
+      continue;
     }
 
-    await fs.rm(OUTPUT_DIR, { recursive: true, force: true });
-    await ensureDir(OUTPUT_DIR);
+    for (const sourceFile of ipadSelected) {
+      const outputPath = await generateIpadOne(locale, sourceFile);
+      results.push(outputPath);
+    }
+  }
 
-    console.log(`Found ${locales.length} locale folder(s) in ${INPUT_DIR}`);
-    console.log(`Using selection file: ${selectionFilePath}`);
-    console.log(`Selected screenshots (${selectedScreenshots.length}): ${selectedScreenshots.join(', ')}`);
-    const results = [];
+  return results;
+}
 
-    for (const locale of locales) {
-      const sourceFiles = await listLocaleSourceFiles(locale);
-      if (sourceFiles.length === 0) {
-        console.warn(`Skipping locale "${locale}" because no screenshot-*.png files were found.`);
+async function processPhoneAndAndroid(selectedScreenshots) {
+  const locales = await listSourceFiles();
+
+  if (locales.length === 0) {
+    console.error(`No locale folders found in: ${INPUT_DIR}`);
+    console.error('Expected folders like: screenshots/vi, screenshots/en, ...');
+    process.exit(1);
+  }
+
+  await fs.rm(OUTPUT_DIR, { recursive: true, force: true });
+  await ensureDir(OUTPUT_DIR);
+
+  console.log(`Found ${locales.length} locale folder(s) in ${INPUT_DIR}`);
+  const results = [];
+
+  for (const locale of locales) {
+    const sourceFiles = await listLocaleSourceFiles(locale);
+    if (sourceFiles.length === 0) {
+      console.warn(`Skipping locale "${locale}" because no screenshot-*.png files were found.`);
+      continue;
+    }
+
+    const sourceFileSet = new Set(sourceFiles);
+    const missingFiles = selectedScreenshots.filter((fileName) => !sourceFileSet.has(fileName));
+    if (missingFiles.length > 0) {
+      throw new Error(
+        `Locale "${locale}" is missing selected screenshots: ${missingFiles.join(', ')}`
+      );
+    }
+
+    for (const sourceFile of selectedScreenshots) {
+      for (const target of TARGETS) {
+        const outputPath = await generateOne(locale, sourceFile, target);
+        results.push(outputPath);
+      }
+    }
+  }
+
+  const ipadLocales = await listIpadLocales();
+  if (ipadLocales.length > 0) {
+    console.log(`\nProcessing iPad screenshots from ${IPAD_INPUT_DIR} (${ipadLocales.length} locale(s))`);
+    for (const locale of ipadLocales) {
+      const ipadFiles = await listIpadLocaleFiles(locale);
+      const ipadSelected = ipadFiles.filter((name) => selectedScreenshots.includes(name));
+      if (ipadSelected.length === 0) {
+        console.warn(
+          `Skipping iPad locale "${locale}" — no files matching selection (${selectedScreenshots.join(', ')}).`
+        );
         continue;
       }
-
-      const sourceFileSet = new Set(sourceFiles);
-      const missingFiles = selectedScreenshots.filter((fileName) => !sourceFileSet.has(fileName));
-      if (missingFiles.length > 0) {
-        throw new Error(
-          `Locale "${locale}" is missing selected screenshots: ${missingFiles.join(', ')}`
-        );
-      }
-
-      for (const sourceFile of selectedScreenshots) {
-        for (const target of TARGETS) {
-          const outputPath = await generateOne(locale, sourceFile, target);
-          results.push(outputPath);
-        }
+      for (const sourceFile of ipadSelected) {
+        const outputPath = await generateIpadOne(locale, sourceFile);
+        results.push(outputPath);
       }
     }
+  }
 
-    const ipadLocales = await listIpadLocales();
-    if (ipadLocales.length > 0) {
-      console.log(`\nProcessing iPad screenshots from ${IPAD_INPUT_DIR} (${ipadLocales.length} locale(s))`);
-      for (const locale of ipadLocales) {
-        const ipadFiles = await listIpadLocaleFiles(locale);
-        const ipadSelected = ipadFiles.filter((name) => selectedScreenshots.includes(name));
-        if (ipadSelected.length === 0) {
-          console.warn(
-            `Skipping iPad locale "${locale}" — no files matching selection (${selectedScreenshots.join(', ')}).`
-          );
-          continue;
-        }
-        for (const sourceFile of ipadSelected) {
-          const outputPath = await generateIpadOne(locale, sourceFile);
-          results.push(outputPath);
-        }
-      }
-    }
+  return results;
+}
+
+async function main() {
+  try {
+    const { ipadOnly, selectionFilePath } = parseArgs();
+    const selectedScreenshots = await loadSelectedScreenshots(selectionFilePath);
+
+    console.log(`Using selection file: ${selectionFilePath}`);
+    console.log(`Selected screenshots (${selectedScreenshots.length}): ${selectedScreenshots.join(', ')}`);
+
+    const results = ipadOnly
+      ? await processIpad(selectedScreenshots)
+      : await processPhoneAndAndroid(selectedScreenshots);
 
     if (results.length === 0) {
       console.error('No output generated because all locale folders were empty.');

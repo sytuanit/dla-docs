@@ -1,12 +1,13 @@
-"""Compose App Store–style frames (1242×2688): gradient + slogan + device; writes screenshot-{n}.png.
+"""Compose App Store–style frames: gradient + slogan + device; writes screenshot-{n}.png.
 
-Style: gradient background, dark green slogan; device: iOS (iPhone bezel + Dynamic Island) vs Android (legacy frame).
+Phone: 1242×2688 (screenshots/, screenshots-android/). iPad: 2048×2732 (screenshots-ipad/).
+Style: gradient background, dark green slogan; device: iOS (iPhone bezel + Dynamic Island) vs Android (legacy frame) vs iPad (tablet frame).
 Copy: screenshot-14-marketing.json — 11 = sub[0], 12 = sub[1], 13 or 15 = headline;
       headline is a string (single line) or [above screenshot, below screenshot] array;
       promo 15 uses [0] above the phone and [1] below the screenshot;
       20 = sub[0], 21 = sub[1].
 Input: screenshot-{n}-capture.png (raw device shot).
-Output: screenshot-{n}.png — iOS → dla-docs/screenshots/, Android → dla-docs/screenshots-android/ (same layout).
+Output: screenshot-{n}.png — iOS → dla-docs/screenshots/, Android → dla-docs/screenshots-android/, iPad → dla-docs/screenshots-ipad/.
 Promo 15: headline[0] above the phone, headline[1] below the screenshot; phone on the right,
   wife/husband avatars stacked on the left; QR hub in the middle with dashed links
   (phone ↔ hub horizontal, hub ↔ avatars curved); defaults: scripts/assets/promo-15-wife.png,
@@ -17,6 +18,8 @@ Usage:
   python generate-promo-screenshots.py
   python generate-promo-screenshots.py --locale en --platform ios
   python generate-promo-screenshots.py --platform android
+  python generate-promo-screenshots.py --ipad
+  python generate-promo-screenshots.py --ipad --locale en --only 15 20 21
   python generate-promo-screenshots.py --only 11 13 20 21
   python generate-promo-screenshots.py --all-locales --only 13 20 21
   python generate-promo-screenshots.py --all-locales --only 15 20 21
@@ -27,6 +30,7 @@ import argparse
 import importlib.util
 import json
 import math
+from dataclasses import dataclass
 from pathlib import Path
 
 from PIL import Image, ImageDraw, ImageEnhance, ImageFont
@@ -35,6 +39,7 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 ROOT = SCRIPT_DIR.parent
 SCREENSHOTS_DIR = ROOT / "screenshots"
 SCREENSHOTS_ANDROID_DIR = ROOT / "screenshots-android"
+SCREENSHOTS_IPAD_DIR = ROOT / "screenshots-ipad"
 MARKETING_PATH = SCRIPT_DIR / "screenshot-14-marketing.json"
 PROMO_15_ASSETS_DIR = SCRIPT_DIR / "assets"
 PROMO_15_WIFE_AVATAR = PROMO_15_ASSETS_DIR / "promo-15-wife.png"
@@ -104,14 +109,126 @@ PROMO_15_HEADLINE_TOP_FONT_MIN = max(50, int(W_CANVAS * 0.054))
 PROMO_15_HEADLINE_TOP_LINE_GAP = 10
 
 
+@dataclass(frozen=True)
+class PromoLayout:
+    """Canvas + layout constants for phone (1242×2688) or iPad (2048×2732)."""
+
+    w_canvas: int
+    h_canvas: int
+    device_h_over_w: float
+    phone_width_frac: float
+    promo_15_phone_width_frac: float
+
+    def scale_x(self, value: int) -> int:
+        return int(round(value * self.w_canvas / W_CANVAS))
+
+    def scale_y(self, value: int) -> int:
+        return int(round(value * self.h_canvas / H_CANVAS))
+
+    @property
+    def text_margin_x(self) -> int:
+        return self.scale_x(TEXT_MARGIN_X)
+
+    @property
+    def text_top(self) -> int:
+        return self.scale_y(TEXT_TOP)
+
+    @property
+    def text_line_gap(self) -> int:
+        return self.scale_y(TEXT_LINE_GAP)
+
+    @property
+    def text_block_tail(self) -> int:
+        return self.scale_y(TEXT_BLOCK_TAIL)
+
+    @property
+    def phone_gap_below_text(self) -> int:
+        return self.scale_y(PHONE_GAP_BELOW_TEXT)
+
+    @property
+    def phone_top_y(self) -> int:
+        return self.scale_y(PHONE_TOP_Y)
+
+    @property
+    def canvas_bottom_pad(self) -> int:
+        return self.scale_y(CANVAS_BOTTOM_PAD)
+
+    @property
+    def screenshot_promo_shot_offset_y(self) -> int:
+        return self.scale_y(SCREENSHOT_PROMO_SHOT_OFFSET_Y)
+
+    @property
+    def promo_headline_font_start(self) -> int:
+        return max(62, int(self.w_canvas * 0.069))
+
+    @property
+    def promo_headline_font_min(self) -> int:
+        return max(40, int(self.w_canvas * 0.046))
+
+    @property
+    def promo_15_headline_top_font_start(self) -> int:
+        return max(80, int(self.w_canvas * 0.086))
+
+    @property
+    def promo_15_headline_top_font_min(self) -> int:
+        return max(50, int(self.w_canvas * 0.054))
+
+
+PHONE_LAYOUT = PromoLayout(
+    w_canvas=W_CANVAS,
+    h_canvas=H_CANVAS,
+    device_h_over_w=DEVICE_H_OVER_W,
+    phone_width_frac=PHONE_WIDTH_FRAC,
+    promo_15_phone_width_frac=PROMO_15_PHONE_WIDTH_FRAC,
+)
+
+IPAD_LAYOUT = PromoLayout(
+    w_canvas=2048,
+    h_canvas=2732,
+    device_h_over_w=1.44,
+    phone_width_frac=0.90,
+    promo_15_phone_width_frac=0.50,
+)
+
+COMPACT_PROMO_INDICES = (15, 20, 21)
+
+
+def promo_headline_font_sizes(
+    layout: PromoLayout,
+    screenshot_index: int,
+    *,
+    top_headline: bool = False,
+) -> tuple[int, int]:
+    """Smaller headline bounds for promo 15/20/21 (especially on iPad)."""
+    if top_headline:
+        start = layout.promo_15_headline_top_font_start
+        minimum = layout.promo_15_headline_top_font_min
+    else:
+        start = layout.promo_headline_font_start
+        minimum = layout.promo_headline_font_min
+
+    if screenshot_index not in COMPACT_PROMO_INDICES:
+        return start, minimum
+
+    if layout.w_canvas > W_CANVAS:
+        scale = 0.82 if top_headline else 0.82
+    else:
+        scale = 0.82
+
+    start = max(int(minimum * scale), int(start * scale))
+    minimum = max(32, int(minimum * scale))
+    return start, minimum
+
+
 def phone_inner_screen_dimensions(
     outer_w: int,
     *,
+    layout: PromoLayout,
     content_offset_y: int = 0,
 ) -> tuple[int, int]:
     """Inner width `iw` and `ih_avail` after vertical promo inset — must match compose_phone_device."""
     ow = outer_w
-    oh = int(ow * DEVICE_H_OVER_W)
+    oh = int(ow * layout.device_h_over_w)
     b = max(14, int(ow * BEZEL_FRAC))
     iw, ih = ow - 2 * b, oh - 2 * b
     offset_y = int(content_offset_y) if content_offset_y > 0 else 0
@@ -201,13 +318,16 @@ def slogan_text_bottom_y(
     lines: list[str],
     font: ImageFont.FreeTypeFont,
     top_y: int,
+    *,
+    line_gap: int = TEXT_LINE_GAP,
+    text_block_tail: int = TEXT_BLOCK_TAIL,
 ) -> int:
     """Bottom Y of slogan block (matches compose_promo drawing loop + TEXT_BLOCK_TAIL)."""
     y = top_y
     for line in lines:
         bb = draw.textbbox((0, 0), line, font=font)
-        y += bb[3] - bb[1] + TEXT_LINE_GAP
-    return y + TEXT_BLOCK_TAIL
+        y += bb[3] - bb[1] + line_gap
+    return y + text_block_tail
 
 
 def fit_slogan_for_fixed_phone(
@@ -220,6 +340,8 @@ def fit_slogan_for_fixed_phone(
     locale: str,
     start: int,
     minimum: int,
+    line_gap: int = TEXT_LINE_GAP,
+    text_block_tail: int = TEXT_BLOCK_TAIL,
 ) -> tuple[ImageFont.FreeTypeFont, list[str]]:
     for sz in range(start, minimum - 1, -2):
         fh = find_font(sz, bold=True, locale=locale)
@@ -232,7 +354,9 @@ def fit_slogan_for_fixed_phone(
                 break
         if not ok_w:
             continue
-        if slogan_text_bottom_y(draw, wrapped, fh, top_y) <= max_text_bottom:
+        if slogan_text_bottom_y(
+            draw, wrapped, fh, top_y, line_gap=line_gap, text_block_tail=text_block_tail
+        ) <= max_text_bottom:
             return fh, wrapped
     fh = find_font(minimum, bold=True, locale=locale)
     wrapped = wrap_paragraph(draw, slogan, fh, max_w)
@@ -261,6 +385,7 @@ def compose_phone_device(
     shot: Image.Image,
     outer_w: int,
     *,
+    layout: PromoLayout,
     inner_letterbox: tuple[int, int, int, int] = (12, 12, 14, 255),
     inner_screen_title: str | None = None,
     inner_screen_footer: str | None = None,
@@ -269,14 +394,20 @@ def compose_phone_device(
     content_offset_y: int = 0,
     content_inset_lr_px: int = 0,
 ) -> Image.Image:
-    """Phone body + inner screen (`contain` shot). Android: current look. iOS: graphite + Dynamic Island (no status icons)."""
+    """Phone/tablet body + inner screen (`contain` shot). Android: current look. iOS: graphite + Dynamic Island. iPad: tablet frame."""
     shot = shot.convert("RGBA")
-    is_ios = device_style.lower() == "ios"
+    style = device_style.lower()
+    is_ipad = style == "ipad"
+    is_ios = style == "ios" or is_ipad
     ow = outer_w
-    oh = int(ow * DEVICE_H_OVER_W)
+    oh = int(ow * layout.device_h_over_w)
     b = max(14, int(ow * BEZEL_FRAC))
     r_out = max(40, int(ow * 0.092)) if is_ios else max(36, int(ow * R_OUTER_FRAC))
+    if is_ipad:
+        r_out = max(48, int(ow * 0.055))
     r_in = max(26, int(ow * R_INNER_FRAC))
+    if is_ipad:
+        r_in = max(30, int(ow * 0.045))
     iw, ih = ow - 2 * b, oh - 2 * b
     ix, iy = b, b
 
@@ -385,13 +516,14 @@ def compose_phone_device(
     clipped.paste(screen_layer, (0, 0), inner_mask)
     dev = Image.alpha_composite(dev, clipped)
 
-    island_fill = (20, 20, 22, 255) if is_ios else (10, 10, 12, 255)
-    top_draw = ImageDraw.Draw(dev)
-    top_draw.rounded_rectangle(
-        (isl_x, isl_y, isl_x + isl_w, isl_y + isl_h),
-        radius=isl_h // 2,
-        fill=island_fill,
-    )
+    if not is_ipad:
+        island_fill = (20, 20, 22, 255) if is_ios else (10, 10, 12, 255)
+        top_draw = ImageDraw.Draw(dev)
+        top_draw.rounded_rectangle(
+            (isl_x, isl_y, isl_x + isl_w, isl_y + isl_h),
+            radius=isl_h // 2,
+            fill=island_fill,
+        )
     return dev
 
 
@@ -598,41 +730,45 @@ def resolve_promo_15_avatar_path(
     return None
 
 
-def promo_15_avatar_outer_size() -> int:
-    return PROMO_15_AVATAR_DIAMETER + 2 * PROMO_15_AVATAR_WHITE_BORDER
+def promo_15_avatar_outer_size(layout: PromoLayout) -> int:
+    return layout.scale_x(PROMO_15_AVATAR_DIAMETER) + 2 * layout.scale_x(PROMO_15_AVATAR_WHITE_BORDER)
 
 
-def promo_15_content_block_height(phone_h: int, avatar_outer: int) -> int:
+def promo_15_content_block_height(phone_h: int, avatar_outer: int, layout: PromoLayout) -> int:
     hub_size = avatar_outer
-    span = avatar_outer + PROMO_15_AVATAR_V_GAP + hub_size + PROMO_15_AVATAR_V_GAP + avatar_outer
+    avatar_v_gap = layout.scale_y(PROMO_15_AVATAR_V_GAP)
+    span = avatar_outer + avatar_v_gap + hub_size + avatar_v_gap + avatar_outer
     return max(phone_h, span)
 
 
-def promo_15_min_center_height(gap: int, phone_width_frac: float) -> int:
-    avatar_outer = promo_15_avatar_outer_size()
-    outer_w = max(PROMO_15_PHONE_MIN_OUTER_W, int(W_CANVAS * phone_width_frac))
-    phone_h = int(outer_w * DEVICE_H_OVER_W)
-    return promo_15_content_block_height(phone_h, avatar_outer) + 2 * gap
+def promo_15_min_center_height(layout: PromoLayout, gap: int, phone_width_frac: float) -> int:
+    avatar_outer = promo_15_avatar_outer_size(layout)
+    min_outer_w = layout.scale_x(PROMO_15_PHONE_MIN_OUTER_W)
+    outer_w = max(min_outer_w, int(layout.w_canvas * phone_width_frac))
+    phone_h = int(outer_w * layout.device_h_over_w)
+    return promo_15_content_block_height(phone_h, avatar_outer, layout) + 2 * gap
 
 
 def promo_15_phone_layout(
     top_end: int,
     bottom_start: int,
     *,
+    layout: PromoLayout,
     phone_width_frac: float,
     avatar_outer: int,
 ) -> tuple[int, int]:
     """Center phone + avatars vertically between headline blocks."""
     available = bottom_start - top_end
-    outer_w_target = int(W_CANVAS * phone_width_frac)
-    phone_h_if = int(outer_w_target * DEVICE_H_OVER_W)
+    min_outer_w = layout.scale_x(PROMO_15_PHONE_MIN_OUTER_W)
+    outer_w_target = int(layout.w_canvas * phone_width_frac)
+    phone_h_if = int(outer_w_target * layout.device_h_over_w)
     if phone_h_if > available:
-        outer_w = max(PROMO_15_PHONE_MIN_OUTER_W, int(available / DEVICE_H_OVER_W))
+        outer_w = max(min_outer_w, int(available / layout.device_h_over_w))
     else:
         outer_w = outer_w_target
-    ph = int(outer_w * DEVICE_H_OVER_W)
+    ph = int(outer_w * layout.device_h_over_w)
 
-    block_h = promo_15_content_block_height(ph, avatar_outer)
+    block_h = promo_15_content_block_height(ph, avatar_outer, layout)
     block_top = top_end + max(0, (available - block_h) // 2)
     phone_center_y = block_top + block_h / 2
     y_phone = int(phone_center_y - ph / 2)
@@ -739,6 +875,7 @@ def promo_15_l_path_label_anchor(
     end: tuple[float, float],
     *,
     radius: float,
+    label_gap_right: int,
 ) -> tuple[float, float]:
     """Right of the vertical leg on a rounded L connector (mid-height)."""
     sx, sy = start
@@ -747,7 +884,7 @@ def promo_15_l_path_label_anchor(
     r = max(6.0, r)
     vert_start_y = sy + r if ey >= sy else sy - r
     mid_y = (vert_start_y + ey) / 2
-    return (ex + PROMO_15_LINK_LABEL_GAP_RIGHT, mid_y)
+    return (ex + label_gap_right, mid_y)
 
 
 def draw_promo_15_link_label(
@@ -756,8 +893,9 @@ def draw_promo_15_link_label(
     anchor: tuple[float, float],
     *,
     locale: str,
+    font_size: int,
 ) -> None:
-    font = find_font(PROMO_15_LINK_LABEL_FONT, bold=True, locale=locale)
+    font = find_font(font_size, bold=True, locale=locale)
     bb = draw.textbbox((0, 0), text, font=font)
     tw, th = bb[2] - bb[0], bb[3] - bb[1]
     ax, ay = anchor
@@ -779,6 +917,7 @@ def load_promo_15_qr_hub(size: int) -> Image.Image:
 
 def promo_15_hub_layout(
     *,
+    layout: PromoLayout,
     avatar_cx: float,
     avatar_radius: float,
     hub_cy: float,
@@ -786,7 +925,8 @@ def promo_15_hub_layout(
 ) -> tuple[int, int, int, int]:
     """Return hub_left, hub_top, hub_size, hub_cy."""
     avatar_right = avatar_cx + avatar_radius
-    hub_left = int(avatar_right + PROMO_15_HUB_AVATAR_GAP - PROMO_15_HUB_SHIFT_LEFT)
+    hub_shift_left = layout.scale_x(PROMO_15_HUB_SHIFT_LEFT)
+    hub_left = int(avatar_right + PROMO_15_HUB_AVATAR_GAP - hub_shift_left)
     hub_left = max(int(avatar_right - 12), hub_left)
 
     hub_cy_i = int(hub_cy)
@@ -797,6 +937,7 @@ def promo_15_hub_layout(
 def draw_promo_15_connectors(
     layer: Image.Image,
     *,
+    layout: PromoLayout,
     avatar_centers: list[tuple[float, float]],
     avatar_radius: float,
     phone_left: int,
@@ -810,8 +951,19 @@ def draw_promo_15_connectors(
     if len(avatar_centers) != 2:
         return
 
+    connector_radius = layout.scale_x(PROMO_15_CONNECTOR_CORNER_RADIUS)
+    connector_width = layout.scale_x(PROMO_15_CONNECTOR_WIDTH)
+    connector_dash = float(layout.scale_x(PROMO_15_CONNECTOR_DASH))
+    connector_gap = float(layout.scale_x(PROMO_15_CONNECTOR_GAP))
+    label_gap_right = layout.scale_x(PROMO_15_LINK_LABEL_GAP_RIGHT)
+    label_font_size = layout.scale_x(PROMO_15_LINK_LABEL_FONT)
+    qr_touch_overlap = layout.scale_x(PROMO_15_QR_TOUCH_OVERLAP)
+    qr_phone_edge_offset = layout.scale_x(PROMO_15_QR_PHONE_EDGE_OFFSET)
+    phone_link_end_gap = layout.scale_x(PROMO_15_PHONE_LINK_END_GAP)
+
     avatar_cx = avatar_centers[0][0]
     hub_left, hub_top, hub_size, hub_cy_i = promo_15_hub_layout(
+        layout=layout,
         avatar_cx=avatar_cx,
         avatar_radius=avatar_radius,
         hub_cy=hub_cy,
@@ -824,7 +976,7 @@ def draw_promo_15_connectors(
     hub_cx = float(hub_left + hub_size / 2)
     hub_bottom = float(hub_top + hub_size)
     hub_right = hub_left + hub_size
-    touch = PROMO_15_QR_TOUCH_OVERLAP
+    touch = qr_touch_overlap
     avatar_qr_targets = [
         (hub_cx, float(hub_top + touch)),
         (hub_cx, hub_bottom - touch),
@@ -841,28 +993,30 @@ def draw_promo_15_connectors(
         end = (qr_x, qr_y)
         draw_dashed_polyline(
             draw,
-            sample_rounded_l_path(start, end, radius=PROMO_15_CONNECTOR_CORNER_RADIUS),
+            sample_rounded_l_path(start, end, radius=connector_radius),
             fill=PROMO_15_CONNECTOR_COLOR,
-            width=PROMO_15_CONNECTOR_WIDTH,
-            dash_len=PROMO_15_CONNECTOR_DASH,
-            gap_len=PROMO_15_CONNECTOR_GAP,
+            width=connector_width,
+            dash_len=connector_dash,
+            gap_len=connector_gap,
         )
         label_anchor = promo_15_l_path_label_anchor(
             start,
             end,
-            radius=PROMO_15_CONNECTOR_CORNER_RADIUS,
+            radius=connector_radius,
+            label_gap_right=label_gap_right,
         )
         draw_promo_15_link_label(
             draw,
             label,
             label_anchor,
             locale=locale,
+            font_size=label_font_size,
         )
 
-    phone_link_end = float(phone_left - PROMO_15_PHONE_LINK_END_GAP)
+    phone_link_end = float(phone_left - phone_link_end_gap)
     qr_phone_starts = [
-        (float(hub_right - touch), float(hub_cy_i - PROMO_15_QR_PHONE_EDGE_OFFSET)),
-        (float(hub_right - touch), float(hub_cy_i + PROMO_15_QR_PHONE_EDGE_OFFSET)),
+        (float(hub_right - touch), float(hub_cy_i - qr_phone_edge_offset)),
+        (float(hub_right - touch), float(hub_cy_i + qr_phone_edge_offset)),
     ]
     for start_x, start_y in qr_phone_starts:
         draw_dashed_polyline(
@@ -872,9 +1026,9 @@ def draw_promo_15_connectors(
                 (phone_link_end, start_y),
             ],
             fill=PROMO_15_CONNECTOR_COLOR,
-            width=PROMO_15_CONNECTOR_WIDTH,
-            dash_len=PROMO_15_CONNECTOR_DASH,
-            gap_len=PROMO_15_CONNECTOR_GAP,
+            width=connector_width,
+            dash_len=connector_dash,
+            gap_len=connector_gap,
         )
 
 
@@ -946,6 +1100,7 @@ def fit_promo_15_headline_bottom(
     headline_bottom: str,
     max_w: int,
     *,
+    h_canvas: int,
     locale: str,
     edge_margin: int,
     bottom_lift: int,
@@ -953,7 +1108,7 @@ def fit_promo_15_headline_bottom(
     minimum: int,
     bottom_min_top: int | None = None,
 ) -> tuple[ImageFont.FreeTypeFont, list[str], int]:
-    bottom_anchor = H_CANVAS - edge_margin - bottom_lift
+    bottom_anchor = h_canvas - edge_margin - bottom_lift
 
     for sz in range(start, minimum - 1, -2):
         fh = find_font(sz, bold=True, locale=locale)
@@ -978,6 +1133,7 @@ def compose_promo_15(
     headline_bottom: str,
     out_path: Path,
     *,
+    layout: PromoLayout,
     locale: str,
     device_style: str,
     app_name: str | None = None,
@@ -988,31 +1144,45 @@ def compose_promo_15(
     husband_link_label: str,
 ) -> None:
     """headline[0] above phone; avatars left; phone right; headline[1] below screenshot."""
-    max_text_w = W_CANVAS - 2 * TEXT_MARGIN_X
-    base = draw_cream_background(W_CANVAS, H_CANVAS).convert("RGBA")
+    headline_edge_margin = layout.text_top
+    headline_bottom_lift = layout.scale_y(PROMO_15_HEADLINE_BOTTOM_LIFT)
+    headline_top_line_gap = layout.scale_y(PROMO_15_HEADLINE_TOP_LINE_GAP)
+    avatar_diameter = layout.scale_x(PROMO_15_AVATAR_DIAMETER)
+    avatar_left = layout.scale_x(PROMO_15_AVATAR_LEFT)
+    avatar_v_gap = layout.scale_y(PROMO_15_AVATAR_V_GAP)
+    phone_right_margin = layout.scale_x(PROMO_15_PHONE_RIGHT_MARGIN)
+    phone_headline_gap = layout.scale_y(PROMO_15_PHONE_HEADLINE_GAP)
+
+    max_text_w = layout.w_canvas - 2 * layout.text_margin_x
+    base = draw_cream_background(layout.w_canvas, layout.h_canvas).convert("RGBA")
     draw = ImageDraw.Draw(base)
+
+    bottom_font_start, bottom_font_min = promo_headline_font_sizes(layout, 15, top_headline=False)
+    top_font_start, top_font_min = promo_headline_font_sizes(layout, 15, top_headline=True)
 
     fh_bottom, wrapped_bottom, bottom_y = fit_promo_15_headline_bottom(
         draw,
         headline_bottom,
         max_text_w,
+        h_canvas=layout.h_canvas,
         locale=locale,
-        edge_margin=PROMO_15_HEADLINE_EDGE_MARGIN,
-        bottom_lift=PROMO_15_HEADLINE_BOTTOM_LIFT,
-        start=PROMO_HEADLINE_FONT_START,
-        minimum=PROMO_HEADLINE_FONT_MIN,
+        edge_margin=headline_edge_margin,
+        bottom_lift=headline_bottom_lift,
+        start=bottom_font_start,
+        minimum=bottom_font_min,
     )
 
     min_center = promo_15_min_center_height(
-        PROMO_15_PHONE_HEADLINE_GAP,
-        PROMO_15_PHONE_WIDTH_FRAC,
+        layout,
+        phone_headline_gap,
+        layout.promo_15_phone_width_frac,
     )
     top_max_bottom = bottom_y - min_center
 
     wrapped_top: list[str] | None = None
     fh_top: ImageFont.FreeTypeFont | None = None
     top_y: int | None = None
-    top_end = PROMO_15_HEADLINE_EDGE_MARGIN
+    top_end = headline_edge_margin
 
     if headline_top:
         fh_top, wrapped_top, top_y = fit_promo_15_headline_top(
@@ -1020,23 +1190,24 @@ def compose_promo_15(
             headline_top,
             max_text_w,
             locale=locale,
-            edge_margin=PROMO_15_HEADLINE_EDGE_MARGIN,
-            top_max_bottom=max(top_max_bottom, PROMO_15_HEADLINE_EDGE_MARGIN + 80),
-            start=PROMO_15_HEADLINE_TOP_FONT_START,
-            minimum=PROMO_15_HEADLINE_TOP_FONT_MIN,
+            edge_margin=headline_edge_margin,
+            top_max_bottom=max(top_max_bottom, headline_edge_margin + layout.scale_y(80)),
+            start=top_font_start,
+            minimum=top_font_min,
         )
         top_end = top_y + headline_block_visual_height(
             draw,
             wrapped_top,
             fh_top,
-            line_gap=PROMO_15_HEADLINE_TOP_LINE_GAP,
+            line_gap=headline_top_line_gap,
         )
 
     y_phone, outer_w = promo_15_phone_layout(
         top_end,
         bottom_y,
-        phone_width_frac=PROMO_15_PHONE_WIDTH_FRAC,
-        avatar_outer=promo_15_avatar_outer_size(),
+        layout=layout,
+        phone_width_frac=layout.promo_15_phone_width_frac,
+        avatar_outer=promo_15_avatar_outer_size(layout),
     )
 
     shot = Image.open(screenshot_path).convert("RGBA")
@@ -1045,6 +1216,7 @@ def compose_promo_15(
     phone = compose_phone_device(
         shot,
         outer_w,
+        layout=layout,
         inner_letterbox=(255, 255, 255, 255),
         inner_screen_title=title_in_phone,
         inner_screen_footer=footer_in_phone,
@@ -1052,7 +1224,7 @@ def compose_promo_15(
         device_style=device_style,
     )
     pw, ph = phone.size
-    x_phone = W_CANVAS - pw - PROMO_15_PHONE_RIGHT_MARGIN
+    x_phone = layout.w_canvas - pw - phone_right_margin
 
     if headline_top and wrapped_top is not None and fh_top is not None and top_y is not None:
         draw_wrapped_headline(
@@ -1060,24 +1232,26 @@ def compose_promo_15(
             wrapped_top,
             fh_top,
             top_y,
+            canvas_width=layout.w_canvas,
             fill=(*TEXT_GREEN, 255),
-            line_gap=PROMO_15_HEADLINE_TOP_LINE_GAP,
+            line_gap=headline_top_line_gap,
         )
     draw_wrapped_headline(
         draw,
         wrapped_bottom,
         fh_bottom,
         bottom_y,
+        canvas_width=layout.w_canvas,
         fill=(*TEXT_GREEN, 255),
     )
 
     wife_avatar = create_promo_15_avatar(
-        PROMO_15_AVATAR_DIAMETER,
+        avatar_diameter,
         "wife",
         wife_avatar_path,
     )
     husband_avatar = create_promo_15_avatar(
-        PROMO_15_AVATAR_DIAMETER,
+        avatar_diameter,
         "husband",
         husband_avatar_path,
     )
@@ -1085,11 +1259,11 @@ def compose_promo_15(
     avatar_radius = avatar_outer / 2
     hub_size = avatar_outer
     qr_cy = y_phone + ph / 2
-    wife_cy = qr_cy - hub_size / 2 - PROMO_15_AVATAR_V_GAP - avatar_radius
-    husband_cy = qr_cy + hub_size / 2 + PROMO_15_AVATAR_V_GAP + avatar_radius
-    avatar_cx = PROMO_15_AVATAR_LEFT + avatar_radius
+    wife_cy = qr_cy - hub_size / 2 - avatar_v_gap - avatar_radius
+    husband_cy = qr_cy + hub_size / 2 + avatar_v_gap + avatar_radius
+    avatar_cx = avatar_left + avatar_radius
 
-    layer = Image.new("RGBA", (W_CANVAS, H_CANVAS), (0, 0, 0, 0))
+    layer = Image.new("RGBA", (layout.w_canvas, layout.h_canvas), (0, 0, 0, 0))
     layer.paste(phone, (x_phone, y_phone), phone)
 
     wife_x = int(avatar_cx - avatar_radius)
@@ -1101,6 +1275,7 @@ def compose_promo_15(
 
     draw_promo_15_connectors(
         layer,
+        layout=layout,
         avatar_centers=[(avatar_cx, wife_cy), (avatar_cx, husband_cy)],
         avatar_radius=avatar_radius,
         phone_left=x_phone,
@@ -1123,55 +1298,58 @@ def compose_promo(
     slogan: str,
     out_path: Path,
     *,
+    layout: PromoLayout,
     locale: str,
     screenshot_index: int,
     device_style: str,
     app_name: str | None = None,
     inner_screen_footer: str | None = None,
 ) -> None:
-    max_text_w = W_CANVAS - 2 * TEXT_MARGIN_X
-    base = draw_cream_background(W_CANVAS, H_CANVAS).convert("RGBA")
+    max_text_w = layout.w_canvas - 2 * layout.text_margin_x
+    base = draw_cream_background(layout.w_canvas, layout.h_canvas).convert("RGBA")
     draw = ImageDraw.Draw(base)
 
-    start_sz = max(62, int(W_CANVAS * 0.069))
-    min_sz = max(40, int(W_CANVAS * 0.046))
+    start_sz, min_sz = promo_headline_font_sizes(layout, screenshot_index, top_headline=False)
 
-    max_text_bottom = PHONE_TOP_Y - PHONE_GAP_BELOW_TEXT
+    max_text_bottom = layout.phone_top_y - layout.phone_gap_below_text
     fh, wrapped = fit_slogan_for_fixed_phone(
         draw,
         slogan,
         max_text_w,
         max_text_bottom,
-        TEXT_TOP,
+        layout.text_top,
         locale=locale,
         start=start_sz,
         minimum=min_sz,
+        line_gap=layout.text_line_gap,
+        text_block_tail=layout.text_block_tail,
     )
 
-    y = TEXT_TOP
+    y = layout.text_top
     fill = (*TEXT_GREEN, 255)
     for line in wrapped:
         bb = draw.textbbox((0, 0), line, font=fh)
         lw = bb[2] - bb[0]
-        x = (W_CANVAS - lw) // 2
+        x = (layout.w_canvas - lw) // 2
         draw.text((x, y), line, font=fh, fill=fill)
-        y += bb[3] - bb[1] + TEXT_LINE_GAP
+        y += bb[3] - bb[1] + layout.text_line_gap
 
-    y_phone = PHONE_TOP_Y
-    max_phone_h = max(120, H_CANVAS - y_phone - CANVAS_BOTTOM_PAD)
-    outer_w_target = int(W_CANVAS * PHONE_WIDTH_FRAC)
-    phone_h_if = int(outer_w_target * DEVICE_H_OVER_W)
+    y_phone = layout.phone_top_y
+    max_phone_h = max(120, layout.h_canvas - y_phone - layout.canvas_bottom_pad)
+    outer_w_target = int(layout.w_canvas * layout.phone_width_frac)
+    phone_h_if = int(outer_w_target * layout.device_h_over_w)
+    min_phone_outer_w = layout.scale_x(280)
     if phone_h_if > max_phone_h:
-        outer_w = max(280, int(max_phone_h / DEVICE_H_OVER_W))
+        outer_w = max(min_phone_outer_w, int(max_phone_h / layout.device_h_over_w))
     else:
         outer_w = outer_w_target
 
-    shot_offset_y = SCREENSHOT_PROMO_SHOT_OFFSET_Y if screenshot_index in (20, 21) else 0
+    shot_offset_y = layout.screenshot_promo_shot_offset_y if screenshot_index in (20, 21) else 0
 
     content_inset_lr_px = 0
     if screenshot_index == 21:
         iw_m, ih_avail_m = phone_inner_screen_dimensions(
-            outer_w, content_offset_y=shot_offset_y
+            outer_w, layout=layout, content_offset_y=shot_offset_y
         )
         cap20_path = screenshot_path.parent / "screenshot-20-capture.png"
         if cap20_path.is_file():
@@ -1190,10 +1368,18 @@ def compose_promo(
     else:
         inner_bg = (12, 12, 14, 255)
     title_in_phone = app_name.strip() if (is_13_style and app_name and app_name.strip()) else None
-    footer_in_phone = inner_screen_footer.strip() if (is_13_style and inner_screen_footer and inner_screen_footer.strip()) else None
+    footer_in_phone = (
+        inner_screen_footer.strip()
+        if (is_13_style and inner_screen_footer and inner_screen_footer.strip())
+        else None
+    )
+    if layout.w_canvas > W_CANVAS and screenshot_index == 20:
+        title_in_phone = None
+        footer_in_phone = None
     phone = compose_phone_device(
         shot,
         outer_w,
+        layout=layout,
         inner_letterbox=inner_bg,
         inner_screen_title=title_in_phone,
         inner_screen_footer=footer_in_phone,
@@ -1204,9 +1390,9 @@ def compose_promo(
     )
     pw = phone.size[0]
 
-    x_phone = (W_CANVAS - pw) // 2
+    x_phone = (layout.w_canvas - pw) // 2
 
-    layer = Image.new("RGBA", (W_CANVAS, H_CANVAS), (0, 0, 0, 0))
+    layer = Image.new("RGBA", (layout.w_canvas, layout.h_canvas), (0, 0, 0, 0))
     layer.paste(phone, (x_phone, y_phone), phone)
     base = Image.alpha_composite(base, layer)
 
@@ -1259,6 +1445,7 @@ def draw_wrapped_headline(
     font: ImageFont.FreeTypeFont,
     top_y: int,
     *,
+    canvas_width: int = W_CANVAS,
     fill: tuple[int, int, int, int],
     line_gap: int = TEXT_LINE_GAP,
 ) -> int:
@@ -1266,7 +1453,7 @@ def draw_wrapped_headline(
     for line in lines:
         bb = draw.textbbox((0, 0), line, font=font)
         lw = bb[2] - bb[0]
-        x = (W_CANVAS - lw) // 2
+        x = (canvas_width - lw) // 2
         draw.text((x, y), line, font=font, fill=fill)
         y += bb[3] - bb[1] + line_gap
     return y
@@ -1303,7 +1490,7 @@ def slogan_for_index(block: dict[str, object], index: int) -> str | None:
 
 def main() -> None:
     parser = argparse.ArgumentParser(
-        description="1242×2688 frames from screenshot-{n}-capture.png + marketing → screenshot-{n}.png."
+        description="App Store promo frames from screenshot-{n}-capture.png + marketing → screenshot-{n}.png."
     )
     parser.add_argument("--locale", default="vi", help="Locale key in JSON + folder under screenshots/")
     parser.add_argument(
@@ -1323,6 +1510,11 @@ def main() -> None:
         choices=("ios", "android", "both"),
         default="both",
         help="ios → screenshots/ + iPhone UI; android → screenshots-android/ + current frame; both (default).",
+    )
+    parser.add_argument(
+        "--ipad",
+        action="store_true",
+        help="Generate 2048×2732 iPad promos from screenshots-ipad/ (tablet frame, iOS only).",
     )
     parser.add_argument(
         "--promo-15-wife-avatar",
@@ -1352,15 +1544,28 @@ def main() -> None:
         locales = [loc]
 
     nums = args.only if args.only else [11, 12, 13]
-    platforms: tuple[str, ...]
-    if args.platform == "both":
-        platforms = ("ios", "android")
+
+    if args.ipad:
+        run_targets: list[tuple[str, PromoLayout, Path]] = [
+            ("ipad", IPAD_LAYOUT, SCREENSHOTS_IPAD_DIR),
+        ]
     else:
-        platforms = (args.platform,)
+        platforms: tuple[str, ...]
+        if args.platform == "both":
+            platforms = ("ios", "android")
+        else:
+            platforms = (args.platform,)
+        run_targets = [
+            (
+                plat,
+                PHONE_LAYOUT,
+                SCREENSHOTS_ANDROID_DIR if plat == "android" else SCREENSHOTS_DIR,
+            )
+            for plat in platforms
+        ]
 
     for loc in locales:
         block = marketing[loc]
-        locale_dir_src = SCREENSHOTS_DIR / loc
 
         for n in nums:
             capture_name = f"screenshot-{n}-capture.png"
@@ -1377,10 +1582,7 @@ def main() -> None:
                 if not slogan or not slogan.strip():
                     print(f"[{loc}] Skip {out_name}: no slogan mapped for index {n}")
                     continue
-            src = locale_dir_src / capture_name
-            if not src.is_file():
-                print(f"[{loc}] Skip {out_name}: missing source {src}")
-                continue
+
             raw_app = block.get("app_name")
             app = str(raw_app).strip() if raw_app else None
             inner_f = promo13_inner_footer(block) if n in (13, 15, 20) else None
@@ -1391,20 +1593,29 @@ def main() -> None:
                 block, "promo_15_husband_avatar", args.promo_15_husband_avatar, PROMO_15_HUSBAND_AVATAR
             )
             wife_link_label, husband_link_label = promo_15_link_labels(block, loc)
-            for plat in platforms:
-                out_root = SCREENSHOTS_ANDROID_DIR if plat == "android" else SCREENSHOTS_DIR
+
+            for device_style, layout, screenshots_root in run_targets:
+                locale_dir_src = screenshots_root / loc
+                src = locale_dir_src / capture_name
+                if not src.is_file():
+                    print(f"[{loc}] Skip {out_name} ({device_style}): missing source {src}")
+                    continue
+
+                out_root = screenshots_root
                 out_root.mkdir(parents=True, exist_ok=True)
                 out_dir = out_root / loc
                 out_dir.mkdir(parents=True, exist_ok=True)
                 out = out_dir / out_name
+
                 if n == 15:
                     compose_promo_15(
                         src,
                         headline_top,
                         headline_bottom,
                         out,
+                        layout=layout,
                         locale=loc,
-                        device_style=plat,
+                        device_style=device_style,
                         app_name=app,
                         inner_screen_footer=inner_f,
                         wife_avatar_path=wife_avatar,
@@ -1417,9 +1628,10 @@ def main() -> None:
                         src,
                         slogan.strip(),
                         out,
+                        layout=layout,
                         locale=loc,
                         screenshot_index=n,
-                        device_style=plat,
+                        device_style=device_style,
                         app_name=app,
                         inner_screen_footer=inner_f,
                     )

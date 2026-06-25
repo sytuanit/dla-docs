@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "screenshots:generate": "node scripts/generate-store-screenshots.js",
+    "screenshots:generate:ipad": "node scripts/generate-store-screenshots.js --ipad",
     "heic:to-jpg": "node scripts/heic-to-jpg.js"
   },
   "dependencies": {

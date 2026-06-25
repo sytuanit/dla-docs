@@ -1,6 +1,7 @@
 {
   "vi": {
     "app_name": "Trợ lý đời sống",
+    "slogan": "Quản lý cuộc sống nhẹ nhàng hơn",
     "phone_inner_footer": "Giúp cuộc sống của bạn dễ dàng hơn mỗi ngày",
     "headline": [
       "Chung một sổ, cả nhà cùng quản lý từ nhiều thiết bị",
@@ -16,6 +17,7 @@
   },
   "en": {
     "app_name": "Daily Life Assistant",
+    "slogan": "Manage your life more gently",
     "phone_inner_footer": "Make your life a little easier every day",
     "headline": [
       "One shared book, the whole family manages from multiple devices",
@@ -31,6 +33,7 @@
   },
   "de": {
     "app_name": "Täglicher Lebensassistent",
+    "slogan": "Ihr Leben entspannter verwalten",
     "phone_inner_footer": "Macht Ihren Alltag jeden Tag ein wenig leichter",
     "headline": [
       "Ein gemeinsames Buch, die ganze Familie verwaltet von mehreren Geräten",
@@ -46,6 +49,7 @@
   },
   "es": {
     "app_name": "Asistente de Vida Diaria",
+    "slogan": "Gestiona tu vida con más tranquilidad",
     "phone_inner_footer": "Haz tu día a día un poco más fácil cada día",
     "headline": [
       "Un libro compartido, toda la familia gestiona desde varios dispositivos",
@@ -61,6 +65,7 @@
   },
   "fr": {
     "app_name": "Assistant de Vie Quotidienne",
+    "slogan": "Gérez votre vie plus sereinement",
     "phone_inner_footer": "Simplifiez un peu plus votre quotidien, jour après jour",
     "headline": [
       "Un carnet partagé, toute la famille gère depuis plusieurs appareils",
@@ -76,6 +81,7 @@
   },
   "hi": {
     "app_name": "दैनिक जीवन सहायक",
+    "slogan": "जीवन को और हल्के से प्रबंधित करें",
     "phone_inner_footer": "आपके जीवन को हर दिन थोड़ा आसान बनाएं",
     "headline": [
       "एक साझा खाता, पूरा परिवार कई डिवाइस से मिलकर प्रबंधित करता है",
@@ -91,6 +97,7 @@
   },
   "id": {
     "app_name": "Asisten Kehidupan Sehari-hari",
+    "slogan": "Kelola hidup dengan lebih ringan",
     "phone_inner_footer": "Membantu hidup Anda lebih mudah setiap hari",
     "headline": [
       "Satu buku bersama, seluruh keluarga kelola dari banyak perangkat",
@@ -106,6 +113,7 @@
   },
   "it": {
     "app_name": "Assistente Vita Quotidiana",
+    "slogan": "Gestisci la vita con più leggerezza",
     "phone_inner_footer": "Rendi la tua vita un po' più semplice ogni giorno",
     "headline": [
       "Un registro condiviso, tutta la famiglia gestisce da più dispositivi",
@@ -121,6 +129,7 @@
   },
   "ja": {
     "app_name": "日常生活アシスタント",
+    "slogan": "暮らしをもっと軽やかに管理",
     "phone_inner_footer": "毎日、暮らしをもう少しラクに",
     "headline": [
       "共有の家計簿で、家族全員が複数の端末から一緒に管理",
@@ -136,6 +145,7 @@
   },
   "ko": {
     "app_name": "일상 생활 어시스턴트",
+    "slogan": "생활을 더 가볍게 관리하세요",
     "phone_inner_footer": "매일매일 삶을 조금 더 편하게",
     "headline": [
       "하나의 공유 장부, 온 가족이 여러 기기에서 함께 관리",
@@ -151,6 +161,7 @@
   },
   "lo": {
     "app_name": "ຜູ້ຊ່ວຍຊີວິດປະຈຳວັນ",
+    "slogan": "ຈັດການຊີວິດໄດ້ເບົາຂຶ້ນ",
     "phone_inner_footer": "ຊ່ວຍໃຫ້ຊີວິດຂອງທ່ານງ່າຍຂຶ້ນທຸກໆວັນ",
     "headline": [
       "ປຶ້ມຮ່ວມກຸ່ມ, ຄອບຄົວຈັດການຈາກຫຼາຍອຸປະກອນ",
@@ -166,6 +177,7 @@
   },
   "pt": {
     "app_name": "Assistente de Vida Diária",
+    "slogan": "Gerencie a vida com mais leveza",
     "phone_inner_footer": "Deixe o seu dia a dia um pouco mais fácil todos os dias",
     "headline": [
       "Um livro partilhado, toda a família gere a partir de vários dispositivos",
@@ -181,6 +193,7 @@
   },
   "th": {
     "app_name": "ผู้ช่วยชีวิตประจำวัน",
+    "slogan": "จัดการชีวิตได้เบาขึ้น",
     "phone_inner_footer": "ช่วยให้ชีวิตคุณสะดวกสบายขึ้นทุกวัน",
     "headline": [
       "สมุดร่วมเล่มเดียว, ทั้งครอบครัวจัดการจากหลายอุปกรณ์",
@@ -196,6 +209,7 @@
   },
   "tr": {
     "app_name": "Günlük Yaşam Asistanı",
+    "slogan": "Hayatınızı daha hafif yönetin",
     "phone_inner_footer": "Hayatınızı her gün biraz daha kolaylaştırın",
     "headline": [
       "Ortak bir defter, tüm aile birden fazla cihazdan yönetir",
@@ -211,6 +225,7 @@
   },
   "zh": {
     "app_name": "日常生活助手",
+    "slogan": "更轻松地管理生活",
     "phone_inner_footer": "让每一天的生活更轻松一点",
     "headline": [
       "一本共享账本，全家从多台设备共同管理",
@@ -226,6 +241,7 @@
   },
   "zh-TW": {
     "app_name": "日常生活助手",
+    "slogan": "更輕鬆地管理生活",
     "phone_inner_footer": "讓每一天的生活更輕鬆一點",
     "headline": [
       "一本共享帳本，全家從多部裝置共同管理",

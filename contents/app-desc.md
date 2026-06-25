@@ -27,6 +27,10 @@ Chia sẻ sổ:
 
 Tất cả trong một ứng dụng trực quan, dễ dùng, giúp bạn ra quyết định tốt hơn mỗi ngày, duy trì kỷ luật và tiến gần hơn đến các mục tiêu dài hạn.
 
+—
+Chính sách bảo mật: https://sytuanit.github.io/dla-docs/vi/privacy.html
+Điều khoản sử dụng (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
+
 ---
 
 ## en
@@ -50,6 +54,10 @@ Shared book:
 - Family members only need the free app — scan the QR code to join; data syncs to the cloud so everyone stays up to date.
 
 Everything in one intuitive app — clearer decisions every day, steady habits, and progress toward long-term goals.
+
+—
+Privacy Policy: https://sytuanit.github.io/dla-docs/en/privacy.html
+Terms of Use (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
 
 ---
 
@@ -75,6 +83,10 @@ Geteiltes Buch:
 
 Alles in einer App — bessere Entscheidungen im Alltag, mehr Struktur und näher an Ihren langfristigen Zielen.
 
+—
+Datenschutzrichtlinie: https://sytuanit.github.io/dla-docs/de/privacy.html
+Nutzungsbedingungen (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
+
 ---
 
 ## es
@@ -98,6 +110,10 @@ Libro compartido:
 - Los miembros de la familia solo necesitan la app gratuita: escanean el QR para unirse; los datos se sincronizan en la nube.
 
 Todo en una app intuitiva para decidir mejor cada día, mantener el hábito y acercarte a tus metas a largo plazo.
+
+—
+Política de privacidad: https://sytuanit.github.io/dla-docs/es/privacy.html
+Términos de uso (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
 
 ---
 
@@ -123,6 +139,10 @@ Carnet partagé :
 
 Le tout dans une app intuitive pour mieux décider au quotidien, garder la discipline et progresser vers vos objectifs long terme.
 
+—
+Politique de confidentialité : https://sytuanit.github.io/dla-docs/fr/privacy.html
+Conditions d’utilisation (EULA) : https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
+
 ---
 
 ## hi
@@ -146,6 +166,10 @@ Le tout dans une app intuitive pour mieux décider au quotidien, garder la disci
 - परिवार के सदस्यों को केवल मुफ़्त ऐप चाहिए — QR स्कैन करके जुड़ें; डेटा क्लाउड में सिंक होता है।
 
 एक ही ऐप में — बेहतर निर्णय, अनुशासन और दीर्घकालीन लक्ष्यों की दिशा में।
+
+—
+गोपनीयता नीति: https://sytuanit.github.io/dla-docs/hi/privacy.html
+उपयोग की शर्तें (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
 
 ---
 
@@ -171,6 +195,10 @@ Buku bersama:
 
 Semua dalam satu aplikasi — keputusan lebih baik, konsistensi, dan lebih dekat pada tujuan jangka panjang.
 
+—
+Kebijakan Privasi: https://sytuanit.github.io/dla-docs/id/privacy.html
+Ketentuan Penggunaan (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
+
 ---
 
 ## it
@@ -194,6 +222,10 @@ Registro condiviso:
 - I familiari bastano con l’app gratuita — scansionano il QR per unirsi; i dati si sincronizzano nel cloud.
 
 Tutto in un’unica app intuitiva — decisioni migliori ogni giorno, disciplina e traguardi nel lungo periodo.
+
+—
+Informativa sulla privacy: https://sytuanit.github.io/dla-docs/it/privacy.html
+Termini di utilizzo (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
 
 ---
 
@@ -219,6 +251,10 @@ Tutto in un’unica app intuitiva — decisioni migliori ogni giorno, disciplina
 
 ひとつのアプリで、毎日の判断を助け、習慣づけし、長期的な目標に近づけます。
 
+—
+プライバシーポリシー: https://sytuanit.github.io/dla-docs/ja/privacy.html
+利用規約（EULA）: https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
+
 ---
 
 ## ko
@@ -242,6 +278,10 @@ Tutto in un’unica app intuitiva — decisioni migliori ogni giorno, disciplina
 - 가족 구성원은 무료 앱만 있으면 됩니다 — QR을 스캔해 참여; 데이터는 클라우드에 동기화.
 
 모두 한 앱에서 — 매일 더 나은 결정, 꾸준한 습관, 장기 목표에 더 가까이.
+
+—
+개인정보 처리방침: https://sytuanit.github.io/dla-docs/ko/privacy.html
+이용약관(EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
 
 ---
 
@@ -267,6 +307,10 @@ Tutto in un’unica app intuitiva — decisioni migliori ogni giorno, disciplina
 
 ທຸກຢ່າງໃນແອັບດຽວ — ຕັດສິນໃຈດີຂຶ້ນ, ມີວິນັຍ ແລະເຂົ້າໃກ້ເປົ້າໝາຍຍາວນານ.
 
+—
+ນະໂຍບາຍຄວາມເປັນສ່ວນຕົວ: https://sytuanit.github.io/dla-docs/lo/privacy.html
+ຂໍ້ກຳນົດການນຳໃຊ້ (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
+
 ---
 
 ## pt
@@ -290,6 +334,10 @@ Livro partilhado:
 - Os familiares só precisam da app gratuita — digitalizam o QR para entrar; os dados sincronizam na cloud.
 
 Tudo numa só aplicação intuitiva — melhores decisões, disciplina e progresso rumo a objetivos de longo prazo.
+
+—
+Política de Privacidade: https://sytuanit.github.io/dla-docs/pt/privacy.html
+Termos de Uso (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
 
 ---
 
@@ -315,6 +363,10 @@ Tudo numa só aplicação intuitiva — melhores decisões, disciplina e progres
 
 ครบในแอปเดียว — ตัดสินใจดีขึ้นทุกวัน มีวินัย และเข้าใกล้เป้าหมายระยะยาว
 
+—
+นโยบายความเป็นส่วนตัว: https://sytuanit.github.io/dla-docs/th/privacy.html
+ข้อกำหนดการใช้งาน (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
+
 ---
 
 ## tr
@@ -338,6 +390,10 @@ Paylaşılan defter:
 - Aile üyeleri yalnızca ücretsiz uygulamayla katılabilir — QR kodunu tarayın; veriler bulutta senkronize olur.
 
 Hepsi tek uygulamada — daha iyi kararlar, disiplin ve uzun vadeli hedeflere yaklaşma.
+
+—
+Gizlilik Politikası: https://sytuanit.github.io/dla-docs/tr/privacy.html
+Kullanım Şartları (EULA): https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
 
 ---
 
@@ -363,6 +419,10 @@ Hepsi tek uygulamada — daha iyi kararlar, disiplin ve uzun vadeli hedeflere ya
 
 尽在同一款直观应用——每日更好决策、保持习惯、迈向长期目标。
 
+—
+隐私政策：https://sytuanit.github.io/dla-docs/zh-cn/privacy.html
+使用条款（EULA）：https://www.apple.com/legal/internet-services/itunes/dev/stdeula/
+
 ---
 
 ## zh-TW
@@ -386,3 +446,7 @@ Hepsi tek uygulamada — daha iyi kararlar, disiplin ve uzun vadeli hedeflere ya
 - 家庭成員只需使用免費版 App，掃描 QR 碼即可加入；資料雲端同步，全家保持最新。
 
 盡在同一款 App——每日決策更清晰、維持紀律、更接近長期目標。
+
+—
+隱私權政策：https://sytuanit.github.io/dla-docs/zh-tw/privacy.html
+使用條款（EULA）：https://www.apple.com/legal/internet-services/itunes/dev/stdeula/

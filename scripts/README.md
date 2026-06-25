@@ -80,6 +80,32 @@ Neu thieu slogan hoac thieu anh capture, script se `Skip` va in ly do.
 
 ---
 
+## 1b) `generate-splash-screens.py`
+
+Tao splash screen theo locale: app name (tren) + artwork + slogan (duoi), giong mockup marketing.
+
+### Dau vao / Dau ra
+
+- Dau vao:
+  - `dsa-app/src/assets/splash_v2.png` (artwork goc)
+  - `dla-docs/scripts/screenshot-14-marketing.json` — `app_name`, `slogan`
+- Dau ra:
+  - `dsa-app/src/assets/splash/{locale}/splash.png` (16 locale)
+
+### Yeu cau
+
+- Python 3 + Pillow (`pip install pillow`)
+
+### Cach chay
+
+```bash
+python generate-splash-screens.py
+python generate-splash-screens.py --locale vi
+python generate-splash-screens.py --dry-run
+```
+
+---
+
 ## 2) `generate-store-screenshots.js`
 
 Script resize anh promo da ghép (`screenshot-{n}.png`) ve cac kich thuoc upload cho Google Play / App Store Connect. Chi xu ly **cac file duoc chon** trong `selected-screenshots.json` (hoac file JSON tuong tu truyen qua CLI).
